@@ -467,7 +467,93 @@ function closePopup() {
   </div>
 </div>
 
-       
+       <div class="video-section">
+  <h2>🎥 Coming Soon</h2>
+  <div class="video-row" id="comingsoon"></div>
+</div>
+
+<div class="popup" id="videoPopup_comingsoon">
+  <div class="spinner" id="spinner_comingsoon"></div>
+  <iframe id="videoPlayer_comingsoon" allowfullscreen></iframe>
+  <span class="closeBtn" onclick="closePopup_comingsoon()">&times;</span>
+</div>
+
+<script>
+const comingSoonVideos = [
+  {title:"Future Project Trailer",thumb:"https://i.ytimg.com/vi/Tv8fSHiP7UM/hqdefault.jpg",link:"https://www.youtube.com/embed/Tv8fSHiP7UM"},
+  {title:"Preview 2025",thumb:"https://i.ytimg.com/vi/E7wJTI-1dvQ/hqdefault.jpg",link:"https://www.youtube.com/embed/E7wJTI-1dvQ"},
+  {title:"Teaser Clip",thumb:"https://i.ytimg.com/vi/IUN664s7N-c/hqdefault.jpg",link:"https://www.youtube.com/embed/IUN664s7N-c"},
+  {title:"Sneak Peek",thumb:"https://i.ytimg.com/vi/nfWlot6h_JM/hqdefault.jpg",link:"https://www.youtube.com/embed/nfWlot6h_JM"}
+];
+
+const rowComingSoon = document.getElementById('comingsoon');
+comingSoonVideos.forEach(v=>{
+  const card=document.createElement('div');
+  card.className='video-card';
+  card.innerHTML=`<img src="${v.thumb}" alt="${v.title}"><p>${v.title}</p>`;
+  card.onclick=()=>openPopup_comingsoon(v.link);
+  rowComingSoon.appendChild(card);
+});
+
+function openPopup_comingsoon(link){
+  const popup=document.getElementById('videoPopup_comingsoon');
+  const iframe=document.getElementById('videoPlayer_comingsoon');
+  const spinner=document.getElementById('spinner_comingsoon');
+  iframe.style.display="none"; spinner.style.display="block";
+  popup.style.display="flex";
+  iframe.src=link+"?autoplay=1";
+  iframe.onload=()=>{spinner.style.display="none"; iframe.style.display="block";}
+}
+function closePopup_comingsoon(){
+  const popup=document.getElementById('videoPopup_comingsoon');
+  const iframe=document.getElementById('videoPlayer_comingsoon');
+  popup.style.display="none"; iframe.src="";
+}
+</script>
+
+       <div class="video-section">
+  <h2>🌟 New This Week</h2>
+  <div class="video-row" id="newthisweek"></div>
+</div>
+
+<div class="popup" id="videoPopup_newthisweek">
+  <div class="spinner" id="spinner_newthisweek"></div>
+  <iframe id="videoPlayer_newthisweek" allowfullscreen></iframe>
+  <span class="closeBtn" onclick="closePopup_newthisweek()">&times;</span>
+</div>
+
+<script>
+const newThisWeekVideos = [
+  {title:"Weekly Update",thumb:"https://i.ytimg.com/vi/Fmdb-KmlzD8/hqdefault.jpg",link:"https://www.youtube.com/embed/Fmdb-KmlzD8"},
+  {title:"New Release Highlights",thumb:"https://i.ytimg.com/vi/y6120QOlsfU/hqdefault.jpg",link:"https://www.youtube.com/embed/y6120QOlsfU"},
+  {title:"Behind the Scenes",thumb:"https://i.ytimg.com/vi/2vjPBrBU-TM/hqdefault.jpg",link:"https://www.youtube.com/embed/2vjPBrBU-TM"},
+  {title:"Top Picks of the Week",thumb:"https://i.ytimg.com/vi/kXYiU_JCYtU/hqdefault.jpg",link:"https://www.youtube.com/embed/kXYiU_JCYtU"}
+];
+
+const rowNewThisWeek = document.getElementById('newthisweek');
+newThisWeekVideos.forEach(v=>{
+  const card=document.createElement('div');
+  card.className='video-card';
+  card.innerHTML=`<img src="${v.thumb}" alt="${v.title}"><p>${v.title}</p>`;
+  card.onclick=()=>openPopup_newthisweek(v.link);
+  rowNewThisWeek.appendChild(card);
+});
+
+function openPopup_newthisweek(link){
+  const popup=document.getElementById('videoPopup_newthisweek');
+  const iframe=document.getElementById('videoPlayer_newthisweek');
+  const spinner=document.getElementById('spinner_newthisweek');
+  iframe.style.display="none"; spinner.style.display="block";
+  popup.style.display="flex";
+  iframe.src=link+"?autoplay=1";
+  iframe.onload=()=>{spinner.style.display="none"; iframe.style.display="block";}
+}
+function closePopup_newthisweek(){
+  const popup=document.getElementById('videoPopup_newthisweek');
+  const iframe=document.getElementById('videoPlayer_newthisweek');
+  popup.style.display="none"; iframe.src="";
+}
+</script>
 
        
   </div>
