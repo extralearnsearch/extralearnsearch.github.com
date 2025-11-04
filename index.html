@@ -141,6 +141,7 @@ body {
     justify-content: space-around;
     border-bottom: 2px solid black;
     z-index: 10;
+    border-radius: 5px solid white;
   }
 
   .main-tabs button {
@@ -155,8 +156,8 @@ body {
   }
 
   .main-tabs button.active {
-    color: #fff;
-    border-bottom: 3px solid black;
+    color: purple;
+    border-bottom: 3px solid white;
   }
 
   /* Subtab container */
@@ -172,21 +173,29 @@ body {
   }
 
   .subtabs button {
-    background: #111;
-    border: 1px solid #fff;
-    color: #aaa;
-    padding: 10px 18px;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-  }
+  background: linear-gradient(135deg, #000 0%, #3a0066 100%);
+  border: 1px solid #5500aa;
+  color: #ddd;
+  padding: 10px 18px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  box-shadow: 0 0 8px rgba(128, 0, 255, 0.2);
+}
 
-  .subtabs button.active {
-    background-color: purple;
-    color: #fff;
-    border-color: #fff;
-  }
+.subtabs button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 12px rgba(128, 0, 255, 0.4);
+}
+
+/* Active subtab (clicked one) */
+.subtabs button.active {
+  background: linear-gradient(135deg, #6a00ff, #9c27ff);
+  color: #fff;
+  border-color: #bb00ff;
+  box-shadow: 0 0 15px rgba(187, 0, 255, 0.5);
+}
 
   /* Subcontent */
   .subcontent {
