@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EduStream</title>
+<title>Extra Learn Search</title>
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6081855871603005"
      crossorigin="anonymous"></script>
@@ -17,6 +17,107 @@
     overflow-x: hidden;
   }
 
+     /* Top Bar */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  border-bottom: 2px solid #222;
+  z-index: 15;
+}
+
+/* Hamburger */
+.hamburger {
+  font-size: 26px;
+  cursor: pointer;
+  color: purple;
+}
+
+/* Logo Section */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logo img {
+  width: 35px;
+  height: 35px;
+  border-radius: 20%;
+}
+.logo span {
+  font-size: 20px;
+  color: purple;
+  font-weight: bold;
+}
+
+/* Profile Circle */
+.profile img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid purple;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.profile img:hover {
+  transform: scale(1.1);
+}
+
+/* Sidebar */
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  overflow-x: hidden;
+  transition: 0.4s;
+  padding-top: 60px;
+  border-right: 2px solid purple;
+}
+
+.sidebar a {
+  padding: 12px 20px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #ccc;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  background-color: #111;
+  color: purple;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  background: none;
+  border: none;
+  color: purple;
+  cursor: pointer;
+}
+
+/* Adjust body top spacing because of top bar */
+body {
+  padding-top: 65px;
+}
+/* Adjust body top spacing because of top bar */
+body {
+  padding-top: 65px;
+}
   /* Main container */
   .tab-content {
     display: none;
@@ -54,8 +155,8 @@
   }
 
   .main-tabs button.active {
-    color: #00bfff;
-    border-bottom: 3px solid #0000ff;
+    color: #fff;
+    border-bottom: 3px solid purple;
   }
 
   /* Subtab container */
@@ -72,7 +173,7 @@
 
   .subtabs button {
     background: #111;
-    border: 1px solid #333;
+    border: 1px solid #fff;
     color: #aaa;
     padding: 10px 18px;
     border-radius: 25px;
@@ -84,7 +185,7 @@
   .subtabs button.active {
     background-color: purple;
     color: #fff;
-    border-color: #00bfff;
+    border-color: #fff;
   }
 
   /* Subcontent */
@@ -97,7 +198,7 @@
   }
 
   h2 {
-    color: #00bfff;
+    color: #fff;
     margin-bottom: 10px;
   }
 
@@ -118,7 +219,26 @@
 </style>
 </head>
 <body>
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="hamburger" onclick="openSidebar()">&#9776;</div>
+  <div class="logo">
+    <img src="your-logo.png" alt="Logo"> <!-- Replace with your logo path -->
+    <span>EduStream</span>
+  </div>
+  <div class="profile" onclick="openTab('me', document.querySelector('.main-tabs button:nth-child(4)'))">
+    <img src="profile.jpg" alt="Profile"> <!-- Replace with user profile or default -->
+  </div>
+</div>
 
+<!-- SIDEBAR -->
+<div id="sidebar" class="sidebar">
+  <button class="closebtn" onclick="closeSidebar()">×</button>
+  <a href="#" onclick="openTab('home', document.querySelector('.main-tabs button:nth-child(1)')); closeSidebar();">🏠 Home</a>
+  <a href="#" onclick="showAbout();">ℹ️ About</a>
+  <a href="#" onclick="openTab('me', document.querySelector('.main-tabs button:nth-child(4)')); closeSidebar();">👤 Me</a>
+  <a href="#" onclick="shareSite();">🔗 Share</a>
+</div>
 <!-- HOME -->
 <div id="home" class="tab-content" style="display:block;">
   <div class="subtabs" id="homeTabs">
@@ -228,6 +348,33 @@
     document.querySelectorAll('#exploreTabs button').forEach(b => b.classList.remove('active'));
     event.target.classList.add('active');
   }
+     // Sidebar Functions
+function openSidebar() {
+  document.getElementById("sidebar").style.width = "250px";
+}
+function closeSidebar() {
+  document.getElementById("sidebar").style.width = "0";
+}
+
+// About Message
+function showAbout() {
+  closeSidebar();
+  alert("EduStream is a platform that provides free and fun educational resources for learners of all levels.");
+}
+
+// Share Function
+function shareSite() {
+  closeSidebar();
+  if (navigator.share) {
+    navigator.share({
+      title: 'EduStream',
+      text: 'Check out this awesome educational site!',
+      url: window.location.href,
+    });
+  } else {
+    alert("Copy and share this site link:\n" + window.location.href);
+  }
+}
 </script>
 </body>
 </html>
