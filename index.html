@@ -1171,6 +1171,45 @@ function closePopup_ArtOfZoology(){
   <div id="grade10" class="subcontent">
     <h2>Grade 10-12</h2>
     <div class="card">Access past papers, notes, and videos for Grades 10-12.</div>
+ <div class="video-section">
+  <h2>🎥 Trending Videos</h2>
+  <div class="video-row" id="videoRow2"></div>
+</div>
+
+<div class="popup" id="videoPopup2">
+  <div class="spinner" id="spinner2"></div>
+  <iframe allowfullscreen="" id="videoPlayer2"></iframe>
+  <span class="closeBtn" onclick="closePopup2()">×</span>
+</div>
+
+<script>
+const videos2=[
+  {title:"English 2025 GCE Vocabulary",thumb:"https://img.youtube.com/vi/B62xr0ypVpQ/hqdefault.jpg",link:"https://www.youtube.com/embed/B62xr0ypVpQ"},
+  {title:"Gadget Talk",thumb:"https://i.ytimg.com/vi/sBws8MSXN7A/hqdefault.jpg",link:"https://www.youtube.com/embed/sBws8MSXN7A"}
+];
+const row2=document.getElementById('videoRow2');
+videos2.forEach(v=>{
+  const card=document.createElement('div');
+  card.className='video-card';
+  card.innerHTML=`<img src="${v.thumb}"><p>${v.title}</p>`;
+  card.onclick=()=>openPopup2(v.link);
+  row2.appendChild(card);
+});
+function openPopup2(link){
+  const popup=document.getElementById('videoPopup2');
+  const iframe=document.getElementById('videoPlayer2');
+  const spinner=document.getElementById('spinner2');
+  iframe.style.display="none";spinner.style.display="block";
+  popup.style.display="flex";iframe.src=link+"?autoplay=1";
+  iframe.onload=()=>{spinner.style.display="none";iframe.style.display="block";}
+}
+function closePopup2(){
+  const popup=document.getElementById('videoPopup2');
+  const iframe=document.getElementById('videoPlayer2');
+  popup.style.display="none";iframe.src="";
+}
+</script>
+  
   </div>
   <div id="form1" class="subcontent">
     <h2>Form 1-4</h2>
