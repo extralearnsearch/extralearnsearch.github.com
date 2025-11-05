@@ -621,6 +621,35 @@ function closeVideoPopup(id) {
   }
 }
 </script>
+      <div class="video-section">
+  <h2>🌟 New This Week</h2>
+  <div class="video-row" id="newthisweek"></div>
+</div>
+
+<!-- Popup Modal -->
+<div class="popup" id="videoPopup_newthisweek">
+  <div class="spinner" id="spinner_newthisweek"></div>
+  <iframe id="videoPlayer_newthisweek" allowfullscreen></iframe>
+  <span class="closeBtn" onclick="closeVideoPopup('newthisweek')">&times;</span>
+</div>
+
+<script>
+const newThisWeekVideos = [
+  {title:"Weekly Update",thumb:"https://i.ytimg.com/vi/Fmdb-KmlzD8/hqdefault.jpg",link:"https://www.youtube.com/embed/Fmdb-KmlzD8"},
+  {title:"New Release Highlights",thumb:"https://i.ytimg.com/vi/y6120QOlsfU/hqdefault.jpg",link:"https://www.youtube.com/embed/y6120QOlsfU"},
+  {title:"Behind the Scenes",thumb:"https://i.ytimg.com/vi/2vjPBrBU-TM/hqdefault.jpg",link:"https://www.youtube.com/embed/2vjPBrBU-TM"},
+  {title:"Top Picks of the Week",thumb:"https://i.ytimg.com/vi/kXYiU_JCYtU/hqdefault.jpg",link:"https://www.youtube.com/embed/kXYiU_JCYtU"}
+];
+
+const rowNewThisWeek = document.getElementById('newthisweek');
+newThisWeekVideos.forEach(v=>{
+  const card=document.createElement('div');
+  card.className='video-card';
+  card.innerHTML=`<img src="${v.thumb}" alt="${v.title}"><p>${v.title}</p>`;
+  card.onclick=()=>openVideoPopup('newthisweek', v.link);
+  rowNewThisWeek.appendChild(card);
+});
+</script> 
             
 </div>
 
