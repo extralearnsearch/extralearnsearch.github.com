@@ -683,25 +683,40 @@ function closePopup3(){
   }
 
   // Home Subtabs
+// Function to hide all subtabs and clear dynamic data when switching
 function showSubtab(event, name) {
-  // Hide ALL subcontent sections under #home
-  document.querySelectorAll('#home .subcontent').forEach(c => {
-    c.style.display = 'none';
-    c.classList.remove('active');
+  const allSubs = document.querySelectorAll('#home .subcontent');
+  const allButtons = document.querySelectorAll('#homeTabs button');
+
+  // Hide all subcontent and deactivate buttons
+  allSubs.forEach(sub => {
+    sub.style.display = 'none';
+    sub.classList.remove('active');
+
+    // 🧹 Reset innerHTML for dynamic sections if any
+    const videoRows = sub.querySelectorAll('.video-row');
+    videoRows.forEach(vr => vr.innerHTML = '');
   });
 
   // Deactivate all buttons
-  document.querySelectorAll('#homeTabs button').forEach(b => b.classList.remove('active'));
+  allButtons.forEach(btn => btn.classList.remove('active'));
 
-  // Show ONLY the selected one
+  // Show only the clicked one
   const target = document.getElementById(name);
   if (target) {
     target.style.display = 'block';
     target.classList.add('active');
   }
 
-  // Highlight the clicked subtab button
-  if (event && event.currentTarget) event.currentTarget.classList.add('active');
+  // Activate the clicked subtab button
+  if (event && event.currentTarget) {
+    event.currentTarget.classList.add('active');
+  }
+
+  // 🚫 Block other subtabs' leftover videos or content
+  document.querySelectorAll('#home .video-row').forEach(row => {
+    if (!target.contains(row)) row.innerHTML = '';
+  });
 }
 
   // Explore Subtabs
