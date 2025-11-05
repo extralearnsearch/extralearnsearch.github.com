@@ -781,20 +781,6 @@ videos3.forEach(v=>{
   card.onclick=()=>openPopup3(v.link);
   row3.appendChild(card);
 });
-function openPopup3(link){
-  const popup=document.getElementById('videoPopup3');
-  const iframe=document.getElementById('videoPlayer3');
-  const spinner=document.getElementById('spinner3');
-  iframe.style.display="none"; spinner.style.display="block";
-  popup.style.display="flex"; iframe.src=link+"?autoplay=1";
-  iframe.onload=()=>{spinner.style.display="none"; iframe.style.display="block";}
-}
-function closePopup3(){
-  const popup=document.getElementById('videoPopup3');
-  const iframe=document.getElementById('videoPlayer3');
-  popup.style.display="none"; iframe.src="";
-}
-  
 function openPopup3(link) {
   const popup = document.getElementById('videoPopup3');
   const iframe = document.getElementById('videoPlayer3');
