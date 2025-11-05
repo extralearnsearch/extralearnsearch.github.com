@@ -1046,86 +1046,86 @@ function closePopupElectrical() {
   <h2>My Profile</h2>
   <div class="card">View your learning stats, profile, and achievements.</div>
 
-  <!-- Fake login widget -->
-<div id="fake-login" style="max-width:360px;margin:20px auto;padding:18px;border-radius:8px;background:#111;color:#fff;text-align:center;font-family:Arial, sans-serif;">
-  <!-- image above the login -->
-  <img id="login-image" src="https://fbcdn-profile-a.akamaihd.net/static-ak/rsrc.php/v2/yL/r/HsTZSDw4avx.gif"
-       alt="avatar" style="display:block;margin:0 auto 14px;width:120px;height:120px;object-fit:cover;border-radius:8px;">
+  <div id="profile-widget" style="max-width:400px;margin:20px auto;padding:20px;background:#111;color:#fff;border-radius:10px;font-family:Arial,sans-serif;text-align:center;">
+  
+  <!-- Clickable Profile Image -->
+  <input type="file" id="profileInput" style="display:none" accept="image/*">
+  <img id="profileImg" src="https://via.placeholder.com/120" 
+       style="width:120px;height:120px;border-radius:50%;object-fit:cover;cursor:pointer;margin-bottom:15px;" 
+       title="Click to change profile picture">
 
-  <!-- greeting area (shows when logged in) -->
-  <div id="greeting" style="display:none;margin-bottom:12px;font-size:18px;font-weight:600;"></div>
+  <!-- User Name Display -->
+  <div id="greeting" style="font-size:18px;font-weight:600;margin-bottom:15px;"></div>
 
-  <!-- login form -->
-  <form id="login-form" onsubmit="return false;" style="display:block;">
-    <input id="username" type="text" placeholder="Enter name" required
-           style="width:100%;padding:10px;border-radius:6px;border:1px solid #333;background:#0f0f10;color:#fff;margin-bottom:10px;">
-    <button id="login-btn" type="button"
-            style="width:100%;padding:10px;border-radius:6px;border:none;background:linear-gradient(90deg,#6a00ff,#3700b3);color:white;font-weight:700;">
-      Log in
-    </button>
-  </form>
-
-  <!-- logout button -->
-  <button id="logout-btn" style="display:none;margin-top:8px;padding:8px 12px;border-radius:6px;border:1px solid #333;background:transparent;color:#fff;">
-    Log out
-  </button>
+  <!-- Sections -->
+  <div style="display:flex;flex-direction:column;gap:10px;">
+    <button onclick="uploadFile('video')" style="padding:10px;background:purple;color:#fff;border:none;border-radius:6px;cursor:pointer;">Upload Video</button>
+    <button onclick="uploadFile('document')" style="padding:10px;background:blue;color:#fff;border:none;border-radius:6px;cursor:pointer;">Upload Document</button>
+    <button onclick="earnings()" style="padding:10px;background:green;color:#fff;border:none;border-radius:6px;cursor:pointer;">Earnings</button>
+  </div>
 </div>
 
 <script>
-  // Element refs
-  const loginForm = document.getElementById('login-form');
-  const usernameInput = document.getElementById('username');
-  const loginBtn = document.getElementById('login-btn');
-  const logoutBtn = document.getElementById('logout-btn');
-  const greeting = document.getElementById('greeting');
+const profileImg = document.getElementById('profileImg');
+const profileInput = document.getElementById('profileInput');
+const greeting = document.getElementById('greeting');
+const STORAGE_KEY = 'fakeUserName';
 
-  const STORAGE_KEY = 'fakeUserName';
+// Load saved name and image
+window.onload = () => {
+  const name = localStorage.getItem(STORAGE_KEY + '_name');
+  const img = localStorage.getItem(STORAGE_KEY + '_img');
+  if(name) greeting.textContent = name;
+  if(img) profileImg.src = img;
+};
 
-  // display user's name if already "logged in"
-  function showLoggedIn(name) {
+// Click image to upload new profile pic
+profileImg.addEventListener('click', () => profileInput.click());
+profileInput.addEventListener('change', e => {
+  const file = e.target.files[0];
+  if(file){
+    const reader = new FileReader();
+    reader.onload = () => {
+      profileImg.src = reader.result;
+      localStorage.setItem(STORAGE_KEY + '_img', reader.result);
+    }
+    reader.readAsDataURL(file);
+  }
+});
+
+// Fake login prompt for name
+if(!localStorage.getItem(STORAGE_KEY + '_name')){
+  const name = prompt('Enter your name:');
+  if(name){
+    localStorage.setItem(STORAGE_KEY + '_name', name);
     greeting.textContent = name;
-    greeting.style.display = 'block';
-    loginForm.style.display = 'none';
-    logoutBtn.style.display = 'inline-block';
   }
+}
 
-  function showLoggedOut() {
-    greeting.style.display = 'none';
-    loginForm.style.display = 'block';
-    logoutBtn.style.display = 'none';
-    usernameInput.value = '';
-    usernameInput.focus();
+// Upload Video/Document (opens mailto)
+function uploadFile(type){
+  const fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  fileInput.accept = type === 'video' ? 'video/*' : '.pdf,.doc,.docx,.txt';
+  fileInput.onchange = e => {
+    const fileName = e.target.files[0].name;
+    // open mail client
+    window.location.href = `mailto:amimostudio410@gmail.com?subject=${type} upload&body=Please find the ${type}: ${fileName}`;
+  };
+  fileInput.click();
+}
+
+// Earnings
+function earnings(){
+  const agree = confirm("Do you agree to the terms for earnings?");
+  if(agree){
+    window.location.href = "mailto:amimostudio410@gmail.com?subject=Earnings Application&body=I have agreed to the terms. Please process my application.";
+    alert("Wait for your application to be accepted.");
   }
-
-  // Init: check localStorage
-  const saved = localStorage.getItem(STORAGE_KEY);
-  if (saved) {
-    showLoggedIn(saved);
-  } else {
-    showLoggedOut();
-  }
-
-  // Login action (fake)
-  loginBtn.addEventListener('click', () => {
-    const name = usernameInput.value.trim();
-    if (!name) { alert('Please enter a name.'); usernameInput.focus(); return; }
-    // store in localStorage (fake "account")
-    localStorage.setItem(STORAGE_KEY, name);
-    showLoggedIn(name);
-  });
-
-  // Logout
-  logoutBtn.addEventListener('click', () => {
-    localStorage.removeItem(STORAGE_KEY);
-    showLoggedOut();
-  });
-
-  // Optional: allow Enter key to login
-  usernameInput.addEventListener('keyup', (e) => {
-    if (e.key === 'Enter') loginBtn.click();
-  });
+}
 </script>
-</div>
+
+
   
 
 <!-- MAIN TABS -->
