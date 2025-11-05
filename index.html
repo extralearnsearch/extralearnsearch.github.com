@@ -964,184 +964,26 @@ function closePopupElectrical() {
     </a>
   </div>
     </div>
-<div class="video-section">
-  <h2>🌾 Agriculture in Science</h2>
-  <div class="video-row" id="videoRow_AgricultureInScience"></div>
-</div>
-
-<div class="popup" id="videoPopup_AgricultureInScience">
-  <div class="spinner" id="spinner_AgricultureInScience"></div>
-  <iframe allowfullscreen="" id="videoPlayer_AgricultureInScience"></iframe>
-  <span class="closeBtn" onclick="closePopup_AgricultureInScience()">×</span>
-</div>
-
-<script>
-// 🎥 Replace these YouTube links with your actual Agriculture videos
-const agricultureVideos = [
-  {title:"Soil and Crop Management",thumb:"https://i.ytimg.com/vi/Ag1hFJxQp8E/hqdefault.jpg",link:"https://www.youtube.com/embed/Ag1hFJxQp8E"},
-  {title:"Irrigation and Water Systems",thumb:"https://i.ytimg.com/vi/Jo4VYbA8HRk/hqdefault.jpg",link:"https://www.youtube.com/embed/Jo4VYbA8HRk"},
-  {title:"Organic Farming Basics",thumb:"https://i.ytimg.com/vi/fc1Noy6D2cg/hqdefault.jpg",link:"https://www.youtube.com/embed/fc1Noy6D2cg"}
-];
-
-const agriRow = document.getElementById('videoRow_AgricultureInScience');
-agricultureVideos.forEach(v=>{
-  const card=document.createElement('div');
-  card.className='video-card';
-  card.innerHTML=`<img src="${v.thumb}" alt="${v.title}"><p>${v.title}</p>`;
-  card.onclick=()=>openPopup_AgricultureInScience(v.link);
-  agriRow.appendChild(card);
-});
-
-function openPopup_AgricultureInScience(link){
-  const popup=document.getElementById('videoPopup_AgricultureInScience');
-  const iframe=document.getElementById('videoPlayer_AgricultureInScience');
-  const spinner=document.getElementById('spinner_AgricultureInScience');
-  iframe.style.display="none"; spinner.style.display="block";
-  popup.style.display="flex";
-  iframe.src=link+"?autoplay=1";
-  iframe.onload=()=>{spinner.style.display="none"; iframe.style.display="block";}
-}
-function closePopup_AgricultureInScience(){
-  const popup=document.getElementById('videoPopup_AgricultureInScience');
-  const iframe=document.getElementById('videoPlayer_AgricultureInScience');
-  popup.style.display="none"; iframe.src="";
-}
-   </script>
-    div class="video-section">
-  <h2>🌾 Agriculture in Science</h2>
-  <div class="video-row" id="videoRow_AgricultureInScience"></div>
-</div>
-
-<div class="popup" id="videoPopup_AgricultureInScience">
-  <div class="spinner" id="spinner_AgricultureInScience"></div>
-  <iframe allowfullscreen="" id="videoPlayer_AgricultureInScience"></iframe>
-  <span class="closeBtn" onclick="closePopup_AgricultureInScience()">×</span>
-</div>
-
-<script>
-// 🎥 Replace these YouTube links with your actual Agriculture videos
-const agricultureVideos = [
-  {title:"Soil and Crop Management",thumb:"https://i.ytimg.com/vi/Ag1hFJxQp8E/hqdefault.jpg",link:"https://www.youtube.com/embed/Ag1hFJxQp8E"},
-  {title:"Irrigation and Water Systems",thumb:"https://i.ytimg.com/vi/Jo4VYbA8HRk/hqdefault.jpg",link:"https://www.youtube.com/embed/Jo4VYbA8HRk"},
-  {title:"Organic Farming Basics",thumb:"https://i.ytimg.com/vi/fc1Noy6D2cg/hqdefault.jpg",link:"https://www.youtube.com/embed/fc1Noy6D2cg"}
-];
-
-const agriRow = document.getElementById('videoRow_AgricultureInScience');
-agricultureVideos.forEach(v=>{
-  const card=document.createElement('div');
-  card.className='video-card';
-  card.innerHTML=`<img src="${v.thumb}" alt="${v.title}"><p>${v.title}</p>`;
-  card.onclick=()=>openPopup_AgricultureInScience(v.link);
-  agriRow.appendChild(card);
-});
-
-function openPopup_AgricultureInScience(link){
-  const popup=document.getElementById('videoPopup_AgricultureInScience');
-  const iframe=document.getElementById('videoPlayer_AgricultureInScience');
-  const spinner=document.getElementById('spinner_AgricultureInScience');
-  iframe.style.display="none"; spinner.style.display="block";
-  popup.style.display="flex";
-  iframe.src=link+"?autoplay=1";
-  iframe.onload=()=>{spinner.style.display="none"; iframe.style.display="block";}
-}
-function closePopup_AgricultureInScience(){
-  const popup=document.getElementById('videoPopup_AgricultureInScience');
-  const iframe=document.getElementById('videoPlayer_AgricultureInScience');
-  popup.style.display="none"; iframe.src="";
-}
-</script>
   
-  <div style="display: flex; gap: 15px; overflow-x: auto; padding: 10px;">
-  <!--Card 1-->
-  <div style="border-radius: 8px; border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; overflow: hidden; text-align: center; width: 250px;">
-    <a href="https://drive.google.com/file/d/1lsEqaYs-_8eXLhULgH84wTKTcQPkf49s/view?usp=sharing" target="_blank">
-      <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=1lsEqaYs-_8eXLhULgH84wTKTcQPkf49s" style="height: 150px; object-fit: cover; width: 100%;" />
-      <div style="padding: 10px;">
-        <h4 style="font-size: 16px; margin: 0px;">Document Title 1</h4>
-        <p style="color: #555555; font-size: 14px; margin: 5px 0px 0px;">Google Docs</p>
-      </div>
-    </a>
-  </div>
-
-  <!--Card 2-->
-  <div style="border-radius: 8px; border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; overflow: hidden; text-align: center; width: 250px;">
-    <a href="https://drive.google.com/file/d/FILE_ID_2/view?usp=sharing" target="_blank">
-      <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=FILE_ID_2" style="height: 150px; object-fit: cover; width: 100%;" />
-      <div style="padding: 10px;">
-        <h4 style="font-size: 16px; margin: 0px;">Document Title 2</h4>
-        <p style="color: #555555; font-size: 14px; margin: 5px 0px 0px;">Google Docs</p>
-      </div>
-    </a>
-  </div>
-
-  <!--Card 3-->
-  <div style="border-radius: 8px; border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; overflow: hidden; text-align: center; width: 250px;">
-    <a href="https://drive.google.com/file/d/FILE_ID_3/view?usp=sharing" target="_blank">
-      <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=FILE_ID_3" style="height: 150px; object-fit: cover; width: 100%;" />
-      <div style="padding: 10px;">
-        <h4 style="font-size: 16px; margin: 0px;">Document Title 3</h4>
-        <p style="color: #555555; font-size: 14px; margin: 5px 0px 0px;">Google Docs</p>
-      </div>
-    </a>
-  </div>
-</div>
+ 
   
-  <div class="video-section">
-  <h2>🐾 Art of Physiology</h2>
-  <div class="video-row" id="videoRow_ArtOfZoology"></div>
-</div>
 
-<div class="popup" id="videoPopup_ArtOfZoology">
-  <div class="spinner" id="spinner_ArtOfZoology"></div>
-  <iframe allowfullscreen="" id="videoPlayer_ArtOfZoology"></iframe>
+  
 
+  
+  
+  
     
     
     
+  
+  
+
   
   </div>
   <div id="grade10" class="subcontent">
-    <h2>Grade 10-12</h2>
-    <div class="card">Access past papers, notes, and videos for Grades 10-12.</div>
- <div class="video-section">
-  <h2>🎥 Trending Videos</h2>
-  <div class="video-row" id="videoRow2"></div>
-</div>
-
-<div class="popup" id="videoPopup2">
-  <div class="spinner" id="spinner2"></div>
-  <iframe allowfullscreen="" id="videoPlayer2"></iframe>
-  <span class="closeBtn" onclick="closePopup2()">×</span>
-</div>
-
-<script>
-const videos2=[
-  {title:"English 2025 GCE Vocabulary",thumb:"https://img.youtube.com/vi/B62xr0ypVpQ/hqdefault.jpg",link:"https://www.youtube.com/embed/B62xr0ypVpQ"},
-  {title:"Gadget Talk",thumb:"https://i.ytimg.com/vi/sBws8MSXN7A/hqdefault.jpg",link:"https://www.youtube.com/embed/sBws8MSXN7A"}
-];
-const row2=document.getElementById('videoRow2');
-videos2.forEach(v=>{
-  const card=document.createElement('div');
-  card.className='video-card';
-  card.innerHTML=`<img src="${v.thumb}"><p>${v.title}</p>`;
-  card.onclick=()=>openPopup2(v.link);
-  row2.appendChild(card);
-});
-function openPopup2(link){
-  const popup=document.getElementById('videoPopup2');
-  const iframe=document.getElementById('videoPlayer2');
-  const spinner=document.getElementById('spinner2');
-  iframe.style.display="none";spinner.style.display="block";
-  popup.style.display="flex";iframe.src=link+"?autoplay=1";
-  iframe.onload=()=>{spinner.style.display="none";iframe.style.display="block";}
-}
-function closePopup2(){
-  const popup=document.getElementById('videoPopup2');
-  const iframe=document.getElementById('videoPlayer2');
-  popup.style.display="none";iframe.src="";
-}
-</script>
-  
+    <div class="card">Explore content for grade 10-12 before curriculum update
+    </div>
   </div>
   <div id="form1" class="subcontent">
     <h2>Form 1-4</h2>
@@ -1169,6 +1011,16 @@ function closePopup2(){
   <div id="shorts" class="subcontent active">
     <h2>Short Videos</h2>
     <div class="card">Watch quick educational clips for fast learning.</div>
+  </div>
+  <div id="advice" class="subcontent">
+    <h2>Teachers Advice</h2>
+    <div class="card">Guidance from expert teachers on study habits.</div>
+  </div>
+  <div id="tuitions" class="subcontent">
+    <h2>Tuitions</h2>
+    <div class="card">Join our trusted online and local tuitions.</div>
+  </div>
+  <div id="live" class="subclass="card">Watch quick educational clips for fast learning.</div>
   </div>
   <div id="advice" class="subcontent">
     <h2>Teachers Advice</h2>
