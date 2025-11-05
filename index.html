@@ -457,7 +457,7 @@ function closePopup() {
 
   <!--Card 3-->
   <div style="border-radius: 8px; border: 1px solid rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; height: 200px; overflow: hidden; text-align: center; width: 140px;">
-    <a href="https://drive.google.com/file/d/FILE_ID_3/view?usp=sharing" target="_blank">
+    <a href="https://drive.google.com/file/d/FILE_ID_3/view?usp=sharing" targeth="_blank">
       <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=FILE_ID_3" style="height: 150px; object-fit: cover; width: 100%;" />
       <div style="padding: 10px;">
         <h4 style="color: white; font-size: 8px; margin: 0px;">Document Title 3</h4>
@@ -474,80 +474,7 @@ function closePopup() {
     
     <div class="card">University & college materials available here.</div>
   </div>
-       <div class="video-section">
-  <h2>🎥 Trending Videos</h2>
-  <div class="video-row" id="videoRow"></div>
-</div>
-
-<!--Popup video player-->
-<div id="videoPopup">
-  <div class="spinner" id="spinner"></div>
-  <iframe allowfullscreen="" id="videoPlayer"></iframe>
-  <span class="closeBtn" onclick="closePopup()">×</span>
-</div>
-
-<script>
-// 🎞️ Video Data
-const videos = [
-  {
-    title: "Nature Vibes",
-    thumb: "https://img.youtube.com/vi/aCkc0_ia0F4/hqdefault.jpg",
-    link: "https://www.youtube.com/embed/aCkc0_ia0F4"
-  },
-  {
-    title: "Relaxing Waterfall",
-    thumb: "https://i.ytimg.com/vi/aqz-KE-bpKQ/hqdefault.jpg",
-    link: "https://www.youtube.com/embed/aqz-KE-bpKQ"
-  },
-  {
-    title: "Travel Adventure",
-    thumb: "https://i.ytimg.com/vi/ScMzIvxBSi4/hqdefault.jpg",
-    link: "https://www.youtube.com/embed/ScMzIvxBSi4"
-  }
-];
-
-// 🧠 Create video cards dynamically
-const row = document.getElementById('videoRow');
-videos.forEach(v => {
-  const card = document.createElement('div');
-  card.className = 'video-card';
-  card.innerHTML = `
-    <img src="${v.thumb}" alt="${v.title}">
-    <p>${v.title}</p>
-  `;
-  card.onclick = () => openPopup(v.link);
-  row.appendChild(card);
-});
-
-// 🎥 Popup controls + Spinner
-function openPopup(link) {
-  const popup = document.getElementById('videoPopup');
-  const iframe = document.getElementById('videoPlayer');
-  const spinner = document.getElementById('spinner');
-
-  iframe.style.display = "none";      // Hide iframe until loaded
-  spinner.style.display = "block";    // Show spinner
-  popup.style.display = "flex";       // Show popup
-  iframe.src = link + "?autoplay=1";
-
-  // Detect when iframe is loaded
-  iframe.onload = () => {
-    spinner.style.display = "none";   // Hide spinner
-    iframe.style.display = "block";   // Show video
-  };
-}
-
-function closePopup() {
-  const popup = document.getElementById('videoPopup');
-  const iframe = document.getElementById('videoPlayer');
-  popup.style.display = "none";
-  iframe.src = ""; // stop video
-}
-</script>
-</div>
-</div>
-</div>
-     
+            
   <div id="grade10" class="subcontent">
     <h2>Grade 10-12</h2>
     <div class="card">Access past papers, notes, and videos for Grades 10-12.</div>
