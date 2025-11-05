@@ -318,7 +318,244 @@ body {
   cursor: pointer;
   transition: 0.3s;
 }
-.closeBtn:hover { color: #bb86fc; }
+     </style>
+<!-- ====== REPLACE YOUR EXISTING HOME SUBTABS WITH THIS BLOCK ====== -->
+<div id="home" class="tab-content" style="display:block;">
+  <!-- Use data-subtab on buttons so we don't rely on nth-child or duplicated selectors -->
+  <div class="subtabs" id="homeTabs">
+    <button data-subtab="foryou" class="active">For You</button>
+    <button data-subtab="tertiary">Tertiary</button>
+    <button data-subtab="grade10">Grade 10-12</button>
+    <button data-subtab="form1">Form 1-4</button>
+    <button data-subtab="grade5">Grade 5-7</button>
+    <button data-subtab="kids">Kids</button>
+  </div>
+
+  <!-- Each content area has a unique id and the class home-subcontent -->
+  <div id="foryou" class="subcontent home-subcontent active">
+    <h2>For You</h2>
+    <div class="card">Recommended educational videos & notes curated for you.</div>
+
+    <div class="video-section">
+      <h2>🎥 Trending Videos</h2>
+      <!-- each subcontent has its own video-row so we never reuse one container -->
+      <div class="video-row" data-row-for="foryou" id="videoRow_foryou"></div>
+    </div>
+
+    <!-- Popup for this group -->
+    <div class="popup" id="videoPopup_foryou">
+      <div class="spinner" id="spinner_foryou"></div>
+      <iframe allowfullscreen id="videoPlayer_foryou"></iframe>
+      <span class="closeBtn" onclick="closeSubPopup('foryou')">×</span>
+    </div>
+
+    <h2>Trending Documents</h2>
+    <!-- documents... (unchanged) -->
+    <div style="display:flex; gap:15px; overflow-x:auto; padding:10px;">
+      <!-- example card -->
+      <div style="border-radius:8px; border:1px solid rgb(0,0,0); box-shadow: rgba(0,0,0,0.2) 0px 2px 6px; flex-shrink: 0; height:200px; overflow:hidden; text-align:center; width:140px;">
+        <a href="#" target="_blank">
+          <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=1lsEqaYs-_8eXLhULgH84wTKTcQPkf49s" style="height:150px; object-fit:cover; width:100%;" />
+          <div style="padding:10px;">
+            <h4 style="color:white; font-size:8px; margin:0px;">Introduction To Nursing</h4>
+            <p style="color:#555555; font-size:10px; margin:5px 0px 0px;">By Jonh •<small> 19th October,2025</small></p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="video-section">
+      <h2>🎥 Coming Soon</h2>
+      <div class="video-row" data-row-for="foryou" id="comingsoon_foryou"></div>
+    </div>
+
+  </div>
+
+  <!-- Tertiary -->
+  <div id="tertiary" class="subcontent home-subcontent" style="display:none;">
+    <h2>Tertiary</h2>
+    <div class="card">University & college materials available here.</div>
+
+    <div class="video-section">
+      <h2>🎥 Tertiary Videos</h2>
+      <div class="video-row" data-row-for="tertiary" id="videoRow_tertiary"></div>
+    </div>
+
+    <div class="popup" id="videoPopup_tertiary">
+      <div class="spinner" id="spinner_tertiary"></div>
+      <iframe allowfullscreen id="videoPlayer_tertiary"></iframe>
+      <span class="closeBtn" onclick="closeSubPopup('tertiary')">×</span>
+    </div>
+  </div>
+
+  <!-- Grade 10 -->
+  <div id="grade10" class="subcontent home-subcontent" style="display:none;">
+    <h2>Grade 10-12</h2>
+    <div class="card">Access past papers, notes, and videos for Grades 10-12.</div>
+
+    <div class="video-section">
+      <h2>🎥 Grade 10 Videos</h2>
+      <div class="video-row" data-row-for="grade10" id="videoRow_grade10"></div>
+    </div>
+
+    <div class="popup" id="videoPopup_grade10">
+      <div class="spinner" id="spinner_grade10"></div>
+      <iframe allowfullscreen id="videoPlayer_grade10"></iframe>
+      <span class="closeBtn" onclick="closeSubPopup('grade10')">×</span>
+    </div>
+  </div>
+
+  <!-- Form 1 -->
+  <div id="form1" class="subcontent home-subcontent" style="display:none;">
+    <h2>Form 1-4</h2>
+    <div class="card">Explore content for Forms 1-4 students.</div>
+    <div class="video-row" data-row-for="form1" id="videoRow_form1"></div>
+  </div>
+
+  <!-- Grade 5 -->
+  <div id="grade5" class="subcontent home-subcontent" style="display:none;">
+    <h2>Grade 5-7</h2>
+    <div class="card">Learn with interactive materials for Grades 5-7.</div>
+    <div class="video-row" data-row-for="grade5" id="videoRow_grade5"></div>
+  </div>
+
+  <!-- Kids -->
+  <div id="kids" class="subcontent home-subcontent" style="display:none;">
+    <h2>Kids</h2>
+    <div class="card">Fun learning games and cartoon-based lessons for kids.</div>
+    <div class="video-row" data-row-for="kids" id="videoRow_kids"></div>
+  </div>
+</div>
+
+<!-- ====== SCRIPT: SUBTAB MANAGER (PUT THIS ONCE, BELOW THE HTML) ====== -->
+<script>
+/* ---------- Utility: stop and clear media inside a container ---------- */
+function stopMediaInContainer(container) {
+  if (!container) return;
+  // stop iframes (videos) by removing src
+  container.querySelectorAll('iframe').forEach(ifr => {
+    try { ifr.src = ''; } catch(e) {}
+  });
+  // pause HTML5 videos if any
+  container.querySelectorAll('video').forEach(v => {
+    try { v.pause(); v.currentTime = 0; } catch(e) {}
+  });
+}
+
+/* ---------- Close a sub-popup by id (stop it's iframe) ---------- */
+function closeSubPopup(subId) {
+  const popup = document.getElementById('videoPopup_' + subId);
+  const player = document.getElementById('videoPlayer_' + subId);
+  if (player) player.src = '';
+  if (popup) popup.style.display = 'none';
+}
+
+/* ---------- Render videos for a specific subcontent (only when needed) ---------- */
+const SUBTAB_VIDEO_DATA = {
+  foryou: [
+    {title: "Nature Vibes", thumb: "https://img.youtube.com/vi/aCkc0_ia0F4/hqdefault.jpg", link: "https://www.youtube.com/embed/aCkc0_ia0F4"},
+    {title: "Relaxing Waterfall", thumb: "https://i.ytimg.com/vi/aqz-KE-bpKQ/hqdefault.jpg", link: "https://www.youtube.com/embed/aqz-KE-bpKQ"}
+  ],
+  tertiary: [
+    {title: "Tertiary Lecture 1", thumb: "https://i.ytimg.com/vi/Tv8fSHiP7UM/hqdefault.jpg", link: "https://www.youtube.com/embed/Tv8fSHiP7UM"}
+  ],
+  grade10: [
+    {title: "Chemistry Paper", thumb: "https://i.ytimg.com/vi/ScMzIvxBSi4/hqdefault.jpg", link: "https://www.youtube.com/embed/ScMzIvxBSi4"}
+  ],
+  form1: [],
+  grade5: [],
+  kids: []
+};
+
+/* ---------- Create cards into the specific row for a subtab ---------- */
+function loadVideosForSubtab(subId) {
+  const row = document.getElementById('videoRow_' + subId);
+  if (!row) return;
+  // If already rendered, skip (avoid duplicates)
+  if (row.dataset.loaded === '1') return;
+  const data = SUBTAB_VIDEO_DATA[subId] || [];
+  row.innerHTML = ''; // ensure clean
+  data.forEach(v => {
+    const card = document.createElement('div');
+    card.className = 'video-card';
+    card.innerHTML = `<img src="${v.thumb}" alt="${v.title}"><p>${v.title}</p>`;
+    card.onclick = () => openPopupForSub(subId, v.link);
+    row.appendChild(card);
+  });
+  row.dataset.loaded = '1';
+}
+
+/* ---------- Open popup for a particular subtab and show video ---------- */
+function openPopupForSub(subId, link) {
+  const popup = document.getElementById('videoPopup_' + subId);
+  const iframe = document.getElementById('videoPlayer_' + subId);
+  const spinner = document.getElementById('spinner_' + subId);
+  if (!popup || !iframe || !spinner) return;
+
+  // hide other open popups
+  document.querySelectorAll('#home .popup').forEach(p => p.style.display = 'none');
+  // stop other media too
+  document.querySelectorAll('#home .home-subcontent').forEach(c => stopMediaInContainer(c));
+
+  spinner.style.display = 'block';
+  iframe.style.display = 'none';
+  popup.style.display = 'flex';
+  iframe.src = link + '?autoplay=1';
+  iframe.onload = () => {
+    spinner.style.display = 'none';
+    iframe.style.display = 'block';
+  };
+}
+
+/* ---------- The safe showSubtab function (no leaking) ---------- */
+function showSubtabSafe(evt) {
+  const subId = evt.currentTarget.dataset.subtab;
+  if (!subId) return;
+
+  // 1) Hide ALL home-subcontent and stop media inside each
+  const subs = document.querySelectorAll('#home .home-subcontent');
+  subs.forEach(s => {
+    s.style.display = 'none';
+    s.classList.remove('active');
+    stopMediaInContainer(s);
+  });
+
+  // 2) Deactivate all home tab buttons
+  document.querySelectorAll('#homeTabs button').forEach(b => b.classList.remove('active'));
+
+  // 3) Show the requested one and mark active
+  const target = document.getElementById(subId);
+  if (target) {
+    target.style.display = 'block';
+    target.classList.add('active');
+    // Load its videos lazily (so other tabs don't get their content)
+    loadVideosForSubtab(subId);
+  }
+
+  // 4) Set clicked button active
+  evt.currentTarget.classList.add('active');
+}
+
+/* ---------- Attach click handlers to the home tab buttons (only once) ---------- */
+(function initHomeSubtabs() {
+  const buttons = document.querySelectorAll('#homeTabs button');
+  buttons.forEach(btn => {
+    btn.removeEventListener('click', showSubtabSafe); // safe to call even if not attached
+    btn.addEventListener('click', showSubtabSafe);
+  });
+
+  // ensure only the active one is displayed on load
+  const activeBtn = document.querySelector('#homeTabs button.active');
+  if (activeBtn) {
+    const start = activeBtn.dataset.subtab;
+    // ensure others hidden
+    document.querySelectorAll('#home .home-subcontent').forEach(s => {
+      if (s.id !== start) s.style.display = 'none';
+      else { s.style.display = 'block'; loadVideosForSubtab(start); }
+    });
+  }
+})();
+</script>.closeBtn:hover { color: #bb86fc; }
 </style>
 </head>
 <body>
@@ -343,227 +580,10 @@ body {
   <a href="#" onclick="shareSite();">🔗 Share</a>
 </div>
 <!-- HOME -->
-<div id="home" class="tab-content" style="display:block;">
-  <div class="subtabs" id="homeTabs">
-  <button class="active" onclick="showSubtab(event, 'foryou')">For You</button>
-  <button onclick="showSubtab(event, 'tertiary')">Tertiary</button>
-  <button onclick="showSubtab(event, 'grade10')">Grade 10-12</button>
-  <button onclick="showSubtab(event, 'form1')">Form 1-4</button>
-  <button onclick="showSubtab(event, 'grade5')">Grade 5-7</button>
-  <button onclick="showSubtab(event, 'kids')">Kids</button>
-  </div>
-
-  <div id="foryou" class="subcontent active">
-    <h2>For You</h2>
-    <div class="card">Recommended educational videos & notes curated for you.</div>
-   
 
 
 
-<div class="video-section">
-  <h2>🎥 Trending Videos</h2>
-  <div class="video-row" id="videoRow"></div>
-</div>
 
-<!--Popup video player-->
-<div id="videoPopup" class="popup">
-  <div class="spinner" id="spinner"></div>
-  <iframe allowfullscreen="" id="videoPlayer"></iframe>
-  <span class="closeBtn" onclick="closePopup()">×</span>
-</div>
-
-<!-- Removed this line: /* --- Basic Layout --- */ -->
-
-<script>
-// 🎞️ Video Data
-const videos = [
-  {
-    title: "Nature Vibes",
-    thumb: "https://img.youtube.com/vi/aCkc0_ia0F4/hqdefault.jpg",
-    link: "https://www.youtube.com/embed/aCkc0_ia0F4"
-  },
-  {
-    title: "Relaxing Waterfall",
-    thumb: "https://i.ytimg.com/vi/aqz-KE-bpKQ/hqdefault.jpg",
-    link: "https://www.youtube.com/embed/aqz-KE-bpKQ"
-  },
-  {
-    title: "Travel Adventure",
-    thumb: "https://i.ytimg.com/vi/ScMzIvxBSi4/hqdefault.jpg",
-    link: "https://www.youtube.com/embed/ScMzIvxBSi4"
-  }
-];
-
-// 🧠 Create video cards dynamically
-const row = document.getElementById('videoRow');
-videos.forEach(v => {
-  const card = document.createElement('div');
-  card.className = 'video-card';
-  card.innerHTML = `
-    <img src="${v.thumb}" alt="${v.title}">
-    <p>${v.title}</p>
-  `;
-  card.onclick = () => openPopup(v.link);
-  row.appendChild(card);
-});
-
-// 🎥 Popup controls + Spinner
-function openPopup(link) {
-  const popup = document.getElementById('videoPopup');
-  const iframe = document.getElementById('videoPlayer');
-  const spinner = document.getElementById('spinner');
-
-  iframe.style.display = "none";      // Hide iframe until loaded
-  spinner.style.display = "block";    // Show spinner
-  popup.style.display = "flex";       // Show popup
-  iframe.src = link + "?autoplay=1";
-
-  // Detect when iframe is loaded
-  iframe.onload = () => {
-    spinner.style.display = "none";   // Hide spinner
-    iframe.style.display = "block";   // Show video
-  };
-}
-
-function closePopup() {
-  const popup = document.getElementById('videoPopup');
-  const iframe = document.getElementById('videoPlayer');
-  popup.style.display = "none";
-  iframe.src = ""; // stop video
-}
-</script>
-    <h2>Trending Documents</h2>
-       <div style="display: flex; gap: 15px; overflow-x: auto; padding: 10px;">
-  <!--Card 1-->
-  <div style="border-radius: 8px; border: 1px solid rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; height: 200px; overflow: hidden; text-align: center; width: 140px;">
-    <a href="https://drive.google.com/file/d/1lsEqaYs-_8eXLhULgH84wTKTcQPkf49s/view?usp=sharing" target="_blank">
-      <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=1lsEqaYs-_8eXLhULgH84wTKTcQPkf49s" style="height: 150px; object-fit: cover; width: 100%;" />
-      <div style="padding: 10px;">
-        <h4 style="color: white; font-size: 8px; margin: 0px;">Introduction To Nursing</h4>
-        <p style="color: #555555; font-size: 10px; margin: 5px 0px 0px;">By Jonh •<small> 19th October,2025</small></p>
-      </div>
-    </a>
-  </div>
-
-  <!--Card 2-->
-  <div style="border-radius: 8px; border: 1px solid rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; height: 200px; overflow: hidden; text-align: center; width: 140px;">
-    <a href="https://drive.google.com/file/d/1b0LqXFk1QOnQZPvRR2cS0II7gDcDdRWC/view?usp=drivesdk" target="_blank">
-      <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=1b0LqXFk1QOnQZPvRR2cS0II7gDcDdRWC" style="height: 150px; object-fit: cover; width: 100%;" />
-      <div style="padding: 10px;">
-        <h4 style="color: white; font-size: 8px; margin: 0px;">Chemistry Grade 10-12</h4>
-        <p style="color: #555555; font-size: 10px; margin: 5px 0px 0px;">By Kitwe Debs • <small> 20th September,2023</small></p>
-      </div>
-    </a>
-  </div>
-
-  <!--Card 3-->
-  <div style="border-radius: 8px; border: 1px solid rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; height: 200px; overflow: hidden; text-align: center; width: 140px;">
-    <a href="https://drive.google.com/file/d/FILE_ID_3/view?usp=sharing" target="_blank">
-      <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=FILE_ID_3" style="height: 150px; object-fit: cover; width: 100%;" />
-      <div style="padding: 10px;">
-        <h4 style="color: white; font-size: 8px; margin: 0px;">Document Title 3</h4>
-        <p style="color: #555555; font-size: 10px; margin: 5px 0px 0px;">Google Docs</p>
-      </div>
-    </a>
-  </div>
-
-          
-       </div>
-
-<div class="video-section">
-  <h2>🎥 Coming Soon</h2>
-  <div class="video-row" id="comingsoon"></div>
-</div>
-
-<!-- Popup Modal -->
-<div class="popup" id="videoPopup_comingsoon">
-  <div class="spinner" id="spinner_comingsoon"></div>
-  <iframe id="videoPlayer_comingsoon" allowfullscreen></iframe>
-  <span class="closeBtn" onclick="closeVideoPopup('comingsoon')">&times;</span>
-</div>
-
-<script>
-// --- Coming Soon Videos ---
-const comingSoonVideos = [
-  {title:"Future Project Trailer",thumb:"https://i.ytimg.com/vi/Tv8fSHiP7UM/hqdefault.jpg",link:"https://www.youtube.com/embed/Tv8fSHiP7UM"},
-  {title:"Preview 2025",thumb:"https://i.ytimg.com/vi/E7wJTI-1dvQ/hqdefault.jpg",link:"https://www.youtube.com/embed/E7wJTI-1dvQ"},
-  {title:"Teaser Clip",thumb:"https://i.ytimg.com/vi/IUN664s7N-c/hqdefault.jpg",link:"https://www.youtube.com/embed/IUN664s7N-c"},
-  {title:"Sneak Peek",thumb:"https://i.ytimg.com/vi/nfWlot6h_JM/hqdefault.jpg",link:"https://www.youtube.com/embed/nfWlot6h_JM"}
-];
-
-const rowComingSoon = document.getElementById('comingsoon');
-comingSoonVideos.forEach(v=>{
-  const card=document.createElement('div');
-  card.className='video-card';
-  card.innerHTML=`<img src="${v.thumb}" alt="${v.title}"><p>${v.title}</p>`;
-  card.onclick=()=>openVideoPopup('comingsoon', v.link);
-  rowComingSoon.appendChild(card);
-});
-</script>
-
-<!-- ✨ Universal Popup Script (add ONCE at the bottom of your Blogger page) -->
-<script>
-function openVideoPopup(id, link) {
-  const popup = document.getElementById(`videoPopup_${id}`);
-  const iframe = document.getElementById(`videoPlayer_${id}`);
-  const spinner = document.getElementById(`spinner_${id}`);
-
-  if (!popup || !iframe || !spinner) return;
-
-  iframe.style.display = "none";
-  spinner.style.display = "block";
-  popup.style.display = "flex";
-  iframe.src = link + "?autoplay=1";
-  iframe.onload = () => {
-    spinner.style.display = "none";
-    iframe.style.display = "block";
-  };
-}
-
-function closeVideoPopup(id) {
-  const popup = document.getElementById(`videoPopup_${id}`);
-  const iframe = document.getElementById(`videoPlayer_${id}`);
-  if (popup && iframe) {
-    popup.style.display = "none";
-    iframe.src = "";
-  }
-}
-</script>
-      <div class="video-section">
-  <h2>🌟 New This Week</h2>
-  <div class="video-row" id="newthisweek"></div>
-</div>
-
-<!-- Popup Modal -->
-<div class="popup" id="videoPopup_newthisweek">
-  <div class="spinner" id="spinner_newthisweek"></div>
-  <iframe id="videoPlayer_newthisweek" allowfullscreen></iframe>
-  <span class="closeBtn" onclick="closeVideoPopup('newthisweek')">&times;</span>
-</div>
-
-<script>
-const newThisWeekVideos = [
-  {title:"Weekly Update",thumb:"https://i.ytimg.com/vi/Fmdb-KmlzD8/hqdefault.jpg",link:"https://www.youtube.com/embed/Fmdb-KmlzD8"},
-  {title:"New Release Highlights",thumb:"https://i.ytimg.com/vi/y6120QOlsfU/hqdefault.jpg",link:"https://www.youtube.com/embed/y6120QOlsfU"},
-  {title:"Behind the Scenes",thumb:"https://i.ytimg.com/vi/2vjPBrBU-TM/hqdefault.jpg",link:"https://www.youtube.com/embed/2vjPBrBU-TM"},
-  {title:"Top Picks of the Week",thumb:"https://i.ytimg.com/vi/kXYiU_JCYtU/hqdefault.jpg",link:"https://www.youtube.com/embed/kXYiU_JCYtU"}
-];
-
-const rowNewThisWeek = document.getElementById('newthisweek');
-newThisWeekVideos.forEach(v=>{
-  const card=document.createElement('div');
-  card.className='video-card';
-  card.innerHTML=`<img src="${v.thumb}" alt="${v.title}"><p>${v.title}</p>`;
-  card.onclick=()=>openVideoPopup('newthisweek', v.link);
-  rowNewThisWeek.appendChild(card);
-});
-</script> 
-            
-</div>
-
-       
-       
-  </div>
   <div id="tertiary" class="subcontent">
     
     <div class="card">University & college materials available here.</div>
