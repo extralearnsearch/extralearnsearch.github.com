@@ -247,7 +247,9 @@ body {
     <h2>For You</h2>
     <div class="card">Recommended educational videos & notes curated for you.</div>
 
-     <style>
+     
+
+<style>
 /* --- Layout --- */
 .video-section {
   position: relative;
@@ -255,21 +257,15 @@ body {
   background: #111;
   color: white;
   border-radius: 12px;
+  overflow: hidden;
 }
 
 .video-row {
   display: flex;
-  overflow-x: auto;
+  overflow-x: hidden; /* hide scrollbar for smoother effect */
   gap: 15px;
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   padding-bottom: 10px;
-}
-.video-row::-webkit-scrollbar {
-  height: 8px;
-}
-.video-row::-webkit-scrollbar-thumb {
-  background: #555;
-  border-radius: 10px;
 }
 
 /* --- Video Card --- */
@@ -375,7 +371,7 @@ body {
 </div>
 
 <script>
-// 🎞️ Video Data (6 videos now)
+// 🎞️ Video Data (6 videos)
 const videos = [
   { title: "Nature Vibes", thumb: "https://img.youtube.com/vi/aCkc0_ia0F4/hqdefault.jpg", link: "https://www.youtube.com/embed/aCkc0_ia0F4" },
   { title: "Relaxing Waterfall", thumb: "https://i.ytimg.com/vi/aqz-KE-bpKQ/hqdefault.jpg", link: "https://www.youtube.com/embed/aqz-KE-bpKQ" },
@@ -420,22 +416,35 @@ function closePopup() {
   iframe.src = ""; // stop video
 }
 
-// ➡️ Auto-scroll after 3s if user not scrolling
-let autoScrollInterval;
+// ➡️ Smooth fast auto-scroll
+let scrollSpeed = 2; // pixels per frame (increase for faster)
 let userScrolling = false;
 
-row.addEventListener('scroll', () => userScrolling = true);
+// Detect user scroll
+row.addEventListener('wheel', () => userScrolling = true);
+row.addEventListener('touchstart', () => userScrolling = true);
 
-setTimeout(() => {
-  autoScrollInterval = setInterval(() => {
-    if (!userScrolling) {
-      row.scrollBy({ left: 1, behavior: 'smooth' });
-    } else {
-      userScrolling = false; // reset after user scroll
+function autoScroll() {
+  if (!userScrolling) {
+    row.scrollLeft += scrollSpeed;
+    // Loop scroll
+    if (row.scrollLeft >= row.scrollWidth - row.clientWidth) {
+      row.scrollLeft = 0;
     }
-  }, 20); // scroll speed
-}, 3000);
+  } else {
+    userScrolling = false; // reset after manual scroll
+  }
+  requestAnimationFrame(autoScroll);
+}
+
+// Start scrolling after 3s
+setTimeout(() => requestAnimationFrame(autoScroll), 3000);
 </script>
+
+   
+
+
+
 
     
   </div>
