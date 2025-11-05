@@ -204,114 +204,7 @@
   cursor: pointer;
 }
 
-  /* 🎬 Video Section Container */
-.video-section {
-  margin: 30px 0;
-}
 
-.video-section h2 {
-  font-size: 1.4rem;
-  margin-left: 10px;
-  color: white;
-}
-
-/* 🎞️ Video Row (horizontal scroll) */
-.video-row {
-  display: flex;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  gap: 15px;
-  padding: 10px;
-}
-
-.video-row::-webkit-scrollbar {
-  height: 8px;
-}
-.video-row::-webkit-scrollbar-thumb {
-  background: rgba(128, 0, 128, 0.5);
-  border-radius: 5px;
-}
-.video-row::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-/* 🎥 Individual Video Card */
-.video-card {
-  flex: 0 0 auto;
-  width: 160px;
-  height: 260px; /* more portrait */
-  border-radius: 10px;
-  background: #111;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  box-shadow: 0 0 10px rgba(128, 0, 128, 0.4);
-}
-
-.video-card:hover {
-  transform: scale(1.05);
-}
-
-.video-card img {
-  width: 100%;
-  height: 75%;
-  object-fit: cover;
-}
-
-.video-card p {
-  text-align: center;
-  color: white;
-  padding: 8px;
-  font-size: 0.9rem;
-}
-
-/* 🎬 Popup player */
-#videoPopup {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.9);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-#videoPlayer {
-  width: 90%;
-  height: 70vh;
-  border: none;
-  border-radius: 10px;
-  background: #000;
-}
-
-/* ✨ Spinner (portrait background style while loading) */
-.spinner {
-  width: 120px;
-  height: 160px;
-  border: 5px solid rgba(255, 255, 255, 0.2);
-  border-top: 5px solid purple;
-  border-radius: 10px;
-  animation: spin 1.2s linear infinite;
-  background: linear-gradient(180deg, #1a001a, #000);
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-/* ❌ Close Button */
-.closeBtn {
-  position: absolute;
-  top: 20px;
-  right: 25px;
-  font-size: 2rem;
-  color: white;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-.closeBtn:hover {
-  color: purple;
-}
 /* Adjust body top spacing because of top bar */
 body {
   padding-top: 65px;
@@ -608,7 +501,116 @@ setTimeout(() => requestAnimationFrame(autoScroll), 3000);
   <iframe allowfullscreen="" id="videoPlayer"></iframe>
   <span class="closeBtn" onclick="closePopup()">×</span>
 </div>
+<style>
+    /* 🎬 Video Section Container */
+.video-section {
+  margin: 30px 0;
+}
 
+.video-section h2 {
+  font-size: 1.4rem;
+  margin-left: 10px;
+  color: white;
+}
+
+/* 🎞️ Video Row (horizontal scroll) */
+.video-row {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 15px;
+  padding: 10px;
+}
+
+.video-row::-webkit-scrollbar {
+  height: 8px;
+}
+.video-row::-webkit-scrollbar-thumb {
+  background: rgba(128, 0, 128, 0.5);
+  border-radius: 5px;
+}
+.video-row::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* 🎥 Individual Video Card */
+.video-card {
+  flex: 0 0 auto;
+  width: 160px;
+  height: 260px; /* more portrait */
+  border-radius: 10px;
+  background: #111;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 10px rgba(128, 0, 128, 0.4);
+}
+
+.video-card:hover {
+  transform: scale(1.05);
+}
+
+.video-card img {
+  width: 100%;
+  height: 75%;
+  object-fit: cover;
+}
+
+.video-card p {
+  text-align: center;
+  color: white;
+  padding: 8px;
+  font-size: 0.9rem;
+}
+
+/* 🎬 Popup player */
+#videoPopup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#videoPlayer {
+  width: 90%;
+  height: 70vh;
+  border: none;
+  border-radius: 10px;
+  background: #000;
+}
+
+/* ✨ Spinner (portrait background style while loading) */
+.spinner {
+  width: 120px;
+  height: 160px;
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  border-top: 5px solid purple;
+  border-radius: 10px;
+  animation: spin 1.2s linear infinite;
+  background: linear-gradient(180deg, #1a001a, #000);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ❌ Close Button */
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.closeBtn:hover {
+  color: purple;
+  }
+</style>
 <script>
 // 🎞️ Video Data for each section
 const videoSections = {
