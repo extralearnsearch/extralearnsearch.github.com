@@ -866,6 +866,36 @@ function closePopupElectrical(){
   popup.style.display="none"; iframe.src="";
 }
 </script>
+    <script>
+function openPopupElectrical(link) {
+  const popup = document.getElementById('videoPopupElectrical');
+  const iframe = document.getElementById('videoPlayerElectrical');
+  const spinner = document.getElementById('spinnerElectrical');
+
+  // Show spinner and hide video while it loads
+  spinner.style.display = "block";
+  iframe.style.display = "none";
+  popup.style.display = "flex";
+
+  // Start loading the video
+  iframe.src = link + "?autoplay=1";
+
+  // Once loaded, hide spinner and show video
+  iframe.onload = () => {
+    spinner.style.display = "none";
+    iframe.style.display = "block";
+  };
+}
+
+function closePopupElectrical() {
+  const popup = document.getElementById('videoPopupElectrical');
+  const iframe = document.getElementById('videoPlayerElectrical');
+
+  // Hide popup and stop video
+  popup.style.display = "none";
+  iframe.src = "";
+}
+    </script>
     
     
   
