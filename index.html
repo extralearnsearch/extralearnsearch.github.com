@@ -341,6 +341,33 @@ body {
     document.querySelectorAll('#exploreTabs button').forEach(b => b.classList.remove('active'));
     event.target.classList.add('active');
   }
+  // Sidebar Functions
+function openSidebar() {
+  document.getElementById("sidebar").style.width = "250px";
+}
+function closeSidebar() {
+  document.getElementById("sidebar").style.width = "0";
+}
+
+// About Message
+function showAbout() {
+  closeSidebar();
+  alert("EduStream is a platform that provides free and fun educational resources for learners of all levels.");
+}
+
+// Share Function
+function shareSite() {
+  closeSidebar();
+  if (navigator.share) {
+    navigator.share({
+      title: 'EduStream',
+      text: 'Check out this awesome educational site!',
+      url: window.location.href,
+    });
+  } else {
+    alert("Copy and share this site link:\n" + window.location.href);
+  }
+}
 </script>
 </body>
 </html>
