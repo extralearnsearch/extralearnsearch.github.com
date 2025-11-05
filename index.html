@@ -887,19 +887,6 @@ videosElectrical.forEach(v=>{
   rowElectrical.appendChild(card);
 });
 
-function openPopupElectrical(link){
-  const popup=document.getElementById('videoPopupElectrical');
-  const iframe=document.getElementById('videoPlayerElectrical');
-  const spinner=document.getElementById('spinnerElectrical');
-  iframe.style.display="none"; spinner.style.display="block";
-  popup.style.display="flex"; iframe.src=link+"?autoplay=1";
-  iframe.onload=()=>{spinner.style.display="none"; iframe.style.display="block";}
-}
-function closePopupElectrical(){
-  const popup=document.getElementById('videoPopupElectrical');
-  const iframe=document.getElementById('videoPlayerElectrical');
-  popup.style.display="none"; iframe.src="";
-}
 function openPopupElectrical(link) {
   const popup = document.getElementById('videoPopupElectrical');
   const iframe = document.getElementById('videoPlayerElectrical');
