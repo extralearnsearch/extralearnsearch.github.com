@@ -679,5 +679,54 @@ function shareSite() {
   }
 }
 </script>
+     <script>
+// --- Universal Video Popup System for all sections ---
+// Works with all IDs like 'kids', 'comingsoon', 'newthisweek', etc.
+
+function openVideoPopup(id, link) {
+  const popup = document.getElementById(`videoPopup_${id}`);
+  const iframe = document.getElementById(`videoPlayer_${id}`);
+  const spinner = document.getElementById(`spinner_${id}`);
+
+  if (!popup || !iframe || !spinner) {
+    console.warn(`Popup or spinner not found for ID: ${id}`);
+    return;
+  }
+
+  // Reset visibility
+  iframe.style.display = "none";
+  spinner.style.display = "block";
+
+  // Open popup
+  popup.style.display = "flex";
+  iframe.src = link + "?autoplay=1";
+
+  // Hide spinner when video loads
+  iframe.onload = () => {
+    spinner.style.display = "none";
+    iframe.style.display = "block";
+  };
+}
+
+function closeVideoPopup(id) {
+  const popup = document.getElementById(`videoPopup_${id}`);
+  const iframe = document.getElementById(`videoPlayer_${id}`);
+  if (popup && iframe) {
+    popup.style.display = "none";
+    iframe.src = ""; // stop video playback
+  }
+}
+
+// --- Optional: Close popup when user clicks outside the video ---
+window.addEventListener("click", function(event) {
+  document.querySelectorAll(".popup").forEach(popup => {
+    if (event.target === popup) {
+      popup.style.display = "none";
+      const iframe = popup.querySelector("iframe");
+      if (iframe) iframe.src = "";
+    }
+  });
+});
+     </script>
 </body>
 </html>
