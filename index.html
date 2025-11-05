@@ -475,8 +475,132 @@ setTimeout(() => requestAnimationFrame(autoScroll), 3000);
     </a>
   </div>
    </div>
+ 
+  <!-- 🎬 Coming Soon Section -->
+<div class="video-section" id="comingSoonSection">
+  <h2>🎥 Coming Soon</h2>
+  <div class="video-row" id="comingSoonRow"></div>
+</div>
 
+<!-- 🎬 New This Week Section -->
+<div class="video-section" id="newThisWeekSection">
+  <h2>🔥 New This Week</h2>
+  <div class="video-row" id="newThisWeekRow"></div>
+</div>
 
+<!-- 🎬 Discover Section -->
+<div class="video-section" id="discoverSection">
+  <h2>🔍 Discover</h2>
+  <div class="video-row" id="discoverRow"></div>
+</div>
+
+<!-- Popup Video Player -->
+<div id="videoPopup">
+  <div class="spinner" id="spinner"></div>
+  <iframe allowfullscreen="" id="videoPlayer"></iframe>
+  <span class="closeBtn" onclick="closePopup()">×</span>
+</div>
+
+<script>
+// 🎞️ Video Data for each section
+const videoSections = {
+  comingSoon: [
+    {
+      title: "Future Tech Preview",
+      thumb: "https://img.youtube.com/vi/aCkc0_ia0F4/hqdefault.jpg",
+      link: "https://www.youtube.com/embed/aCkc0_ia0F4"
+    },
+    {
+      title: "Upcoming Movie Trailer",
+      thumb: "https://i.ytimg.com/vi/aqz-KE-bpKQ/hqdefault.jpg",
+      link: "https://www.youtube.com/embed/aqz-KE-bpKQ"
+    },
+    {
+      title: "Next Big Thing",
+      thumb: "https://i.ytimg.com/vi/ScMzIvxBSi4/hqdefault.jpg",
+      link: "https://www.youtube.com/embed/ScMzIvxBSi4"
+    }
+  ],
+  newThisWeek: [
+    {
+      title: "Latest Travel Vlog",
+      thumb: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
+      link: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    },
+    {
+      title: "Hot Music Release",
+      thumb: "https://img.youtube.com/vi/L_jWHffIx5E/hqdefault.jpg",
+      link: "https://www.youtube.com/embed/L_jWHffIx5E"
+    },
+    {
+      title: "New Game Review",
+      thumb: "https://img.youtube.com/vi/V-_O7nl0Ii0/hqdefault.jpg",
+      link: "https://www.youtube.com/embed/V-_O7nl0Ii0"
+    }
+  ],
+  discover: [
+    {
+      title: "Hidden Travel Gems",
+      thumb: "https://img.youtube.com/vi/tgbNymZ7vqY/hqdefault.jpg",
+      link: "https://www.youtube.com/embed/tgbNymZ7vqY"
+    },
+    {
+      title: "Amazing Nature Shots",
+      thumb: "https://img.youtube.com/vi/e-ORhEE9VVg/hqdefault.jpg",
+      link: "https://www.youtube.com/embed/e-ORhEE9VVg"
+    },
+    {
+      title: "Street Food Discoveries",
+      thumb: "https://img.youtube.com/vi/ysz5S6PUM-U/hqdefault.jpg",
+      link: "https://www.youtube.com/embed/ysz5S6PUM-U"
+    }
+  ]
+};
+
+// 🧠 Function to create video cards dynamically
+function createVideoCards(sectionId, videos) {
+  const row = document.getElementById(sectionId);
+  videos.forEach(v => {
+    const card = document.createElement('div');
+    card.className = 'video-card';
+    card.innerHTML = `
+      <img src="${v.thumb}" alt="${v.title}">
+      <p>${v.title}</p>
+    `;
+    card.onclick = () => openPopup(v.link);
+    row.appendChild(card);
+  });
+}
+
+// 🪄 Generate sections
+createVideoCards('comingSoonRow', videoSections.comingSoon);
+createVideoCards('newThisWeekRow', videoSections.newThisWeek);
+createVideoCards('discoverRow', videoSections.discover);
+
+// 🎥 Popup controls + Spinner
+function openPopup(link) {
+  const popup = document.getElementById('videoPopup');
+  const iframe = document.getElementById('videoPlayer');
+  const spinner = document.getElementById('spinner');
+
+  iframe.style.display = "none";
+  spinner.style.display = "block";
+  popup.style.display = "flex";
+  iframe.src = link + "?autoplay=1";
+
+  iframe.onload = () => {
+    spinner.style.display = "none";
+    iframe.style.display = "block";
+  };
+}
+
+function closePopup() {
+  const popup = document.getElementById('videoPopup');
+  const iframe = document.getElementById('videoPlayer');
+  popup.style.display = "none";
+  iframe.src = "";
+}
+    </script>
 
 
     
