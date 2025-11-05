@@ -372,6 +372,28 @@ body {
     <div class="video-section">
       <h2>🎥 Coming Soon</h2>
       <div class="video-row" data-row-for="foryou" id="comingsoon_foryou"></div>
+         <script>
+function loadComingSoonVideos() {
+  const row = document.getElementById('comingsoon_foryou');
+  if (!row || row.dataset.loaded === '1') return;
+
+  const data = SUBTAB_VIDEO_DATA['comingsoon_foryou'] || [];
+
+  row.innerHTML = '';
+  data.forEach(v => {
+    const card = document.createElement('div');
+    card.className = 'video-card';
+    card.innerHTML = `
+      <img src="${v.thumb}" alt="${v.title}">
+      <p>${v.title}</p>
+    `;
+    card.onclick = () => window.open(v.link, '_blank');
+    row.appendChild(card);
+  });
+
+  row.dataset.loaded = '1';
+}
+         </script>
     </div>
 
   </div>
