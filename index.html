@@ -325,7 +325,17 @@ body {
         src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
           </script>
 
-
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="hamburger" onclick="openSidebar()">&#9776;</div>
+  <div class="logo">
+    <img src="your-logo.png" alt="Logo"> <!-- Replace with your logo path -->
+    <span>EduStream</span>
+  </div>
+  <div class="profile" onclick="openTab('me', document.querySelector('.main-tabs button:nth-child(4)'))">
+    <img src="profile.jpg" alt="Profile"> <!-- Replace with user profile or default -->
+  </div>
+</div>
 <!-- SIDEBAR -->
 <div id="sidebar" class="sidebar">
   <button class="closebtn" onclick="closeSidebar()">×</button>
@@ -335,7 +345,16 @@ body {
   <a href="#" onclick="shareSite();">🔗 Share</a>
 </div>
 <!-- HOME -->
-
+<div id="home" class="tab-content" style="display:block;">
+  <div class="subtabs" id="homeTabs">
+    <button class="active" onclick="showSubtab('foryou')">For You</button>
+    <button onclick="showSubtab('tertiary')">Tertiary</button>
+    <button onclick="showSubtab('grade10')">Grade 10-12</button>
+    <button onclick="showSubtab('form1')">Form 1-4</button>
+    <button onclick="showSubtab('grade5')">Grade 5-7</button>
+    <button onclick="showSubtab('kids')">Kids</button>
+  </div>
+     
 
 
 
