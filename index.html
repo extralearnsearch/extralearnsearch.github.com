@@ -445,41 +445,12 @@ body {
   }
 
   // Home Subtabs
-// Function to hide all subtabs and clear dynamic data when switching
-function showSubtab(event, name) {
-  const allSubs = document.querySelectorAll('#home .subcontent');
-  const allButtons = document.querySelectorAll('#homeTabs button');
-
-  // Hide all subcontent and deactivate buttons
-  allSubs.forEach(sub => {
-    sub.style.display = 'none';
-    sub.classList.remove('active');
-
-    // 🧹 Reset innerHTML for dynamic sections if any
-    const videoRows = sub.querySelectorAll('.video-row');
-    videoRows.forEach(vr => vr.innerHTML = '');
-  });
-
-  // Deactivate all buttons
-  allButtons.forEach(btn => btn.classList.remove('active'));
-
-  // Show only the clicked one
-  const target = document.getElementById(name);
-  if (target) {
-    target.style.display = 'block';
-    target.classList.add('active');
+  function showSubtab(name) {
+    document.querySelectorAll('#home .subcontent').forEach(c => c.classList.remove('active'));
+    document.getElementById(name).classList.add('active');
+    document.querySelectorAll('#homeTabs button').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
   }
-
-  // Activate the clicked subtab button
-  if (event && event.currentTarget) {
-    event.currentTarget.classList.add('active');
-  }
-
-  // 🚫 Block other subtabs' leftover videos or content
-  document.querySelectorAll('#home .video-row').forEach(row => {
-    if (!target.contains(row)) row.innerHTML = '';
-  });
-}
 
   // Explore Subtabs
   function showExplore(name) {
@@ -488,7 +459,8 @@ function showSubtab(event, name) {
     document.querySelectorAll('#exploreTabs button').forEach(b => b.classList.remove('active'));
     event.target.classList.add('active');
   }
-     // Sidebar Functions
+  
+  // Sidebar Functions
 function openSidebar() {
   document.getElementById("sidebar").style.width = "250px";
 }
