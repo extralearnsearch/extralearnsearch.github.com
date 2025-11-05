@@ -645,12 +645,12 @@ newThisWeekVideos.forEach(v=>{
   }
 
   // Home Subtabs
-  function showSubtab(name) {
-    document.querySelectorAll('#home .subcontent').forEach(c => c.classList.remove('active'));
-    document.getElementById(name).classList.add('active');
-    document.querySelectorAll('#homeTabs button').forEach(b => b.classList.remove('active'));
-    event.target.classList.add('active');
-  }
+function showSubtab(event, name) {
+  document.querySelectorAll('#home .subcontent').forEach(c => c.classList.remove('active'));
+  document.getElementById(name).classList.add('active');
+  document.querySelectorAll('#homeTabs button').forEach(b => b.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+}
 
   // Explore Subtabs
   function showExplore(name) {
