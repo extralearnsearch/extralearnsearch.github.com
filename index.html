@@ -4,6 +4,42 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Extra Learn Search</title>
+  <style>
+.main-tabs {
+  display: flex;
+  justify-content: space-around;
+  background: white;
+  border-top: 1px solid #ccc;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+}
+
+.main-tabs button {
+  background: none;
+  border: none;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #555;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.main-tabs button .material-symbols-outlined {
+  font-size: 28px;
+  margin-bottom: 4px;
+}
+
+.main-tabs button:hover,
+.main-tabs button.active {
+  color: #6200ea; /* purple when active or hovered */
+}
+  </style>
 <style>
   body {
     margin: 0;
@@ -991,13 +1027,19 @@ function closePopupElectrical() {
   <div class="card">View your learning stats, profile, and achievements.</div>
 </div>
 
-<!-- MAIN TABS -->
-<div class="main-tabs">
-  <button class="active" onclick="openTab('home', this)">🏠 Home</button>
-  <button onclick="openTab('explore', this)">🔍 Explore</button>
-  <button onclick="openTab('mylist', this)">📚 My List</button>
-  <button onclick="openTab('me', this)">👤 Me</button>
-</div>
+<!-- Home Icon -->
+<span class="material-symbols-outlined">home</span>
+
+<!-- Explore Icon -->
+<span class="material-symbols-outlined">explore</span>
+
+<!-- My List Icon -->
+<span class="material-symbols-outlined">playlist_add_check</span>
+
+<!-- Me/Profile Icon -->
+<span class="material-symbols-outlined">person</span>
+  
+
 
 <script>
   // Main Tabs
