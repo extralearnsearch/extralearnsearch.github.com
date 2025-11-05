@@ -319,6 +319,11 @@ body {
   transition: 0.3s;
 }
      </style>
+</head>
+     <body>
+          <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+          </script>
 <!-- ====== REPLACE YOUR EXISTING HOME SUBTABS WITH THIS BLOCK ====== -->
 <div id="home" class="tab-content" style="display:block;">
   <!-- Use data-subtab on buttons so we don't rely on nth-child or duplicated selectors -->
@@ -333,7 +338,7 @@ body {
 
   <!-- Each content area has a unique id and the class home-subcontent -->
   <div id="foryou" class="subcontent home-subcontent active">
-    <h2>For You</h2>
+    
     <div class="card">Recommended educational videos & notes curated for you.</div>
 
     <div class="video-section">
@@ -377,7 +382,7 @@ body {
     <div class="card">University & college materials available here.</div>
 
     <div class="video-section">
-      <h2>🎥 Tertiary Videos</h2>
+      <h2>Trending Videos</h2>
       <div class="video-row" data-row-for="tertiary" id="videoRow_tertiary"></div>
     </div>
 
@@ -555,10 +560,7 @@ function showSubtabSafe(evt) {
     });
   }
 })();
-</script>.closeBtn:hover { color: #bb86fc; }
-</style>
-</head>
-<body>
+</script>
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="hamburger" onclick="openSidebar()">&#9776;</div>
