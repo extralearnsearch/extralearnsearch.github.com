@@ -760,8 +760,6 @@ function closePopup3(){
   popup.style.display="none"; iframe.src="";
 }
   
-</script>
-    <script>
 function openPopup3(link) {
   const popup = document.getElementById('videoPopup3');
   const iframe = document.getElementById('videoPlayer3');
@@ -826,6 +824,49 @@ function closePopup3() {
   </div>
    </div>
 
+    
+  <div class="video-section">
+  <h2>🧬 Electrical Engineering</h2>
+  <div class="video-row" id="videoRowElectrical"></div>
+</div>
+
+<div class="popup" id="videoPopupElectrical">
+  <div class="spinner" id="spinnerElectrical"></div>
+  <iframe allowfullscreen="" id="videoPlayerElectrical"></iframe>
+  <span class="closeBtn" onclick="closePopupElectrical()">×</span>
+</div>
+
+<script>
+const videosElectrical = [
+  {title:"How Electric Circuit Work",thumb:"https://img.youtube.com/vi/_asax7PmhcE/hqdefault.jpg",link:"https://www.youtube.com/embed/_asax7PmhcE"},
+  {title:"Network Theory",thumb:"https://img.youtube.com/vi/NEhH6C7Fzw4/hqdefault.jpg",link:"https://www.youtube.com/embed/NEhH6C7Fzw4"},
+  {title:"Respiration Explained",thumb:"https://i.ytimg.com/vi/OZKMr5Y-bdE/hqdefault.jpg",link:"https://www.youtube.com/embed/OZKMr5Y-bdE"}
+];
+
+const rowElectrical = document.getElementById('videoRowElectrical');
+videosElectrical.forEach(v=>{
+  const card=document.createElement('div');
+  card.className='video-card';
+  card.innerHTML=`<img src="${v.thumb}"><p>${v.title}</p>`;
+  card.onclick=()=>openPopupElectrical(v.link);
+  rowElectrical.appendChild(card);
+});
+
+function openPopupElectrical(link){
+  const popup=document.getElementById('videoPopupElectrical');
+  const iframe=document.getElementById('videoPlayerElectrical');
+  const spinner=document.getElementById('spinnerElectrical');
+  iframe.style.display="none"; spinner.style.display="block";
+  popup.style.display="flex"; iframe.src=link+"?autoplay=1";
+  iframe.onload=()=>{spinner.style.display="none"; iframe.style.display="block";}
+}
+function closePopupElectrical(){
+  const popup=document.getElementById('videoPopupElectrical');
+  const iframe=document.getElementById('videoPlayerElectrical');
+  popup.style.display="none"; iframe.src="";
+}
+</script>
+    
     
   
   </div>
