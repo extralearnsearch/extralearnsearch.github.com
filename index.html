@@ -646,9 +646,20 @@ newThisWeekVideos.forEach(v=>{
 
   // Home Subtabs
 function showSubtab(event, name) {
-  document.querySelectorAll('#home .subcontent').forEach(c => c.classList.remove('active'));
-  document.getElementById(name).classList.add('active');
-  document.querySelectorAll('#homeTabs button').forEach(b => b.classList.remove('active'));
+  // Find the parent container of these subtabs
+  const homeContainer = document.getElementById('home');
+
+  // Hide all subcontents inside Home
+  homeContainer.querySelectorAll('.subcontent').forEach(c => c.classList.remove('active'));
+
+  // Show the selected one
+  const target = document.getElementById(name);
+  if (target) target.classList.add('active');
+
+  // Remove active state from all subtab buttons
+  homeContainer.querySelectorAll('.subtabs button').forEach(b => b.classList.remove('active'));
+
+  // Highlight the clicked subtab
   event.currentTarget.classList.add('active');
 }
 
