@@ -964,7 +964,49 @@ function closePopupElectrical() {
     </a>
   </div>
     </div>
+<div class="video-section">
+  <h2>🌾 Agriculture in Science</h2>
+  <div class="video-row" id="videoRow_AgricultureInScience"></div>
+</div>
 
+<div class="popup" id="videoPopup_AgricultureInScience">
+  <div class="spinner" id="spinner_AgricultureInScience"></div>
+  <iframe allowfullscreen="" id="videoPlayer_AgricultureInScience"></iframe>
+  <span class="closeBtn" onclick="closePopup_AgricultureInScience()">×</span>
+</div>
+
+<script>
+// 🎥 Replace these YouTube links with your actual Agriculture videos
+const agricultureVideos = [
+  {title:"Soil and Crop Management",thumb:"https://i.ytimg.com/vi/Ag1hFJxQp8E/hqdefault.jpg",link:"https://www.youtube.com/embed/Ag1hFJxQp8E"},
+  {title:"Irrigation and Water Systems",thumb:"https://i.ytimg.com/vi/Jo4VYbA8HRk/hqdefault.jpg",link:"https://www.youtube.com/embed/Jo4VYbA8HRk"},
+  {title:"Organic Farming Basics",thumb:"https://i.ytimg.com/vi/fc1Noy6D2cg/hqdefault.jpg",link:"https://www.youtube.com/embed/fc1Noy6D2cg"}
+];
+
+const agriRow = document.getElementById('videoRow_AgricultureInScience');
+agricultureVideos.forEach(v=>{
+  const card=document.createElement('div');
+  card.className='video-card';
+  card.innerHTML=`<img src="${v.thumb}" alt="${v.title}"><p>${v.title}</p>`;
+  card.onclick=()=>openPopup_AgricultureInScience(v.link);
+  agriRow.appendChild(card);
+});
+
+function openPopup_AgricultureInScience(link){
+  const popup=document.getElementById('videoPopup_AgricultureInScience');
+  const iframe=document.getElementById('videoPlayer_AgricultureInScience');
+  const spinner=document.getElementById('spinner_AgricultureInScience');
+  iframe.style.display="none"; spinner.style.display="block";
+  popup.style.display="flex";
+  iframe.src=link+"?autoplay=1";
+  iframe.onload=()=>{spinner.style.display="none"; iframe.style.display="block";}
+}
+function closePopup_AgricultureInScience(){
+  const popup=document.getElementById('videoPopup_AgricultureInScience');
+  const iframe=document.getElementById('videoPlayer_AgricultureInScience');
+  popup.style.display="none"; iframe.src="";
+}
+   </script>
     
     
     
