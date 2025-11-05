@@ -1094,75 +1094,7 @@ function closePopup_AgricultureInScience(){
 <div class="popup" id="videoPopup_ArtOfZoology">
   <div class="spinner" id="spinner_ArtOfZoology"></div>
   <iframe allowfullscreen="" id="videoPlayer_ArtOfZoology"></iframe>
-  <span class="closeBtn" onclick="closePopup_ArtOfZoology()">×</span>
-</div>
 
-<script>
-// 🐾 Replace these YouTube links with your Zoology or Biology videos
-const zoologyVideos = [
-  {title:"Animal Classification",thumb:"https://i.ytimg.com/vi/2Z7jvBoY4Zw/hqdefault.jpg",link:"https://www.youtube.com/embed/2Z7jvBoY4Zw"},
-  {title:"Invertebrate Wonders",thumb:"https://i.ytimg.com/vi/qzZQjIh1rI0/hqdefault.jpg",link:"https://www.youtube.com/embed/qzZQjIh1rI0"},
-  {title:"Life Under the Sea",thumb:"https://i.ytimg.com/vi/KVlbvJ3U6nI/hqdefault.jpg",link:"https://www.youtube.com/embed/KVlbvJ3U6nI"}
-];
-
-const zooRow = document.getElementById('videoRow_ArtOfZoology');
-zoologyVideos.forEach(v=>{
-  const card=document.createElement('div');
-  card.className='video-card';
-  card.innerHTML=`<img src="${v.thumb}" alt="${v.title}"><p>${v.title}</p>`;
-  card.onclick=()=>openPopup_ArtOfZoology(v.link);
-  zooRow.appendChild(card);
-});
-
-function openPopup_ArtOfZoology(link){
-  const popup=document.getElementById('videoPopup_ArtOfZoology');
-  const iframe=document.getElementById('videoPlayer_ArtOfZoology');
-  const spinner=document.getElementById('spinner_ArtOfZoology');
-  iframe.style.display="none"; spinner.style.display="block";
-  popup.style.display="flex";
-  iframe.src=link+"?autoplay=1";
-  iframe.onload=()=>{spinner.style.display="none"; iframe.style.display="block";}
-}
-function closePopup_ArtOfZoology(){
-  const popup=document.getElementById('videoPopup_ArtOfZoology');
-  const iframe=document.getElementById('videoPlayer_ArtOfZoology');
-  popup.style.display="none"; iframe.src="";
-}
-</script>
-  <div style="display: flex; gap: 15px; overflow-x: auto; padding: 10px;">
-  <!--Card 1-->
-  <div style="border-radius: 8px; border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; overflow: hidden; text-align: center; width: 250px;">
-    <a href="https://drive.google.com/file/d/1lsEqaYs-_8eXLhULgH84wTKTcQPkf49s/view?usp=sharing" target="_blank">
-      <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=1lsEqaYs-_8eXLhULgH84wTKTcQPkf49s" style="height: 150px; object-fit: cover; width: 100%;" />
-      <div style="padding: 10px;">
-        <h4 style="font-size: 16px; margin: 0px;">Document Title 1</h4>
-        <p style="color: #555555; font-size: 14px; margin: 5px 0px 0px;">Google Docs</p>
-      </div>
-    </a>
-  </div>
-
-  <!--Card 2-->
-  <div style="border-radius: 8px; border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; overflow: hidden; text-align: center; width: 250px;">
-    <a href="https://drive.google.com/file/d/FILE_ID_2/view?usp=sharing" target="_blank">
-      <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=FILE_ID_2" style="height: 150px; object-fit: cover; width: 100%;" />
-      <div style="padding: 10px;">
-        <h4 style="font-size: 16px; margin: 0px;">Document Title 2</h4>
-        <p style="color: #555555; font-size: 14px; margin: 5px 0px 0px;">Google Docs</p>
-      </div>
-    </a>
-  </div>
-
-  <!--Card 3-->
-  <div style="border-radius: 8px; border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; overflow: hidden; text-align: center; width: 250px;">
-    <a href="https://drive.google.com/file/d/FILE_ID_3/view?usp=sharing" target="_blank">
-      <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=FILE_ID_3" style="height: 150px; object-fit: cover; width: 100%;" />
-      <div style="padding: 10px;">
-        <h4 style="font-size: 16px; margin: 0px;">Document Title 3</h4>
-        <p style="color: #555555; font-size: 14px; margin: 5px 0px 0px;">Google Docs</p>
-      </div>
-    </a>
-  </div>
-  </div>
     
     
     
