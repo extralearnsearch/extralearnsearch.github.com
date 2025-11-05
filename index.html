@@ -567,6 +567,44 @@ newThisWeekVideos.forEach(v=>{
   <div id="tertiary" class="subcontent">
     
     <div class="card">University & college materials available here.</div>
+       <div class="video-section">
+  <h2> Trending Videos</h2>
+  <div class="video-row" id="videoRow3"></div>
+</div>
+
+<div class="popup" id="videoPopup3">
+  <div class="spinner" id="spinner3"></div>
+  <iframe allowfullscreen="" id="videoPlayer3"></iframe>
+  <span class="closeBtn" onclick="closePopup3()">×</span>
+</div>
+
+<script>
+const videos3 = [
+  {title:"Space Journey",thumb:"https://img.youtube.com/vi/UK9jYd_vI20/hqdefault.jpg",link:"https://www.youtube.com/embed/RLjdR_AF7vU"},
+  {title:"Planet Earth",thumb:"https://img.youtube.com/vi/dS4VU8KchWQ/hqdefault.jpg",link:"https://www.youtube.com/embed/dS4VU8KchWQ"}
+];
+const row3 = document.getElementById('videoRow3');
+videos3.forEach(v=>{
+  const card=document.createElement('div');
+  card.className='video-card';
+  card.innerHTML=`<img src="${v.thumb}"><p>${v.title}</p>`;
+  card.onclick=()=>openPopup3(v.link);
+  row3.appendChild(card);
+});
+function openPopup3(link){
+  const popup=document.getElementById('videoPopup3');
+  const iframe=document.getElementById('videoPlayer3');
+  const spinner=document.getElementById('spinner3');
+  iframe.style.display="none"; spinner.style.display="block";
+  popup.style.display="flex"; iframe.src=link+"?autoplay=1";
+  iframe.onload=()=>{spinner.style.display="none"; iframe.style.display="block";}
+}
+function closePopup3(){
+  const popup=document.getElementById('videoPopup3');
+  const iframe=document.getElementById('videoPlayer3');
+  popup.style.display="none"; iframe.src="";
+}
+</script>
   </div>
             
   <div id="grade10" class="subcontent">
