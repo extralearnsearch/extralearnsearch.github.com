@@ -1103,24 +1103,27 @@ if(!localStorage.getItem(STORAGE_KEY + '_name')){
 }
 
 // Upload Video/Document (opens mailto)
-function uploadFile(type){
-  const fileInput = document.createElement('input');
-  fileInput.type = 'file';
-  fileInput.accept = type === 'video' ? 'video/*' : '.pdf,.doc,.docx,.txt';
-  fileInput.onchange = e => {
-    const fileName = e.target.files[0].name;
-    // open mail client
-    window.location.href = `mailto:amimostudio410@gmail.com?subject=${type} upload&body=Please find the ${type}: ${fileName}`;
-  };
-  fileInput.click();
+
+function uploadFile(type) {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = type === 'video' ? 'video/*' : 'application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+  input.onchange = () => {
+    const file = input.files[0];
+    if(file){
+      const mailto = `mailto:amimostudio410@gmail.com?subject=New ${type} upload&body=Please find attached ${type}`;
+      alert('Select file manually in your email client.');
+      window.location.href = mailto;
+    }
+  }
+  input.click();
 }
 
 // Earnings
-function earnings(){
-  const agree = confirm("Do you agree to the terms for earnings?");
-  if(agree){
-    window.location.href = "mailto:amimostudio410@gmail.com?subject=Earnings Application&body=I have agreed to the terms. Please process my application.";
-    alert("Wait for your application to be accepted.");
+function earnings() {
+  if(confirm('Do you agree to the terms?')) {
+    window.location.href = 'mailto:amimostudio410@gmail.com?subject=Earnings Request&body=User agreed to terms.';
+    alert('Please wait for a reply via email.');
   }
 }
 </script>
@@ -1145,7 +1148,7 @@ function earnings(){
                10-4.48 10-10S17.52 2 12 2zm3.25 13.25l-5.5
                2.25 2.25-5.5 5.5-2.25-2.25 5.5z"/>
     </svg>
-    Explore
+   Explore 
   </button>
 
   <button onclick="openTab('mylist', this)">
