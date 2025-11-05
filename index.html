@@ -227,6 +227,98 @@ body {
     transform: translateY(-5px);
     transition: all 0.3s ease;
   }
+
+     . video-section {
+       margin: 30px 0;
+  color: white;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 0 10px rgba(187, 134, 252, 0.4);
+}
+.video-section h2 {
+  font-size: 1.5em;
+  margin-left: 10px;
+  color: white;
+}
+
+/* --- Horizontal Scroll --- */
+.video-row {
+  display: flex;
+  overflow-x: auto;
+  gap: 15px;
+  padding: 10px;
+  scroll-behavior: smooth;
+}
+.video-card {
+  min-width: 200px;
+  background: #1a1a1a;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.video-card:hover {
+  transform: scale(1.05);
+}
+.video-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+.video-card p {
+  margin: 5px;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+/* --- Popup Overlay --- */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(15, 15, 15, 0.95);
+  backdrop-filter: blur(10px);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: all 0.4s ease;
+}
+
+/* --- Spinner --- */
+.spinner {
+  width: 70px;
+  height: 70px;
+  border: 5px solid rgba(255,255,255,0.2);
+  border-top: 5px solid #bb86fc;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  position: absolute;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* --- Iframe --- */
+.popup iframe {
+  width: 80%;
+  height: 70%;
+  border: none;
+  border-radius: 12px;
+  display: none;
+  box-shadow: 0 0 20px rgba(187, 134, 252, 0.6);
+}
+
+/* --- Close Button --- */
+.closeBtn {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  color: #fff;
+  font-size: 2em;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.closeBtn:hover { color: #bb86fc; }
 </style>
 </head>
 <body>
@@ -266,100 +358,10 @@ body {
     <div class="card">Recommended educational videos & notes curated for you.</div>
    
 <style>
-/* --- Layout --- */
-.video-section {
-  position: relative;
-  padding: 15px;
-  background: #111;
-  color: white;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0, 191, 255, 0.2);
-}
-
-.video-row {
-  display: flex;
-  overflow-x: auto;
-  gap: 15px;
-  scroll-behavior: smooth;
-  padding-bottom: 10px;
-}
-
-.video-row::-webkit-scrollbar {
-  height: 8px;
-}
-.video-row::-webkit-scrollbar-thumb {
-  background: #555;
-  border-radius: 10px;
-}
-
-/* --- Video Card --- */
-.video-card {
-  flex: 0 0 auto;
-  width: 220px;
-  border-radius: 10px;
-  overflow: hidden;
-  cursor: pointer;
-  position: relative;
-  transition: transform 0.3s ease;
-}
-.video-card:hover {
-  transform: scale(1.07);
-}
-.video-card img {
-  width: 100%;
-  height: 130px;
-  object-fit: cover;
-  display: block;
-}
-.video-card p {
-  margin: 6px;
-  text-align: center;
-  font-size: 14px;
-  color: #fff;
-}
-
-/* --- Popup Overlay --- */
-#videoPopup {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  flex-direction: column;
-}
-#videoPopup iframe {
-  width: 80%;
-  height: 70%;
-  border: none;
-  border-radius: 10px;
-  display: none; /* hidden until loaded */
-}
-#videoPopup .closeBtn {
-  position: absolute;
-  top: 20px;
-  right: 25px;
-  color: #fff;
-  font-size: 30px;
-  cursor: pointer;
-}
+/
 
 /* --- Loading Spinner --- */
-.spinner {
-  border: 6px solid rgba(255, 255, 255, 0.2);
-  border-top: 6px solid #fff;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: spin 1s linear infinite;
-  margin-bottom: 20px;
-}
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-</style>
+
 
 <div class="video-section">
   <h2>🎥 Trending Videos</h2>
@@ -466,100 +468,11 @@ function closePopup() {
     </a>
   </div>
 
-            <style>
+            
 /* --- Basic Layout --- */
-.video-section {
-  margin: 30px 0;
-  color: white;
-  font-family: Arial, sans-serif;
-  box-shadow: 0 0 10px rgba(187, 134, 252, 0.4);
-}
-.video-section h2 {
-  font-size: 1.5em;
-  margin-left: 10px;
-  color: white;
-}
 
-/* --- Horizontal Scroll --- */
-.video-row {
-  display: flex;
-  overflow-x: auto;
-  gap: 15px;
-  padding: 10px;
-  scroll-behavior: smooth;
-}
-.video-card {
-  min-width: 200px;
-  background: #1a1a1a;
-  border-radius: 10px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-.video-card:hover {
-  transform: scale(1.05);
-}
-.video-card img {
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
-}
-.video-card p {
-  margin: 5px;
-  text-align: center;
-  font-size: 0.9em;
-}
 
-/* --- Popup Overlay --- */
-.popup {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(15, 15, 15, 0.95);
-  backdrop-filter: blur(10px);
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  transition: all 0.4s ease;
-}
 
-/* --- Spinner --- */
-.spinner {
-  width: 70px;
-  height: 70px;
-  border: 5px solid rgba(255,255,255,0.2);
-  border-top: 5px solid #bb86fc;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  position: absolute;
-}
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-/* --- Iframe --- */
-.popup iframe {
-  width: 80%;
-  height: 70%;
-  border: none;
-  border-radius: 12px;
-  display: none;
-  box-shadow: 0 0 20px rgba(187, 134, 252, 0.6);
-}
-
-/* --- Close Button --- */
-.closeBtn {
-  position: absolute;
-  top: 15px;
-  right: 25px;
-  color: #fff;
-  font-size: 2em;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.closeBtn:hover { color: #bb86fc; }
-</style>
        </div>
 
 <div class="video-section">
