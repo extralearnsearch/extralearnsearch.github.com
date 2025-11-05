@@ -378,6 +378,64 @@ body {
   <h2>🆕 New This Week — Real Education (Zambia)</h2>
   <div class="video-row" id="newthisweek_section"></div>
 </div>
+       <script>
+// 🎬 Video Lists
+const VIDEO_SECTIONS = {
+  comingSoon: [
+    { title: "Photosynthesis Explained Simply", thumb: "https://img.youtube.com/vi/W0m6jJ8E1NA/hqdefault.jpg", link: "https://www.youtube.com/embed/W0m6jJ8E1NA" },
+    { title: "The Solar System - Our Home", thumb: "https://img.youtube.com/vi/libKVRa01L8/hqdefault.jpg", link: "https://www.youtube.com/embed/libKVRa01L8" },
+    { title: "Understanding Electric Circuits", thumb: "https://img.youtube.com/vi/lA9cVkQY1EQ/hqdefault.jpg", link: "https://www.youtube.com/embed/lA9cVkQY1EQ" },
+    { title: "What Is DNA?", thumb: "https://img.youtube.com/vi/zwibgNGe4aY/hqdefault.jpg", link: "https://www.youtube.com/embed/zwibgNGe4aY" },
+    { title: "Simple Machines in Action", thumb: "https://img.youtube.com/vi/Usman1IG-N8/hqdefault.jpg", link: "https://www.youtube.com/embed/Usman1IG-N8" }
+  ],
+
+  newThisWeek: [
+    { title: "Zambian English Lesson 1 - Grammar Basics", thumb: "https://img.youtube.com/vi/7y1uZ4YtL94/hqdefault.jpg", link: "https://www.youtube.com/embed/7y1uZ4YtL94" },
+    { title: "Zambian Civics Grade 10 - Human Rights", thumb: "https://img.youtube.com/vi/fdW7U9fX3rA/hqdefault.jpg", link: "https://www.youtube.com/embed/fdW7U9fX3rA" },
+    { title: "Zambian Geography - The Provinces", thumb: "https://img.youtube.com/vi/NUXLEsZ5Wmc/hqdefault.jpg", link: "https://www.youtube.com/embed/NUXLEsZ5Wmc" },
+    { title: "Mathematics - Algebra Made Easy", thumb: "https://img.youtube.com/vi/pm3E8qQChhw/hqdefault.jpg", link: "https://www.youtube.com/embed/pm3E8qQChhw" },
+    { title: "Science - The Human Body (Zambia Curriculum)", thumb: "https://img.youtube.com/vi/OQXDf9eYWvo/hqdefault.jpg", link: "https://www.youtube.com/embed/OQXDf9eYWvo" }
+  ]
+};
+
+// ⚙️ Function to create and load video sections
+function loadVideoSection(sectionId, data) {
+  const row = document.getElementById(sectionId);
+  if (!row) return;
+
+  row.innerHTML = "";
+  data.forEach(v => {
+    const card = document.createElement("div");
+    card.className = "video-card";
+    card.innerHTML = `
+      <img src="${v.thumb}" alt="${v.title}">
+      <p>${v.title}</p>
+    `;
+    card.onclick = () => openPopup(v.link);
+    row.appendChild(card);
+  });
+}
+
+// 🎥 Popup for video play
+function openPopup(link) {
+  const popup = document.createElement('div');
+  popup.className = 'video-popup';
+  popup.innerHTML = `
+    <div class="video-popup-content">
+      <iframe width="560" height="315" src="${link}" frameborder="0" allowfullscreen></iframe>
+      <button class="close-popup">×</button>
+    </div>
+  `;
+  document.body.appendChild(popup);
+  document.querySelector('.close-popup').onclick = () => popup.remove();
+}
+
+// 🚀 Auto-load when page opens
+document.addEventListener('DOMContentLoaded', () => {
+  loadVideoSection('comingsoon_section', VIDEO_SECTIONS.comingSoon);
+  loadVideoSection('newthisweek_section', VIDEO_SECTIONS.newThisWeek);
+});
+       </script>
          <script>
 function loadComingSoonVideos() {
   const row = document.getElementById('comingsoon_foryou');
