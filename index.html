@@ -114,6 +114,26 @@
 </style>
 </head>
 <body>
+  <!-- TOP BAR -->
+<div class="topbar">
+  <div class="hamburger" onclick="openSidebar()">&#9776;</div>
+  <div class="logo">
+    <img src="your-logo.png" alt="Logo"> <!-- Replace with your logo path -->
+    <span>EduStream</span>
+  </div>
+  <div class="profile" onclick="openTab('me', document.querySelector('.main-tabs button:nth-child(4)'))">
+    <img src="profile.jpg" alt="Profile"> <!-- Replace with user profile or default -->
+  </div>
+</div>
+
+<!-- SIDEBAR -->
+<div id="sidebar" class="sidebar">
+  <button class="closebtn" onclick="closeSidebar()">×</button>
+  <a href="#" onclick="openTab('home', document.querySelector('.main-tabs button:nth-child(1)')); closeSidebar();">🏠 Home</a>
+  <a href="#" onclick="showAbout();">ℹ️ About</a>
+  <a href="#" onclick="openTab('me', document.querySelector('.main-tabs button:nth-child(4)')); closeSidebar();">👤 Me</a>
+  <a href="#" onclick="shareSite();">🔗 Share</a>
+</div>
 
 <!-- HOME -->
 <div id="home" class="tab-content" style="display:block;">
