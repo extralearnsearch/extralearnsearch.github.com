@@ -757,51 +757,137 @@ function closePopup() {
   <div id="tertiary" class="subcontent">
     <h2>Tertiary</h2>
     <div class="card">University & college materials available here.</div>
- <div class="video-section">
-  <h2> Trending Videos</h2>
-  <div class="video-row" id="videoRow3"></div>
+
+
+      <!-- ====== TERTIARY: Trending Videos ====== -->
+<div class="video-section">
+  <h2>🎥 Trending Videos</h2>
+  <div class="video-row" id="tertiaryTrendingRow" aria-label="Trending videos"></div>
 </div>
 
-<div class="popup" id="videoPopup3">
-  <div class="spinner" id="spinner"></div>
-  <iframe allowfullscreen="" id="videoPlayer"></iframe>
-  <span class="closeBtn" onclick="closePopup()">×</span>
+<!-- ====== TERTIARY: Electrical Engineering ====== -->
+<div class="video-section">
+  <h2>🧬 Electrical Engineering</h2>
+  <div class="video-row" id="tertiaryElectricalRow" aria-label="Electrical engineering videos"></div>
 </div>
+
+<!-- ====== GLOBAL POPUP (single copy only) ====== -->
+<!-- Paste only ONE copy of this popup in the whole page (remove any other popup duplicates) -->
+<div id="globalVideoPopup" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center; padding:20px;">
+  <div id="globalSpinner" style="width:120px; height:160px; border-radius:10px; background: linear-gradient(180deg,#1a001a,#000); display:flex; justify-content:center; align-items:center;">
+    <!-- simple animated indicator -->
+    <div style="width:36px;height:36px;border:4px solid rgba(255,255,255,0.2);border-top-color:white;border-radius:50%;animation:globalSpin 1s linear infinite;"></div>
+  </div>
+
+  <iframe id="globalVideoPlayer" allowfullscreen style="display:none; width:90%; max-width:1100px; height:70vh; border:none; border-radius:10px; margin:0 15px; background:#000; box-shadow:0 0 20px rgba(0,191,255,0.15)"></iframe>
+
+  <button id="globalCloseBtn" aria-label="Close video" style="position:absolute; top:18px; right:22px; font-size:28px; color:white; background:none; border:none; cursor:pointer;">×</button>
+</div>
+
+<style>
+  @keyframes globalSpin { to { transform: rotate(360deg); } }
+  /* ensure pointer-events on overlay close */
+  #globalVideoPopup { cursor: default; }
+  #globalVideoPopup > * { cursor: auto; }
+</style>
 
 <script>
-const videos3 = [
-  {title:"Space Journey",thumb:"https://img.youtube.com/vi/UK9jYd_vI20/hqdefault.jpg",link:"https://www.youtube.com/embed/RLjdR_AF7vU"},
-  {title:"Planet Earth",thumb:"https://img.youtube.com/vi/dS4VU8KchWQ/hqdefault.jpg",link:"https://www.youtube.com/embed/dS4VU8KchWQ"}
+/* ====== Data: videos for each tertiary section ====== */
+const tertiaryTrendingVideos = [
+  { title: "Space Journey", thumb: "https://img.youtube.com/vi/UK9jYd_vI20/hqdefault.jpg", link: "https://www.youtube.com/embed/RLjdR_AF7vU" },
+  { title: "Planet Earth",  thumb: "https://img.youtube.com/vi/dS4VU8KchWQ/hqdefault.jpg", link: "https://www.youtube.com/embed/dS4VU8KchWQ" },
+  { title: "Nature Vibes",  thumb: "https://img.youtube.com/vi/aCkc0_ia0F4/hqdefault.jpg", link: "https://www.youtube.com/embed/aCkc0_ia0F4" }
 ];
-const row3 = document.getElementById('videoRow3');
-videos3.forEach(v=>{
-  const card=document.createElement('div');
-  card.className='video-card';
-  card.innerHTML=`<img src="${v.thumb}"><p>${v.title}</p>`;
-  card.onclick=()=>openPopup3(v.link);
-  row3.appendChild(card);
-});
-function openPopup3(link) {
-  const popup = document.getElementById('videoPopup');
-  const iframe = document.getElementById('videoPlayer');
-  const spinner = document.getElementById('spinner');
 
-  // Show spinner and hide video before loading
-  spinner3.style.display = "block";
-  iframe.style.display = "none";
-  popup.style.display = "flex";
+const tertiaryElectricalVideos = [
+  { title: "How Electric Circuits Work", thumb: "https://img.youtube.com/vi/_asax7PmhcE/hqdefault.jpg", link: "https://www.youtube.com/embed/_asax7PmhcE" },
+  { title: "Network Theory", thumb: "https://img.youtube.com/vi/NEhH6C7Fzw4/hqdefault.jpg", link: "https://www.youtube.com/embed/NEhH6C7Fzw4" },
+  { title: "Circuit Examples", thumb: "https://i.ytimg.com/vi/OZKMr5Y-bdE/hqdefault.jpg", link: "https://www.youtube.com/embed/OZKMr5Y-bdE" }
+];
 
-  // Load video
-  iframe.src = link + "?autoplay=1";
-
-  // When video iframe finishes loading, hide spinner
-  iframe.onload = () => {
-    spinner3.style.display = "none";
-    iframe.style.display = "block";
-  };
+/* ====== build cards into rows ====== */
+function makeCard(v) {
+  const card = document.createElement('div');
+  card.className = 'video-card';
+  card.innerHTML = `
+    <img src="${v.thumb}" alt="${v.title}">
+    <p>${v.title}</p>
+  `;
+  card.addEventListener('click', () => openGlobalPopup(v.link));
+  return card;
 }
 
-    </script>
+function populateRows() {
+  const trendingRow = document.getElementById('tertiaryTrendingRow');
+  const electricalRow = document.getElementById('tertiaryElectricalRow');
+
+  tertiaryTrendingVideos.forEach(v => trendingRow.appendChild(makeCard(v)));
+  tertiaryElectricalVideos.forEach(v => electricalRow.appendChild(makeCard(v)));
+}
+
+/* ====== Global popup logic (one centralized popup) ====== */
+const popup = document.getElementById('globalVideoPopup');
+const spinner = document.getElementById('globalSpinner');
+const iframe = document.getElementById('globalVideoPlayer');
+const closeBtn = document.getElementById('globalCloseBtn');
+
+let iframeLoadTimeout = null;
+
+function openGlobalPopup(link) {
+  // reset
+  if (iframeLoadTimeout) { clearTimeout(iframeLoadTimeout); iframeLoadTimeout = null; }
+  spinner.style.display = 'flex';
+  iframe.style.display = 'none';
+  popup.style.display = 'flex';
+
+  // set onload BEFORE assigning src
+  iframe.onload = () => {
+    spinner.style.display = 'none';
+    iframe.style.display = 'block';
+    iframe.onload = null;
+    if (iframeLoadTimeout) { clearTimeout(iframeLoadTimeout); iframeLoadTimeout = null; }
+  };
+
+  // fallback: if onload doesn't fire, hide spinner after 8s to avoid stuck spinner
+  iframeLoadTimeout = setTimeout(() => {
+    spinner.style.display = 'none';
+    iframe.style.display = 'block';
+    iframe.onload = null;
+    iframeLoadTimeout = null;
+  }, 8000);
+
+  // assign src last
+  iframe.src = link + '?autoplay=1';
+}
+
+function closeGlobalPopup() {
+  popup.style.display = 'none';
+  spinner.style.display = 'none';
+  iframe.style.display = 'none';
+  iframe.src = ''; // stop video
+  if (iframeLoadTimeout) { clearTimeout(iframeLoadTimeout); iframeLoadTimeout = null; }
+  iframe.onload = null;
+}
+
+/* Close button + click outside to close (click on overlay) */
+closeBtn.addEventListener('click', closeGlobalPopup);
+popup.addEventListener('click', (ev) => {
+  // if clicked directly on overlay (not the iframe), close
+  if (ev.target === popup) closeGlobalPopup();
+});
+
+/* Initialize */
+populateRows();
+</script>
+
+
+
+    
+
+
+    
+    
+    
    <div style="display: flex; gap: 15px; overflow-x: auto; padding: 10px;">
   <!--Card 1-->
   <div style="border-radius: 8px; border: 1px solid rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; height: 200px; overflow: hidden; text-align: center; width: 140px;">
@@ -838,55 +924,7 @@ function openPopup3(link) {
    </div>
 
     
-  <div class="video-section">
-  <h2>🧬 Electrical Engineering</h2>
-  <div class="video-row" id="videoRowElectrical"></div>
-</div>
-
-<div class="popup" id="videoPopupElectrical">
-  <div class="spinner" id="spinner"></div>
-  <iframe allowfullscreen="" id="videoPlayer"></iframe>
-  <span class="closeBtn" onclick="closePopupElectrical()">×</span>
-</div>
-
-<script>
-const videosElectrical = [
-  {title:"How Electric Circuit Work",thumb:"https://img.youtube.com/vi/_asax7PmhcE/hqdefault.jpg",link:"https://www.youtube.com/embed/_asax7PmhcE"},
-  {title:"Network Theory",thumb:"https://img.youtube.com/vi/NEhH6C7Fzw4/hqdefault.jpg",link:"https://www.youtube.com/embed/NEhH6C7Fzw4"},
-  {title:"Respiration Explained",thumb:"https://i.ytimg.com/vi/OZKMr5Y-bdE/hqdefault.jpg",link:"https://www.youtube.com/embed/OZKMr5Y-bdE"}
-];
-
-const rowElectrical = document.getElementById('videoRowElectrical');
-videosElectrical.forEach(v=>{
-  const card=document.createElement('div');
-  card.className='video-card';
-  card.innerHTML=`<img src="${v.thumb}"><p>${v.title}</p>`;
-  card.onclick=()=>openPopupElectrical(v.link);
-  rowElectrical.appendChild(card);
-});
-
-function openPopupElectrical(link) {
-  const popup = document.getElementById('videoPopup');
-  const iframe = document.getElementById('videoPlayer');
-  const spinner = document.getElementById('spinner');
-
-  // Show spinner and hide video while it loads
-  spinner.style.display = "block";
-  iframe.style.display = "none";
-  popup.style.display = "flex";
-
-  // Start loading the video
-  iframe.src = link + "?autoplay=1";
-
-  // Once loaded, hide spinner and show video
-  iframe.onload = () => {
-    spinner.style.display = "none";
-    iframe.style.display = "block";
-  };
-}
-
-}
-    </script>
+  
     <div style="display: flex; gap: 15px; overflow-x: auto; padding: 10px;">
   <!--Card 1-->
   <div style="border-radius: 8px; border: 1px solid rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; height: 200px; overflow: hidden; text-align: center; width: 140px;">
