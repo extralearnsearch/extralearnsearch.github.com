@@ -787,7 +787,7 @@ function openPopup3(link) {
   const spinner = document.getElementById('spinner3');
 
   // Show spinner and hide video before loading
-  spinner.style.display = "block";
+  spinner3.style.display = "block";
   iframe.style.display = "none";
   popup.style.display = "flex";
 
@@ -796,7 +796,7 @@ function openPopup3(link) {
 
   // When video iframe finishes loading, hide spinner
   iframe.onload = () => {
-    spinner.style.display = "none";
+    spinner3.style.display = "none";
     iframe.style.display = "block";
   };
 }
