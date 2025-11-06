@@ -1004,8 +1004,235 @@ populateRows();
   </div>
 
   <div id="shorts" class="subcontent active">
-    <h2>Short Videos</h2>
+    <h2>Search AI& Short videos</h2>
     <div class="card">Watch quick educational clips for fast learning.</div>
+  <div class="ai-meta-search">
+  <h2>🌍 Blue AI Meta Search (Smart + Auto-Fix)</h2>
+
+  <!-- 🔹 Main AI Search -->
+  <div class="search-bar">
+    <input type="text" id="queryInput" placeholder="Ask anything..." class="search-input">
+    <button class="search-btn" onclick="metaSearch()">🔍 Search</button>
+  </div>
+
+  <!-- 🔹 Hidden Browser Search -->
+  <div class="browser-bar">
+    <input type="text" id="browserInput" placeholder="Search AI (Browser Mode)" class="search-input browser-style">
+    <button class="search-btn browser-btn" onclick="runBrowserSearch()">🌐 Search Browser</button>
+  </div>
+
+  <!-- 🔸 Loading Indicator -->
+  <div id="loadingDots" class="loading">🔵🟢🟣</div>
+
+  <!-- 🔹 Results -->
+  <div class="results-container">
+    <div class="result-section wiki">
+      <p id="wikiIntro">Your information will appear here...</p>
+    </div>
+
+    <div class="result-section duck">
+      <p id="duckMain">Searching details...</p>
+    </div>
+
+    <div class="result-section gemini">
+      <p id="geminiResult">AI synthesis will appear here...</p>
+    </div>
+
+    <div class="result-section browser-results hidden" id="browserResults">
+      <h3>🌐 Browser Search Result</h3>
+      <a id="browserLink" href="#" target="_blank">Click to open in new tab</a>
+    </div>
+
+    <div class="result-section conclusion">
+      <p id="conclusionText">Would you like to explore more about this topic?</p>
+      <button class="yes-btn" onclick="askFollowUp()">Yes, search more 🔁</button>
+      <button class="view-btn" onclick="toggleBrowser()">View Search 🌐</button>
+    </div>
+  </div>
+</div>
+
+<!-- 💡 SCRIPT -->
+<script>
+async function metaSearch() {
+  const query = document.getElementById('queryInput').value.trim();
+  if (!query) return alert("Please enter a question!");
+
+  // show loading
+  document.getElementById('loadingDots').style.display = 'block';
+  document.getElementById('wikiIntro').innerText = '';
+  document.getElementById('duckMain').innerText = '';
+  document.getElementById('geminiResult').innerText = '';
+
+  const wikiUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`;
+  const duckUrl = `https://api.duckduckgo.com/?q=${encodeURIComponent(query)}&format=json&no_redirect=1`;
+  const geminiPlaceholder = `Gemini says: "${query}" combines insights from multiple sources with intelligent synthesis.`;
+
+  try {
+    let wikiData, duckData;
+    let wikiRes = await fetch(wikiUrl);
+    wikiData = await wikiRes.json();
+    let wikiText = wikiData.extract || "";
+
+    let duckRes = await fetch(duckUrl);
+    duckData = await duckRes.json();
+    let duckText = duckData.Abstract || "";
+
+    if (!wikiText && !duckText) {
+      // Try related query (auto-correction)
+      const suggestion = query.split(" ")[0]; // pick first keyword
+      const fallbackWikiUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(suggestion)}`;
+      const fallbackDuckUrl = `https://api.duckduckgo.com/?q=${encodeURIComponent(suggestion)}&format=json&no_redirect=1`;
+
+      wikiRes = await fetch(fallbackWikiUrl);
+      wikiData = await wikiRes.json();
+      wikiText = wikiData.extract || "No exact results. Showing related info.";
+
+      duckRes = await fetch(fallbackDuckUrl);
+      duckData = await duckRes.json();
+      duckText = duckData.Abstract || "No detailed info found, but related topic loaded.";
+    }
+
+    // hide loading and show results
+    document.getElementById('loadingDots').style.display = 'none';
+    document.getElementById('wikiIntro').innerText = wikiText || "No introduction found.";
+    document.getElementById('duckMain').innerText = duckText || "No detailed info available.";
+    document.getElementById('geminiResult').innerText = geminiPlaceholder;
+    document.getElementById('conclusionText').innerText = `Would you like to learn more about "${query}"?`;
+
+  } catch (error) {
+    document.getElementById('loadingDots').style.display = 'none';
+    document.getElementById('wikiIntro').innerText = "⚠️ Failed to fetch data, retrying...";
+    setTimeout(() => metaSearch(), 2000);
+  }
+}
+
+function askFollowUp() {
+  const topic = document.getElementById('queryInput').value.trim();
+  if (topic) {
+    document.getElementById('queryInput').value = `More about ${topic}`;
+    metaSearch();
+  }
+}
+
+function runBrowserSearch() {
+  const browserQuery = document.getElementById('browserInput').value.trim();
+  if (!browserQuery) return alert("Enter a term to search!");
+  const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(browserQuery)}`;
+  document.getElementById('browserLink').href = searchUrl;
+  document.getElementById('browserLink').innerText = `🔗 Google Search: ${browserQuery}`;
+  document.getElementById('browserResults').classList.add('hidden');
+  alert("Search completed! Click 'View Search' to display.");
+}
+
+function toggleBrowser() {
+  const results = document.getElementById('browserResults');
+  results.classList.toggle('hidden');
+}
+</script>
+
+<!-- 🎨 STYLE -->
+<style>
+.ai-meta-search {
+  background: linear-gradient(135deg, #001f3f, #003b8e, #007bff, #00c6ff, #007bff);
+  background-size: 400% 400%;
+  animation: rainBall 10s infinite alternate;
+  color: white;
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 0 20px rgba(0, 140, 255, 0.4);
+  max-width: 850px;
+  margin: 40px auto;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+@keyframes rainBall {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.search-bar, .browser-bar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 65%;
+  padding: 10px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1em;
+  outline: none;
+  color: #001;
+}
+
+.browser-style {
+  background: #e3f2ff;
+}
+
+.search-btn {
+  padding: 10px 18px;
+  background: #007bff;
+  border: none;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.search-btn:hover {
+  background: #0095ff;
+}
+
+.results-container {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(6px);
+}
+
+.result-section {
+  margin-bottom: 20px;
+  padding: 15px;
+  border-left: 3px solid #00aaff;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+.yes-btn, .view-btn {
+  background: #003b8e;
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 5px;
+  transition: 0.3s;
+}
+
+.yes-btn:hover, .view-btn:hover {
+  background: #005eff;
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.6em;
+  display: none;
+  animation: bounceDots 1s infinite alternate;
+}
+
+@keyframes bounceDots {
+  0% { transform: translateY(0); opacity: 0.5; }
+  100% { transform: translateY(-8px); opacity: 1; }
+}
+</style>
   </div>
   <div id="advice" class="subcontent">
     <h2>Teachers Advice</h2>
