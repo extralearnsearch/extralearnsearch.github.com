@@ -763,9 +763,9 @@ function closePopup() {
 </div>
 
 <div class="popup" id="videoPopup3">
-  <div class="spinner" id="spinner3"></div>
-  <iframe allowfullscreen="" id="videoPlayer3"></iframe>
-  <span class="closeBtn" onclick="closePopup3()">×</span>
+  <div class="spinner" id="spinner"></div>
+  <iframe allowfullscreen="" id="videoPlayer"></iframe>
+  <span class="closeBtn" onclick="closePopup()">×</span>
 </div>
 
 <script>
@@ -782,9 +782,9 @@ videos3.forEach(v=>{
   row3.appendChild(card);
 });
 function openPopup3(link) {
-  const popup = document.getElementById('videoPopup3');
-  const iframe = document.getElementById('videoPlayer3');
-  const spinner = document.getElementById('spinner3');
+  const popup = document.getElementById('videoPopup');
+  const iframe = document.getElementById('videoPlayer');
+  const spinner = document.getElementById('spinner');
 
   // Show spinner and hide video before loading
   spinner3.style.display = "block";
