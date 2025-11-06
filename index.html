@@ -851,9 +851,9 @@ function closePopup3() {
   <div class="video-row" id="videoRowElectrical"></div>
 </div>
 
-<div class="popup" id="videoPopupElectrical">
-  <div class="spinner" id="spinnerElectrical"></div>
-  <iframe allowfullscreen="" id="videoPlayerElectrical"></iframe>
+<div class="popup" id="videoPopup">
+  <div class="spinner" id="spinner"></div>
+  <iframe allowfullscreen="" id="videoPlayer"></iframe>
   <span class="closeBtn" onclick="closePopupElectrical()">×</span>
 </div>
 
@@ -874,9 +874,9 @@ videosElectrical.forEach(v=>{
 });
 
 function openPopupElectrical(link) {
-  const popup = document.getElementById('videoPopupElectrical');
-  const iframe = document.getElementById('videoPlayerElectrical');
-  const spinner = document.getElementById('spinnerElectrical');
+  const popup = document.getElementById('videoPopup');
+  const iframe = document.getElementById('videoPlayer');
+  const spinner = document.getElementById('spinner');
 
   // Show spinner and hide video while it loads
   spinner.style.display = "block";
@@ -893,13 +893,6 @@ function openPopupElectrical(link) {
   };
 }
 
-function closePopupElectrical() {
-  const popup = document.getElementById('videoPopupElectrical');
-  const iframe = document.getElementById('videoPlayerElectrical');
-
-  // Hide popup and stop video
-  popup.style.display = "none";
-  iframe.src = "";
 }
     </script>
     <div style="display: flex; gap: 15px; overflow-x: auto; padding: 10px;">
