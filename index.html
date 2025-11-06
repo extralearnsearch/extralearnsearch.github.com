@@ -763,7 +763,7 @@ function closePopup() {
 </div>
 
 <div class="popup" id="videoPopup3">
-  <div class="spinner" id="spinner"></div>
+  <div class="spinner" id="spinner3"></div>
   <iframe allowfullscreen="" id="videoPlayer3"></iframe>
   <span class="closeBtn" onclick="closePopup3()">×</span>
 </div>
@@ -801,14 +801,6 @@ function openPopup3(link) {
   };
 }
 
-function closePopup3() {
-  const popup = document.getElementById('videoPopup3');
-  const iframe = document.getElementById('videoPlayer3');
-
-  // Hide popup and stop video
-  popup.style.display = "none";
-  iframe.src = "";
-}
     </script>
    <div style="display: flex; gap: 15px; overflow-x: auto; padding: 10px;">
   <!--Card 1-->
@@ -851,7 +843,7 @@ function closePopup3() {
   <div class="video-row" id="videoRowElectrical"></div>
 </div>
 
-<div class="popup" id="videoPopup">
+<div class="popup" id="videoPopupElectrical">
   <div class="spinner" id="spinner"></div>
   <iframe allowfullscreen="" id="videoPlayer"></iframe>
   <span class="closeBtn" onclick="closePopupElectrical()">×</span>
