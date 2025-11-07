@@ -1013,7 +1013,57 @@ populateRows();
   <div id="advice" class="subcontent">
     <h2>Teachers Advice</h2>
     <div class="card">Guidance from expert teachers on study habits.</div>
+<section class="blue-section">
+  <div class="typing" id="typing-text"></div>
+  <iframe src="https://overchat.ai/web/c/?uuid=f1ad3153-6750-48e7-4f41-9fa9ee7f6a53"></iframe>
+</section>
 
+<style>
+  .blue-section {
+    background-color: #1e3a8a; /* Blue background */
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+  }
+
+  .typing {
+    font-size: 2rem;
+    font-weight: bold;
+    border-right: 2px solid white;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .blue-section iframe {
+    margin-top: 30px;
+    width: 90%;
+    height: 600px;
+    border: none;
+    border-radius: 10px;
+  }
+</style>
+
+<script>
+  const text = "Introduction Search AI";
+  const typingElement = document.getElementById('typing-text');
+  let index = 0;
+
+  function type() {
+    if(index < text.length) {
+      typingElement.innerHTML += text.charAt(index);
+      index++;
+      setTimeout(type, 150); // typing speed
+    } else {
+      // Optional: blinking cursor after typing
+      setInterval(() => {
+        typingElement.style.borderRight = typingElement.style.borderRight === "2px solid white" ? "2px solid transparent" : "2px solid white";
+      }, 500);
+    }
+  }
+
+  type();
+</script>
   
   
   
