@@ -358,39 +358,7 @@ body {
 }
 
 /* --- Loading Spinner as Portrait Camera --- */
-.spinner {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 20px;
-  position: relative;
-}
-.spinner::before {
-  content: '';
-  position: absolute;
-  width: 60px;
-  height: 40px;
-  background: #fff;
-  border-radius: 10px;
-  top: 10px;
-  left: 0;
-  transform-origin: center;
-  animation: spin 1s linear infinite;
-}
-.spinner::after {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: #fff;
-  border-radius: 50%;
-  top: -5px;
-  left: 20px;
-}
 
-/* Rotate animation */
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }
 </style>
 
