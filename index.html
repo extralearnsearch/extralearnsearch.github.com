@@ -978,6 +978,165 @@ populateRows();
   </div>
   <div id="grade10" class="subcontent">
     <div class="card">Explore content for grade 10-12 before curriculum update
+  <div class="video-section">
+  <h2>🎥 Trending Videos</h2>
+  <div class="video-row" id="videoRow2"></div>
+</div>
+
+<div class="popup" id="videoPopup2">
+  <div class="spinner" id="spinner2"></div>
+  <iframe allowfullscreen="" id="videoPlayer2"></iframe>
+  <span class="closeBtn" onclick="closePopup2()">×</span>
+</div>
+
+<script>
+const videos2=[
+  {title:"English 2025 GCE Vocabulary",thumb:"https://img.youtube.com/vi/B62xr0ypVpQ/hqdefault.jpg",link:"https://www.youtube.com/embed/B62xr0ypVpQ"},
+  {title:"Gadget Talk",thumb:"https://i.ytimg.com/vi/sBws8MSXN7A/hqdefault.jpg",link:"https://www.youtube.com/embed/sBws8MSXN7A"}
+];
+const row2=document.getElementById('videoRow2');
+videos2.forEach(v=>{
+  const card=document.createElement('div');
+  card.className='video-card';
+  card.innerHTML=`<img src="${v.thumb}"><p>${v.title}</p>`;
+  card.onclick=()=>openPopup2(v.link);
+  row2.appendChild(card);
+});
+function openPopup2(link){
+  const popup=document.getElementById('videoPopup2');
+  const iframe=document.getElementById('videoPlayer2');
+  const spinner=document.getElementById('spinner2');
+  iframe.style.display="none";spinner.style.display="block";
+  popup.style.display="flex";iframe.src=link+"?autoplay=1";
+  iframe.onload=()=>{spinner.style.display="none";iframe.style.display="block";}
+}
+function closePopup2(){
+  const popup=document.getElementById('videoPopup2');
+  const iframe=document.getElementById('videoPlayer2');
+  popup.style.display="none";iframe.src="";
+}
+</script>
+  
+  
+
+<script>
+const docs10= [
+  {title:"School Report",thumb:"https://cdn-icons-png.flaticon.com/512/4727/4727496.png",link:"https://example.com/report.pdf"},
+  {title:"Class Notes",thumb:"https://cdn-icons-png.flaticon.com/512/281/281757.png",link:"https://example.com/notes.pdf"}
+];
+const row10=document.getElementById('docRow10');
+docs10.forEach(d=>{
+  const card=document.createElement('div');
+  card.className='doc-card';
+  card.innerHTML=`<img src="${d.thumb}"><p>${d.title}</p>`;
+  card.onclick=()=>openDoc10(d.link);
+  row10.appendChild(card);
+});
+function openDoc10(link){
+  const popup=document.getElementById('docPopup10');
+  const iframe=document.getElementById('docViewer10');
+  const spinner=document.getElementById('spinnerDoc10');
+  iframe.style.display="none";spinner.style.display="block";
+  popup.style.display="flex";
+  iframe.src="https://docs.google.com/gview?embedded=true&url="+encodeURIComponent(link);
+  iframe.onload=()=>{spinner.style.display="none";iframe.style.display="block";}
+}
+function closeDoc10(){
+  const popup=document.getElementById('docPopup10');
+  const iframe=document.getElementById('docViewer10');
+  popup.style.display="none";iframe.src="";
+}
+</script>
+  
+  <div class="video-section">
+  <h2>📘 Grade 10 Mathematics</h2>
+  <div class="video-row" id="videoRowMaths"></div>
+</div>
+
+<div class="popup" id="videoPopupMaths">
+  <div class="spinner" id="spinnerMaths"></div>
+  <iframe allowfullscreen="" id="videoPlayerMaths"></iframe>
+  <span class="closeBtn" onclick="closePopupMaths()">×</span>
+</div>
+
+<script>
+const videosMaths = [
+  {title:"Sets",thumb:"https://img.youtube.com/vi/z21pTYw4toU/hqdefault.jpg",link:"https://www.youtube.com/embed/z21pTYw4toU"},
+  {title:"Indices",thumb:"https://img.youtube.com/vi/0_FlzTVk6ls/hqdefault.jpg",link:"https://www.youtube.com/embed/0_FlzTVk6ls"},
+  {title:"Introduction To Matrix",thumb:"https://img.youtube.com/vi/wM1YgIg1gKg/hqdefault.jpg",link:"https://www.youtube.com/embed/wM1YgIg1gKg"}
+
+];
+
+const rowMaths = document.getElementById('videoRowMaths');
+videosMaths.forEach(v=>{
+  const card=document.createElement('div');
+  card.className='video-card';
+  card.innerHTML=`<img src="${v.thumb}"><p>${v.title}</p>`;
+  card.onclick=()=>openPopupMaths(v.link);
+  rowMaths.appendChild(card);
+});
+
+function openPopupMaths(link){
+  const popup=document.getElementById('videoPopupMaths');
+  const iframe=document.getElementById('videoPlayerMaths');
+  const spinner=document.getElementById('spinnerMaths');
+  iframe.style.display="none"; spinner.style.display="block";
+  popup.style.display="flex"; iframe.src=link+"?autoplay=1";
+  iframe.onload=()=>{spinner.style.display="none"; iframe.style.display="block";}
+}
+function closePopupMaths(){
+  const popup=document.getElementById('videoPopupMaths');
+  const iframe=document.getElementById('videoPlayerMaths');
+  popup.style.display="none"; iframe.src="";
+}
+</script>
+  
+  <div class="video-section">
+  <h2>📘 Grade 11 Mathematics</h2>
+  <div class="video-row" id="grade11maths"></div>
+</div>
+
+<div class="popup" id="videoPopup_grade11maths">
+  <div class="spinner" id="spinner_grade11maths"></div>
+  <iframe allowfullscreen="" id="videoPlayer_grade11maths"></iframe>
+  <span class="closeBtn" onclick="closePopup_grade11maths()">×</span>
+</div>
+
+<script>
+const grade11MathVideos = [
+  {title:"Approximately",thumb:"https://img.youtube.com/vi/UBouiBaoW6s/hqdefault.jpg",link:"https://www.youtube.com/embed/UBouiBaoW6s"},
+  {title:"Sequence and Series",thumb:"https://img.youtube.com/vi/Sm88u87DBXM/hqdefault.jpg",link:"https://www.youtube.com/embed/Sm88u87DBXM"},
+  {title:"Coordinate Geometry",thumb:"https://img.youtube.com/vi/1EnUS_cWOjA/hqdefault.jpg",link:"https://www.youtube.com/embed/1EnUS_cWOjA"}
+];
+
+const rowG11Math = document.getElementById('grade11maths');
+grade11MathVideos.forEach(v=>{
+  const card=document.createElement('div');
+  card.className='video-card';
+  card.innerHTML=`<img src="${v.thumb}" alt="${v.title}"><p>${v.title}</p>`;
+  card.onclick=()=>openPopup_grade11maths(v.link);
+  rowG11Math.appendChild(card);
+});
+
+function openPopup_grade11maths(link){
+  const popup=document.getElementById('videoPopup_grade11maths');
+  const iframe=document.getElementById('videoPlayer_grade11maths');
+  const spinner=document.getElementById('spinner_grade11maths');
+  iframe.style.display="none"; spinner.style.display="block";
+  popup.style.display="flex";
+  iframe.src=link+"?autoplay=1";
+  iframe.onload=()=>{spinner.style.display="none"; iframe.style.display="block";}
+}
+
+function closePopup_grade11maths(){
+  const popup=document.getElementById('videoPopup_grade11maths');
+  const iframe=document.getElementById('videoPlayer_grade11maths');
+  popup.style.display="none"; iframe.src="";
+}
+</script>
+  
+    
+    
     </div>
   </div>
   <div id="form1" class="subcontent">
