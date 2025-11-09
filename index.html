@@ -1067,7 +1067,49 @@ function closePopup_grade11maths(){
 }
 </script>
 
+<div class="video-section">
+  <h2>📘 Grade 12 Mathematics</h2>
+  <div class="video-row" id="grade12maths"></div>
+</div>
 
+<div class="popup" id="videoPopup_grade12maths">
+  <div class="spinner" id="spinner_grade12maths"></div>
+  <iframe allowfullscreen="" id="videoPlayer_grade12maths"></iframe>
+  <span class="closeBtn" onclick="closePopup_grade12maths()">×</span>
+</div>
+
+<script>
+const grade12MathVideos = [
+  {title:"Graphs and Functions",thumb:"https://img.youtube.com/vi/TbXMg7j50pI/hqdefault.jpg",link:"https://www.youtube.com/embed/TbXMg7j50pI"},
+  {title:"Linear Programming ",thumb:"https://img.youtube.com/vi/Ao5xtax2RnE/hqdefault.jpg",link:"https://www.youtube.com/embed/Ao5xtax2RnE"},
+  {title:"Travel Graph",thumb:"https://img.youtube.com/vi/IwJldaFIhno/hqdefault.jpg",link:"https://www.youtube.com/embed/IwJldaFIhno"}
+];
+
+const rowG12Math = document.getElementById('grade12maths');
+grade12MathVideos.forEach(v=>{
+  const card=document.createElement('div');
+  card.className='video-card';
+  card.innerHTML=`<img src="${v.thumb}" alt="${v.title}"><p>${v.title}</p>`;
+  card.onclick=()=>openPopup_grade12maths(v.link);
+  rowG12Math.appendChild(card);
+});
+
+function openPopup_grade12maths(link){
+  const popup=document.getElementById('videoPopup_grade12maths');
+  const iframe=document.getElementById('videoPlayer_grade12maths');
+  const spinner=document.getElementById('spinner_grade12maths');
+  iframe.style.display="none"; spinner.style.display="block";
+  popup.style.display="flex";
+  iframe.src=link+"?autoplay=1";
+  iframe.onload=()=>{spinner.style.display="none"; iframe.style.display="block";}
+}
+
+function closePopup_grade12maths(){
+  const popup=document.getElementById('videoPopup_grade12maths');
+  const iframe=document.getElementById('videoPlayer_grade12maths');
+  popup.style.display="none"; iframe.src="";
+}
+</script>
 
 
       <div style="display: flex; gap: 15px; overflow-x: auto; padding: 10px;">
@@ -1305,7 +1347,170 @@ document.addEventListener('DOMContentLoaded', function() {
 });
   </script>
   
-    
+    <div class="video-section">
+  <h2>🧬 Grade 10 Biology</h2>
+  <div class="video-row" id="videoRowBio"></div>
+</div>
+
+<div class="popup" id="videoPopupBio">
+  <div class="spinner" id="spinnerBio"></div>
+  <iframe allowfullscreen="" id="videoPlayerBio"></iframe>
+  <span class="closeBtn" onclick="closePopupBio()">×</span>
+</div>
+
+<script>
+const videosBio = [
+  {title:"Introduction To Biology",thumb:"https://img.youtube.com/vi/BkUxxIlamyE/hqdefault.jpg",link:"https://www.youtube.com/embed/URUJD5NEXC8"},
+  {title:"Cell Structure and Organization ",thumb:"https://img.youtube.com/vi/0rBD_Xy1ASY/hqdefault.jpg",link:"https://www.youtube.com/embed/0rBD_Xy1ASY"},
+  {title:"Enzymes ",thumb:"https://img.youtube.com/vi/ovQi36xoh7g/hqdefault.jpg",link:"https://www.youtube.com/embed/ovQi36xoh7g"}
+];
+
+const rowBio = document.getElementById('videoRowBio');
+videosBio.forEach(v=>{
+  const card=document.createElement('div');
+  card.className='video-card';
+  card.innerHTML=`<img src="${v.thumb}"><p>${v.title}</p>`;
+  card.onclick=()=>openPopupBio(v.link);
+  rowBio.appendChild(card);
+});
+
+function openPopupBio(link){
+  const popup=document.getElementById('videoPopupBio');
+  const iframe=document.getElementById('videoPlayerBio');
+  const spinner=document.getElementById('spinnerBio');
+  iframe.style.display="none"; spinner.style.display="block";
+  popup.style.display="flex"; iframe.src=link+"?autoplay=1";
+  iframe.onload=()=>{spinner.style.display="none"; iframe.style.display="block";}
+}
+function closePopupBio(){
+  const popup=document.getElementById('videoPopupBio');
+  const iframe=document.getElementById('videoPlayerBio');
+  popup.style.display="none"; iframe.src="";
+}
+</script>
+  
+  <div class="video-section">
+  <h2>🧬 Grade 11 Biology</h2>
+  <div class="video-row" id="grade11biology"></div>
+</div>
+
+<div class="popup" id="videoPopup_grade11biology">
+  <div class="spinner" id="spinner_grade11biology"></div>
+  <iframe allowfullscreen="" id="videoPlayer_grade11biology"></iframe>
+  <span class="closeBtn" onclick="closePopup_grade11biology()">×</span>
+</div>
+
+<script>
+const grade11BioVideos = [
+  {title:"Transport In Plant",thumb:"https://img.youtube.com/vi/lk5AlpPVxg4/hqdefault.jpg",link:"https://www.youtube.com/embed/lk5AlpPVxg4"},
+  {title:"Transport In Man",thumb:"https://img.youtube.com/vi/K0AB3i10pLU/hqdefault.jpg",link:"https://www.youtube.com/embed/K0AB3i10pLU"},
+  {title:"Excretion",thumb:"https://img.youtube.com/vi/NnffcVHupcg/hqdefault.jpg",link:"https://www.youtube.com/embed/NnffcVHupcg"}
+];
+
+const rowG11Bio = document.getElementById('grade11biology');
+grade11BioVideos.forEach(v=>{
+  const card=document.createElement('div');
+  card.className='video-card';
+  card.innerHTML=`<img src="${v.thumb}" alt="${v.title}"><p>${v.title}</p>`;
+  card.onclick=()=>openPopup_grade11biology(v.link);
+  rowG11Bio.appendChild(card);
+});
+
+function openPopup_grade11biology(link){
+  const popup=document.getElementById('videoPopup_grade11biology');
+  const iframe=document.getElementById('videoPlayer_grade11biology');
+  const spinner=document.getElementById('spinner_grade11biology');
+  iframe.style.display="none"; spinner.style.display="block";
+  popup.style.display="flex";
+  iframe.src=link+"?autoplay=1";
+  iframe.onload=()=>{spinner.style.display="none"; iframe.style.display="block";}
+}
+
+function closePopup_grade11biology(){
+  const popup=document.getElementById('videoPopup_grade11biology');
+  const iframe=document.getElementById('videoPlayer_grade11biology');
+  popup.style.display="none"; iframe.src="";
+}
+</script>
+  
+  <div class="video-section">
+  <h2>🧬 Grade 12 Biology</h2>
+  <div class="video-row" id="grade12biology"></div>
+</div>
+
+<div class="popup" id="videoPopup_grade12biology">
+  <div class="spinner" id="spinner_grade12biology"></div>
+  <iframe allowfullscreen="" id="videoPlayer_grade12biology"></iframe>
+  <span class="closeBtn" onclick="closePopup_grade12biology()">×</span>
+</div>
+
+<script>
+const grade12BioVideos = [
+  {title:"Sexual Reproduction In Flowering Plant",thumb:"https://img.youtube.com/vi/jukf71CpFIg/hqdefault.jpg",link:"https://www.youtube.com/embed/jukf71CpFIg"},
+  {title:"Asexual Reproduction In Flowing Plants",thumb:"https://img.youtube.com/vi/GRc5d8e2AJk/hqdefault.jpg",link:"https://www.youtube.com/embed/GRc5d8e2AJk"},
+  {title:"Reproduction In Animals 1",thumb:"https://img.youtube.com/vi/N-FJTL0okjI/hqdefault.jpg",link:"https://www.youtube.com/embed/N-FJTL0okjI"}
+];
+
+const rowG12Bio = document.getElementById('grade12biology');
+grade12BioVideos.forEach(v=>{
+  const card=document.createElement('div');
+  card.className='video-card';
+  card.innerHTML=`<img src="${v.thumb}" alt="${v.title}"><p>${v.title}</p>`;
+  card.onclick=()=>openPopup_grade12biology(v.link);
+  rowG12Bio.appendChild(card);
+});
+
+function openPopup_grade12biology(link){
+  const popup=document.getElementById('videoPopup_grade12biology');
+  const iframe=document.getElementById('videoPlayer_grade12biology');
+  const spinner=document.getElementById('spinner_grade12biology');
+  iframe.style.display="none"; spinner.style.display="block";
+  popup.style.display="flex";
+  iframe.src=link+"?autoplay=1";
+  iframe.onload=()=>{spinner.style.display="none"; iframe.style.display="block";}
+}
+
+function closePopup_grade12biology(){
+  const popup=document.getElementById('videoPopup_grade12biology');
+  const iframe=document.getElementById('videoPlayer_grade12biology');
+  popup.style.display="none"; iframe.src="";
+}
+</script>
+  
+  <div style="display: flex; gap: 15px; overflow-x: auto; padding: 10px;">
+  <!--Card 1-->
+  <div style="border-radius: 8px; border: 2px solid rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; height: 200px; overflow: hidden; text-align: center; width: 140px;">
+    <a href="https://drive.google.com/file/d/1YX_DNXRSAuqqhlc49EYFzm675BdKZZV1/view?usp=sharing" target="_blank">
+      <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=1YX_DNXRSAuqqhlc49EYFzm675BdKZZV1" style="height: 80%; object-fit: cover; width: 100%;" />
+      <div style="padding: 0px;">
+        <h4 style="color: white; font-size: 8px; margin: 0px;">Maths Study Material</h4>
+        <p style="color: #555555; font-size: 14px; margin: 1px 0px 0px;">By Nawa S.A   <small>12 October, 2022</small></p>
+      </div>
+    </a>
+  </div>
+
+  <!--Card 2-->
+  <div style="border-radius: 8px; border: 2px solid #000; box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; height: 200px; overflow: hidden; text-align: center; width: 140px;">
+    <a href="https://drive.google.com/file/d/FILE_ID_2/view?usp=sharing" target="_blank">
+      <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=FILE_ID_2" style="height: 150px; object-fit: cover; width: 100%;" />
+      <div style="padding: 10px;">
+        <h4 style="color: white; font-size: 16px; margin: 0px;">Document Title 2</h4>
+        <p style="color: #555555; font-size: 8px; margin: 5px 0px 0px;">Google Docs</p>
+      </div>
+    </a>
+  </div>
+
+  <!--Card 3-->
+  <div style="border-radius: 8px; border: 1px solid rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; overflow: hidden; text-align: center; width: 140px;">
+    <a href="https://drive.google.com/file/d/FILE_ID_3/view?usp=sharing" target="_blank">
+      <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=FILE_ID_3" style="height: 150px; object-fit: cover; width: 100%;" />
+      <div style="padding: 10px;">
+        <h4 style="color: white; font-size: 16px; margin: 0px;">Document Title 3</h4>
+        <p style="color: #555555; font-size: 14px; margin: 5px 0px 0px;">Google Docs</p>
+      </div>
+    </a>
+  </div>
+  </div>
     
     </div>
   </div>
