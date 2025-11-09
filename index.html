@@ -1066,6 +1066,244 @@ function closePopup_grade11maths(){
   popup.style.display="none"; iframe.src="";
 }
 </script>
+
+
+
+
+      <div style="display: flex; gap: 15px; overflow-x: auto; padding: 10px;">
+  <!-- Card 1 (Free) -->
+  <div style="border-radius:8px; border:2px solid #000; flex-shrink:0; height:200px; width:140px; overflow:hidden; text-align:center;">
+    <a href="https://drive.google.com/file/d/1YX_DNXRSAuqqhlc49EYFzm675BdKZZV1/view?usp=sharing" target="_blank">
+      <img src="https://drive.google.com/thumbnail?id=1YX_DNXRSAuqqhlc49EYFzm675BdKZZV1" style="width:100%; height:80%; object-fit:cover;">
+      <div>
+        <h4 style="color:white; font-size:8px; margin:0;">Maths Study Material</h4>
+        <p style="color:white; font-size:10px; margin:0;">By Nawa S.A <small>12 Oct 2022</small></p>
+      </div>
+    </a>
+  </div>
+
+  <!-- Card 2 (Free) -->
+  <div style="border-radius:8px; border:2px solid #000; flex-shrink:0; height:200px; width:140px; overflow:hidden; text-align:center;">
+    <a href="https://drive.google.com/file/d/1OkniiwTpHhm7LE5b5JjTVAWDM7wPjYyn/view?usp=sharing" target="_blank">
+      <img src="https://drive.google.com/thumbnail?id=1OkniiwTpHhm7LE5b5JjTVAWDM7wPjYyn" style="width:100%; height:150px; object-fit:cover;">
+      <div>
+        <h4 style="color:white; font-size:8px; margin:0;">Maths P1 Mr6points G10-12</h4>
+        <p style="color:white; font-size:10px; margin:5px 0 0;">By Mr 6points <small>2 Jan 2018</small></p>
+      </div>
+    </a>
+  </div>
+
+  <!-- Card 3 (Premium) -->
+  <div class="premium-doc" data-doc-link="https://drive.google.com/file/d/1YJ8G3VmfK160DTLU4SYu3fdw03eUt2hM/view?usp=sharing" 
+       style="border:1px solid #000; width:140px; border-radius:8px; overflow:hidden; text-align:center; box-shadow:0 2px 6px rgba(0,0,0,0.2); flex-shrink:0;">
+    <a href="#" onclick="return false;">
+      <img src="https://drive.google.com/thumbnail?id=1BfxlzqPy2RcxNoiRYALSrD4Tsx-NNxqQ" style="width:100%; height:150px; object-fit:cover;">
+      <div style="padding:10px;">
+        <h4 style="color:white; font-size:8px; margin:0;">Progress In Maths</h4>
+        <p style="color:white; font-size:10px; margin:5px 0 0;">By Mary Chanda <small>11 Feb 2021</small></p>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- LOCK OVERLAY -->
+<div id="premiumLock" style="display:none; position:fixed; inset:0; background: rgba(0,0,0,0.4); backdrop-filter:blur(10px); z-index:9999; display:flex; align-items:center; justify-content:center; height:100%;">
+  <div style="background: rgba(0,0,0,0.5); border-radius:20px; padding:30px; text-align:center; width:90%; max-width:420px; position:relative;">
+    <span class="close-lock" style="position:absolute; top:10px; right:15px; font-size:24px; cursor:pointer; color:#ccc;">&times;</span>
+    <h3 style="color:#ffccff;">This content is Sold</h3>
+    <p style="color:#ddd;">However,you can access and download all sold content by upgrading to Premium.</p>
+    <button id="upgradeBtn" style="margin:10px; padding:12px 25px; border-radius:12px; border:none; cursor:pointer; background:linear-gradient(90deg, purple, red, blue, black); color:#fff;">Upgrade To Premium</button>
+    <button id="accessBtn" style="margin:10px; padding:12px 25px; border-radius:12px; border:none; cursor:pointer; background:#555; color:#fff;">Access if Already Upgraded</button>
+  </div>
+</div>
+
+<!-- PREMIUM MODAL -->
+<div id="premiumModal" style="display:none; position:fixed; inset:0; background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); z-index:10000; display:flex; align-items:center; justify-content:center; height:90%; bottom:20px;">
+  <div style="background: rgba(30,30,30,0.9); border-radius:20px; padding:25px; width:90%; max-width:420px; position:relative; text-align:center;">
+    <span class="close-modal" style="position:absolute; top:10px; right:15px; font-size:24px; cursor:pointer; color:#aaa;">&times;</span>
+    <h3 style="color:#00bfff;">Upgrade to Premium</h3>
+    <form id="premiumForm" style="margin-top:15px;">
+      <input type="text" id="name" placeholder="Your Name" required style="width:90%; padding:10px; margin:8px 0; border-radius:8px; border:none; background:#2a2a2a; color:#fff;">
+      <input type="email" id="email" placeholder="Your Email" required style="width:90%; padding:10px; margin:8px 0; border-radius:8px; border:none; background:#000; color:#fff;">
+      <input type="tel" id="number" placeholder="Phone Number" required style="width:90%; padding:10px; margin:8px 0; border-radius:8px; border:none; background:#000; color:#fff;">
+      <select id="plan" required style="width:90%; height:90% ; padding:10px; margin:8px 0; border-radius:8px; border:none; background:#000; color:#fff;">
+        <option value="">Select a Plan</option>
+        <option>Basic - K5</option>
+        <option>Standard - K7</option>
+        <option>Pro - K15</option>
+      </select>
+      
+      <select id="payment" required style="width:90%; height:90% ; padding:10px; margin:8px 0; border-radius:8px; border:none; background:#000; color:#fff;">
+        <option value="">Select  Payment Method</option>
+        <option>Mobile<small style="color:gray;">Via 0767607057(member)</small></option>
+        <option>Bank(card)</option>
+      </select>
+      <button type="submit" style="background: linear-gradient(135deg,#007bff,#00bfff); color:#fff; border:none; padding:10px 25px; border-radius:12px; cursor:pointer; margin-top:10px;">Send</button>
+    </form>
+    <div id="msg" style="margin-top:12px; color:#00ff88;"></div>
+  </div>
+</div>
+
+<script>
+const premiumDocs = document.querySelectorAll('.premium-doc');
+const lock = document.getElementById('premiumLock');
+const upgradeBtn = document.getElementById('upgradeBtn');
+const accessBtn = document.getElementById('accessBtn');
+const modal = document.getElementById('premiumModal');
+const closeLock = document.querySelector('.close-lock');
+const closeModal = document.querySelector('.close-modal');
+const form = document.getElementById('premiumForm');
+const msg = document.getElementById('msg');
+
+let activePremiumDoc = null;
+
+// Only show lock when premium card is clicked
+premiumDocs.forEach(doc => {
+  doc.addEventListener('click', () => {
+    activePremiumDoc = doc.getAttribute('data-doc-link');
+    lock.style.display = 'flex';
+  });
+});
+
+// Close lock overlay
+closeLock.onclick = () => lock.style.display = 'none';
+
+// Upgrade button opens premium modal
+upgradeBtn.onclick = () => {
+  lock.style.display = 'none';
+  modal.style.display = 'flex';
+};
+
+// Access button opens document
+accessBtn.onclick = () => {
+  lock.style.display = 'none';
+  if(activePremiumDoc) window.open(activePremiumDoc, '_blank');
+};
+
+// Close modal
+closeModal.onclick = () => modal.style.display = 'none';
+window.addEventListener('click', e => { if(e.target === modal) modal.style.display='none'; });
+
+// Handle form submission
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const number = document.getElementById('number').value;
+  const plan = document.getElementById('plan').value;
+
+  const subject = encodeURIComponent("Premium Plan Request");
+ const body = encodeURIComponent(
+    `Name: ${name}\nEmail: ${email}\nPhone: ${number}\nSelected Plan: ${plan}\n\nPlease send your payment and wait for verification.`
+  );
+
+  // Open Gmail or default email client
+  window.location.href = `mailto:amimostudio410@gmail.com?subject=${subject}&body=${body}`;
+
+  // Show initial message
+  msg.innerHTML = "📩 Please send your payment and wait for verification...";
+
+  // After 30 seconds, show thank you/verification message
+  setTimeout(() => {
+    msg.innerHTML = "✅ Thank you! Verification may take up to 30 seconds.";
+  }, 30000);
+
+  // Optional: clear form inputs
+  form.reset();
+});
+  </script>
+  <script>
+// Wait until page is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  const lock = document.getElementById('premiumLock');
+  const modal = document.getElementById('premiumModal');
+  const closeLock = document.querySelector('.close-lock');
+  const upgradeBtn = document.getElementById('upgradeBtn');
+  const accessBtn = document.getElementById('accessBtn');
+  const premiumDocs = document.querySelectorAll('.premium-doc');
+  const closeModal = document.querySelector('.close');
+  const form = document.getElementById('premiumForm');
+  const msg = document.getElementById('msg');
+
+  // Initially hide both
+  if (lock) lock.style.display = 'none';
+  if (modal) modal.style.display = 'none';
+
+  // When a premium document is clicked → show lock popup
+  premiumDocs.forEach(function(doc) {
+    doc.addEventListener('click', function() {
+      const link = doc.getAttribute('data-doc-link');
+      window.activePremiumDoc = link;
+      if (lock) lock.style.display = 'flex';
+    });
+  });
+
+  // Close lock popup
+  if (closeLock) {
+    closeLock.onclick = function() {
+      lock.style.display = 'none';
+    };
+  }
+
+  // Upgrade button opens the modal
+  if (upgradeBtn) {
+    upgradeBtn.onclick = function() {
+      lock.style.display = 'none';
+      modal.style.display = 'block';
+    };
+  }
+
+  // Close modal (X)
+  if (closeModal) {
+    closeModal.onclick = function() {
+      modal.style.display = 'none';
+    };
+  }
+
+  // Close modal when clicking outside
+  window.onclick = function(e) {
+    if (e.target === modal) modal.style.display = 'none';
+    if (e.target === lock) lock.style.display = 'none';
+  };
+
+  // Handle form submission (open Gmail)
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const number = document.getElementById('number').value;
+      const plan = document.getElementById('plan').value;
+
+      const subject = encodeURIComponent("Premium Plan Request");
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\nPhone: ${number}\nSelected Plan: ${plan}\n\nPlease send your payment and wait for verification.`
+      );
+
+      // Open Gmail
+      window.location.href = `mailto:amimostudio410@gmail.com?subject=${subject}&body=${body}`;
+
+      // Message feedback
+      msg.innerHTML = "📩 Please send your payment and wait for verification...";
+      setTimeout(() => {
+        msg.innerHTML = "✅ Thank you! We’re verifying your info...";
+      }, 30000);
+
+      form.reset();
+    });
+  }
+
+  // Access button (opens doc if already upgraded)
+  if (accessBtn) {
+    accessBtn.onclick = function() {
+      lock.style.display = 'none';
+      if (window.activePremiumDoc)
+        window.open(window.activePremiumDoc, '_blank');
+    };
+  }
+});
+  </script>
   
     
     
