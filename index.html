@@ -1260,59 +1260,8 @@ grade12BioVideos.forEach(v=>{
 <script src="https://elfsightcdn.com/platform.js" async></script>
 <div class="elfsight-app-83975293-5ca4-49d2-9332-14eac0b26a28" data-elfsight-app-lazy></div>
 
-  <section class="blue-section">
-  <div class="typing" id="typing-text"></div>
-  <iframe src="https://chatgpt.com/"></iframe>
-</section>
 
-<style>
-  .blue-section {
-    background-color: #1e3a8a; /* Blue background */
-    color: white;
-    padding: 50px 20px;
-    text-align: center;
-    border-radius: 15px;
-  }
-
-  .typing {
-    font-size: 2rem;
-    font-weight: bold;
-    border-right: 2px solid white;
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-
-  .blue-section iframe {
-    margin-top: 30px;
-    width: 90%;
-    height: 600px;
-    border: none;
-    border-radius: 10px;
-  }
-</style>
-
-<script>
-  const text = "Introducing Search AI";
-  const typingElement = document.getElementById('typing-text');
-  let index = 0;
-
-  function type() {
-    if(index < text.length) {
-      typingElement.innerHTML += text.charAt(index);
-      index++;
-      setTimeout(type, 150); // typing speed
-    } else {
-      // Optional: blinking cursor after typing
-      setInterval(() => {
-        typingElement.style.borderRight = typingElement.style.borderRight === "2px solid white" ? "2px solid transparent" : "2px solid white";
-      }, 500);
-    }
-  }
-
-  type();
-</script>
-
+</div>
   </div>
   <div id="advice" class="subcontent">
     <h2>Teachers Advice</h2>
