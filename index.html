@@ -1228,6 +1228,320 @@ grade12BioVideos.forEach(v=>{
     </a>
   </div>
   </div>
+  <div class="video-section">
+  <h2>📝 English Grade 10</h2>
+  <div class="video-row" id="englishgrade10"></div>
+</div>
+
+<script>
+const english10Videos = [
+  { title:"Grammar Basics", thumb:"https://img.youtube.com/vi/snIg_DQh0Zc/hqdefault.jpg", link:"https://www.youtube.com/embed/snIg_DQh0Zc" },
+  { title:"Essay Writing Skills", thumb:"https://img.youtube.com/vi/uHEN2dt3gKc/hqdefault.jpg", link:"https://www.youtube.com/embed/uHEN2dt3gKc" },
+  { title:"Reading Comprehension", thumb:"https://i.ytimg.com/vi/8zO2vFjaJRs/hqdefault.jpg", link:"https://www.youtube.com/embed/8zO2vFjaJRs" },
+  { title:"Tenses and Verbs", thumb:"https://i.ytimg.com/vi/6q6vDkG2Hzo/hqdefault.jpg", link:"https://www.youtube.com/embed/6q6vDkG2Hzo" }
+];
+
+const rowEng10 = document.getElementById('englishgrade10');
+english10Videos.forEach(v => {
+  const card = document.createElement('div');
+  card.className = 'video-card';
+  card.innerHTML = `
+    <img src="${v.thumb}" alt="${v.title}">
+    <p>${v.title}</p>
+  `;
+  card.onclick = () => openGlobalPopup(v.link);
+  rowEng10.appendChild(card);
+});
+</script>
+    <div class="video-section">
+  <h2>📝 English Grade 11</h2>
+  <div class="video-row" id="englishgrade11"></div>
+</div>
+
+<script>
+const english11Videos = [
+  {
+    title: "Grade 11 – English Language: Nouns, Verbs, Adjectives and Adverbs", 
+    thumb: "https://img.youtube.com/vi/9upIZyPvj‑U/hqdefault.jpg",
+    link: "https://www.youtube.com/embed/9upIZyPvj‑U"
+  },
+  {
+    title: "Grade 11 English Session 1 – Comprehension Skills", 
+    thumb: "https://img.youtube.com/vi/7u_QYKs9SjU/hqdefault.jpg",
+    link: "https://www.youtube.com/embed/7u_QYKs9SjU"
+  },
+  {
+    title: "Grade 11 English Unit 4 Part 1: Expressing Opinion + Descriptive Writing + Summary Writing", 
+    thumb: "https://img.youtube.com/vi/DhXmeRNbAwo/hqdefault.jpg",
+    link: "https://www.youtube.com/embed/DhXmeRNbAwo"
+  }
+];
+
+const rowEng11 = document.getElementById('englishgrade11');
+english11Videos.forEach(v => {
+  const card = document.createElement('div');
+  card.className = 'video-card';
+  card.innerHTML = `
+    <img src="${v.thumb}" alt="${v.title}">
+    <p>${v.title}</p>
+  `;
+  card.onclick = () => openGlobalPopup(v.link);
+  rowEng11.appendChild(card);
+});
+</script>
+    <div class="video-section">
+  <h2>📝 English Grade 12</h2>
+  <div class="video-row" id="englishgrade12"></div>
+</div>
+
+<script>
+const english12Videos = [
+  {
+    title: "Zambia Grade 12 English – Advanced Composition & Summary",
+    thumb: "https://img.youtube.com/vi/EXAMPLE1/hqdefault.jpg",
+    link: "https://www.youtube.com/embed/EXAMPLE1"
+  },
+  {
+    title: "Zambia Grade 12 English – Literature Discussion: Set Book",
+    thumb: "https://img.youtube.com/vi/EXAMPLE2/hqdefault.jpg",
+    link: "https://www.youtube.com/embed/EXAMPLE2"
+  },
+  {
+    title: "Zambia Grade 12 English – Exam Skills: Paper 1 & 2",
+    thumb: "https://img.youtube.com/vi/EXAMPLE3/hqdefault.jpg",
+    link: "https://www.youtube.com/embed/EXAMPLE3"
+  }
+];
+
+const rowEng12 = document.getElementById('englishgrade12');
+english12Videos.forEach(v => {
+  const card = document.createElement('div');
+  card.className = 'video-card';
+  card.innerHTML = `
+    <img src="${v.thumb}" alt="${v.title}">
+    <p>${v.title}</p>
+  `;
+  card.onclick = () => openGlobalPopup(v.link);
+  rowEng12.appendChild(card);
+});
+</script>
+    <div class="video-section">
+  <h2>📐 Physics Grade 10</h2>
+  <div class="video-row" id="physicsgrade10"></div>
+</div>
+
+<script>
+const physics10Videos = [
+  {
+    title: "Zambia Physics G10 – Measurements & SI Units",
+    thumb: "https://img.youtube.com/vi/PHY10EX1/hqdefault.jpg",
+    link: "https://www.youtube.com/embed/PHY10EX1"
+  },
+  {
+    title: "Zambia Physics G10 – Linear Motion & Forces",
+    thumb: "https://img.youtube.com/vi/PHY10EX2/hqdefault.jpg",
+    link: "https://www.youtube.com/embed/PHY10EX2"
+  },
+  {
+    title: "Zambia Physics G10 – Density, Work, Power",
+    thumb: "https://img.youtube.com/vi/PHY10EX3/hqdefault.jpg",
+    link: "https://www.youtube.com/embed/PHY10EX3"
+  }
+];
+
+const rowPhy10 = document.getElementById('physicsgrade10');
+physics10Videos.forEach(v => {
+  const card = document.createElement('div');
+  card.className = 'video-card';
+  card.innerHTML = `
+    <img src="${v.thumb}" alt="${v.title}">
+    <p>${v.title}</p>
+  `;
+  card.onclick = () => openGlobalPopup(v.link);
+  rowPhy10.appendChild(card);
+});
+</script>
+    <div class="video-section">
+  <h2>📐 Physics Grade 11</h2>
+  <div class="video-row" id="physicsgrade11"></div>
+</div>
+
+<script>
+const physics11Videos = [
+  {
+    title: "Zambia Physics G11 – Thermal Physics & Heat Transfer",
+    thumb: "https://img.youtube.com/vi/PHY11EX1/hqdefault.jpg",
+    link: "https://www.youtube.com/embed/PHY11EX1"
+  },
+  {
+    title: "Zambia Physics G11 – Wave Motion & Sound",
+    thumb: "https://img.youtube.com/vi/PHY11EX2/hqdefault.jpg",
+    link: "https://www.youtube.com/embed/PHY11EX2"
+  },
+  {
+    title: "Zambia Physics G11 – Expansion of Solids, Liquids & Gases",
+    thumb: "https://img.youtube.com/vi/PHY11EX3/hqdefault.jpg",
+    link: "https://www.youtube.com/embed/PHY11EX3"
+  }
+];
+
+const rowPhy11 = document.getElementById('physicsgrade11');
+physics11Videos.forEach(v => {
+  const card = document.createElement('div');
+  card.className = 'video-card';
+  card.innerHTML = `
+    <img src="${v.thumb}" alt="${v.title}">
+    <p>${v.title}</p>
+  `;
+  card.onclick = () => openGlobalPopup(v.link);
+  rowPhy11.appendChild(card);
+});
+</script>
+    <div class="video-section">
+  <h2>📐 Physics Grade 12</h2>
+  <div class="video-row" id="physicsgrade12"></div>
+</div>
+
+<script>
+const physics12Videos = [
+  {
+    title: "Zambia Physics G12 – Current Electricity & Resistance",
+    thumb: "https://img.youtube.com/vi/PHY12EX1/hqdefault.jpg",
+    link: "https://www.youtube.com/embed/PHY12EX1"
+  },
+  {
+    title: "Zambia Physics G12 – Magnetism & Electromagnetic Induction",
+    thumb: "https://img.youtube.com/vi/PHY12EX2/hqdefault.jpg",
+    link: "https://www.youtube.com/embed/PHY12EX2"
+  },
+  {
+    title: "Zambia Physics G12 – Nuclear Physics & Modern Physics",
+    thumb: "https://img.youtube.com/vi/PHY12EX3/hqdefault.jpg",
+    link: "https://www.youtube.com/embed/PHY12EX3"
+  }
+];
+
+const rowPhy12 = document.getElementById('physicsgrade12');
+physics12Videos.forEach(v => {
+  const card = document.createElement('div');
+  card.className = 'video-card';
+  card.innerHTML = `
+    <img src="${v.thumb}" alt="${v.title}">
+    <p>${v.title}</p>
+  `;
+  card.onclick = () => openGlobalPopup(v.link);
+  rowPhy12.appendChild(card);
+});
+</script>
+    <div class="video-section">
+  <h2>🧪 Chemistry Grade 10</h2>
+  <div class="video-row" id="chemistrygrade10"></div>
+</div>
+
+<script>
+const chemistry10Videos = [
+  {
+    title: "Zambia Chemistry G10 – Introduction & States of Matter",
+    thumb: "https://img.youtube.com/vi/CHEM10EX1/hqdefault.jpg",
+    link: "https://www.youtube.com/embed/CHEM10EX1"
+  },
+  {
+    title: "Zambia Chemistry G10 – Atoms, Elements & Periodic Table",
+    thumb: "https://img.youtube.com/vi/CHEM10EX2/hqdefault.jpg",
+    link: "https://www.youtube.com/embed/CHEM10EX2"
+  },
+  {
+    title: "Zambia Chemistry G10 – Experimental Techniques & Purity of Substances",
+    thumb: "https://img.youtube.com/vi/CHEM10EX3/hqdefault.jpg",
+    link: "https://www.youtube.com/embed/CHEM10EX3"
+  }
+];
+
+const rowChem10 = document.getElementById('chemistrygrade10');
+chemistry10Videos.forEach(v => {
+  const card = document.createElement('div');
+  card.className = 'video-card';
+  card.innerHTML = `
+    <img src="${v.thumb}" alt="${v.title}">
+    <p>${v.title}</p>
+  `;
+  card.onclick = () => openGlobalPopup(v.link);
+  rowChem10.appendChild(card);
+});
+</script>
+    <div class="video-section">
+  <h2>🧪 Chemistry Grade 11</h2>
+  <div class="video-row" id="chemistrygrade11"></div>
+</div>
+
+<script>
+const chemistry11Videos = [
+  {
+    title: "Zambia Chemistry G11 – Salts, Hydrated vs Anhydrous, Titration",
+    thumb: "https://img.youtube.com/vi/CHEM11EX1/hqdefault.jpg",
+    link: "https://www.youtube.com/embed/CHEM11EX1"
+  },
+  {
+    title: "Zambia Chemistry G11 – Chemical Bonding & Periodic Trends",
+    thumb: "https://img.youtube.com/vi/CHEM11EX2/hqdefault.jpg",
+    link: "https://www.youtube.com/embed/CHEM11EX2"
+  },
+  {
+    title: "Zambia Chemistry G11 – Qualitative Analysis Tests (Anions & Cations)",
+    thumb: "https://img.youtube.com/vi/CHEM11EX3/hqdefault.jpg",
+    link: "https://www.youtube.com/embed/CHEM11EX3"
+  }
+];
+
+const rowChem11 = document.getElementById('chemistrygrade11');
+chemistry11Videos.forEach(v => {
+  const card = document.createElement('div');
+  card.className = 'video-card';
+  card.innerHTML = `
+    <img src="${v.thumb}" alt="${v.title}">
+    <p>${v.title}</p>
+  `;
+  card.onclick = () => openGlobalPopup(v.link);
+  rowChem11.appendChild(card);
+});
+</script>
+    <div class="video-section">
+  <h2>🧪 Chemistry Grade 12</h2>
+  <div class="video-row" id="chemistrygrade12"></div>
+</div>
+
+<script>
+const chemistry12Videos = [
+  {
+    title: "Zambia Chemistry G12 – Organic Chemistry: Carboxylic Acids & Derivatives",
+    thumb: "https://img.youtube.com/vi/CHEM12EX1/hqdefault.jpg",
+    link: "https://www.youtube.com/embed/CHEM12EX1"
+  },
+  {
+    title: "Zambia Chemistry G12 – Electrochemistry & Rates of Reaction",
+    thumb: "https://img.youtube.com/vi/CHEM12EX2/hqdefault.jpg",
+    link: "https://www.youtube.com/embed/CHEM12EX2"
+  },
+  {
+    title: "Zambia Chemistry G12 – Environmental Chemistry & Industrial Applications",
+    thumb: "https://img.youtube.com/vi/CHEM12EX3/hqdefault.jpg",
+    link: "https://www.youtube.com/embed/CHEM12EX3"
+  }
+];
+
+const rowChem12 = document.getElementById('chemistrygrade12');
+chemistry12Videos.forEach(v => {
+  const card = document.createElement('div');
+  card.className = 'video-card';
+  card.innerHTML = `
+    <img src="${v.thumb}" alt="${v.title}">
+    <p>${v.title}</p>
+  `;
+  card.onclick = () => openGlobalPopup(v.link);
+  rowChem12.appendChild(card);
+});
+</script>
+    
     
     </div>
   </div>
