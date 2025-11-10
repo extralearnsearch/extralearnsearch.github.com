@@ -1428,7 +1428,7 @@ function shareSite() {
   closeSidebar();
   if (navigator.share) {
     navigator.share({
-      title: 'EduStream',
+      title: 'Extra Learn Search',
       text: 'Check out this awesome educational site!',
       url: window.location.href,
     });
@@ -1437,7 +1437,38 @@ function shareSite() {
   }
 }
 </script>
-  
+  <!-- 🌍 Global Video Popup -->
+<div id="globalVideoPopup" class="popup">
+  <div id="globalSpinner" class="spinner"></div>
+  <iframe id="globalVideoPlayer" allowfullscreen></iframe>
+  <span id="globalCloseBtn" class="closeBtn" onclick="closeGlobalPopup()">×</span>
+</div>
+  <script>
+// 🌍 Universal Popup Logic
+const popup = document.getElementById('globalVideoPopup');
+const spinner = document.getElementById('globalSpinner');
+const iframe = document.getElementById('globalVideoPlayer');
+
+// Function: Open popup with spinner
+function openGlobalPopup(link) {
+  popup.style.display = 'flex';
+  spinner.style.display = 'flex';
+  iframe.style.display = 'none';
+  iframe.src = link + "?autoplay=1";
+
+  // When video loads
+  iframe.onload = () => {
+    spinner.style.display = 'none';
+    iframe.style.display = 'block';
+  };
+}
+
+// Function: Close popup
+function closeGlobalPopup() {
+  popup.style.display = 'none';
+  iframe.src = "";
+}
+  </script>
   
 </body>
 </html>
