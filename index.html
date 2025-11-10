@@ -410,6 +410,8 @@ videos.forEach(v => {
   card.innerHTML = `<img src="${v.thumb}" alt="${v.title}"><p>${v.title}</p>`;
   card.onclick = () => openPopup(v.link);
   row.appendChild(card);
+  card.addEventListener('click', () => openGlobalPopup(v.link));
+  return card;
 });
 
 
