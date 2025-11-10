@@ -528,160 +528,11 @@ setTimeout(() => requestAnimationFrame(autoScroll), 3000);
   <iframe allowfullscreen="" id="videoPlayer"></iframe>
   <span class="closeBtn" onclick="closePopup()">×</span>
 </div>
-<style>
-    /* 🎬 Video Section Container */
-.video-section {
-  margin: 30px 0;
-  box-shadow: 0 0 10px rgba(0, 191, 255, 0.4);
-}
 
 
-.video-section h2 {
-  font-size: 1.4rem;
-  margin-left: 10px;
-  color: white;
-}
-
-/* 🎞️ Video Row (horizontal scroll) */
-.video-row {
-  display: flex;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  gap: 15px;
-  padding: 10px;
-  
-
-.video-row::-webkit-scrollbar {
-  height: 8px;
-}
-.video-row::-webkit-scrollbar-thumb {
-  background: rgba(128, 0, 128, 0.5);
-  border-radius: 5px;
-}
-.video-row::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-/* 🎥 Individual Video Card */
-.video-card {
-  flex: 0 0 auto;
-  width: 160px;
-  height: 260px; /* more portrait */
-  border-radius: 10px;
-  background: #111;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  
-}
-
-.video-card:hover {
-  transform: scale(1.05);
-}
-
-.video-card img {
-  width: 100%;
-  height: 75%;
-  object-fit: cover;
-}
-
-.video-card p {
-  text-align: center;
-  color: white;
-  padding: 8px;
-  font-size: 0.9rem;
-}
-
-/* 🎬 Popup player */
-#videoPopup {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.9);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-#videoPlayer {
-  width: 90%;
-  height: 70vh;
-  border: none;
-  border-radius: 10px;
-  background: #000;
-  box-shadow: 0 0 10px rgba(0, 191, 255, 0.4);
-}
-.popup {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  flex-direction: column;
-}
-.popup iframe {
-  width: 80%;
-  height: 70%;
-  border: none;
-  border-radius: 10px;
-  display: none;
-}
-.popup .closeBtn {
-  position: absolute;
-  top: 20px;
-  right: 25px;
-  color: #fff;
-  font-size: 30px;
-  cursor: pointer;
-}
-
-/* --- Loading Spinner --- */
-.spinner {
-  border: 6px solid rgba(255, 255, 255, 0.2);
-  border-top: 6px solid #fff;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: spin 1s linear infinite;
-  margin-bottom: 20px;
-}
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* ✨ Spinner (portrait background style while loading) */
-.spinner {
-  width: 120px;
-  height: 160px;
-  border: 5px solid rgba(255, 255, 255, 0.2);
-  border-top: 5px solid blue;
-  border-radius: 10px;
-  animation: spin 1.2s linear infinite;
-  background: linear-gradient(180deg, #1a001a, #000);
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-/* ❌ Close Button */
-.closeBtn {
-  position: absolute;
-  top: 20px;
-  right: 25px;
-  font-size: 2rem;
-  color: white;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-.closeBtn:hover {
-  color: blue;
-  }
 
 <script>
+
 // 🎞️ Video Data for each section
 const videoSections = {
   comingSoon: [
@@ -802,25 +653,6 @@ function closePopup() {
   <div class="video-row" id="tertiaryElectricalRow" aria-label="Electrical engineering videos"></div>
 </div>
 
-<!-- ====== GLOBAL POPUP (single copy only) ====== -->
-<!-- Paste only ONE copy of this popup in the whole page (remove any other popup duplicates) -->
-<div id="globalVideoPopup" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center; padding:20px;">
-  <div id="globalSpinner" style="width:120px; height:160px; border-radius:10px; background: linear-gradient(180deg,#1a001a,#000); display:flex; justify-content:center; align-items:center;">
-    <!-- simple animated indicator -->
-    <div style="width:36px;height:36px;border:4px solid rgba(255,255,255,0.2);border-top-color:white;border-radius:50%;animation:globalSpin 1s linear infinite;"></div>
-  </div>
-
-  <iframe id="globalVideoPlayer" allowfullscreen style="display:none; width:90%; max-width:1100px; height:70vh; border:none; border-radius:10px; margin:0 15px; background:#000; box-shadow:0 0 20px rgba(0,191,255,0.15)"></iframe>
-
-  <button id="globalCloseBtn" aria-label="Close video" style="position:absolute; top:18px; right:22px; font-size:28px; color:white; background:none; border:none; cursor:pointer;">×</button>
-</div>
-
-<style>
-  @keyframes globalSpin { to { transform: rotate(360deg); } }
-  /* ensure pointer-events on overlay close */
-  #globalVideoPopup { cursor: default; }
-  #globalVideoPopup > * { cursor: auto; }
-</style>
 
 <script>
 /* ====== Data: videos for each tertiary section ====== */
