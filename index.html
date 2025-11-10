@@ -390,12 +390,6 @@ body {
   <div class="video-row" id="videoRow"></div>
 </div>
 
-<!--Popup video player-->
-<div id="videoPopup">
-  <div class="spinner" id="spinner"></div>
-  <iframe allowfullscreen="" id="videoPlayer"></iframe>
-  <span class="closeBtn" onclick="closePopup()">×</span>
-</div>
 
 <script>
 // 🎞️ Video Data (6 videos)
@@ -418,30 +412,6 @@ videos.forEach(v => {
   row.appendChild(card);
 });
 
-// 🎥 Popup controls + Spinner
-function openPopup(link) {
-  const popup = document.getElementById('videoPopup');
-  const iframe = document.getElementById('videoPlayer');
-  const spinner = document.getElementById('spinner');
-
-  iframe.style.display = "none";      // Hide iframe until loaded
-  spinner.style.display = "block";    // Show spinner
-  popup.style.display = "flex";       // Show popup
-  iframe.src = link + "?autoplay=1";
-
-  // Detect when iframe is loaded
-  iframe.onload = () => {
-    spinner.style.display = "none";   // Hide spinner
-    iframe.style.display = "block";   // Show video
-  };
-}
-
-function closePopup() {
-  const popup = document.getElementById('videoPopup');
-  const iframe = document.getElementById('videoPlayer');
-  popup.style.display = "none";
-  iframe.src = ""; // stop video
-}
 
 // ➡️ Smooth fast auto-scroll
 let scrollSpeed = 2; // pixels per frame (increase for faster)
@@ -521,12 +491,7 @@ setTimeout(() => requestAnimationFrame(autoScroll), 3000);
   <div class="video-row" id="discoverRow"></div>
 </div>
 
-<!-- Popup Video Player -->
-<div id="videoPopup">
-  <div class="spinner" id="spinner"></div>
-  <iframe allowfullscreen="" id="videoPlayer"></iframe>
-  <span class="closeBtn" onclick="closePopup()">×</span>
-</div>
+
 
 
 
@@ -608,28 +573,7 @@ createVideoCards('newThisWeekRow', videoSections.newThisWeek);
 createVideoCards('discoverRow', videoSections.discover);
 
 // 🎥 Popup controls + Spinner
-function openPopup(link) {
-  const popup = document.getElementById('videoPopup');
-  const iframe = document.getElementById('videoPlayer');
-  const spinner = document.getElementById('spinner');
 
-  iframe.style.display = "none";
-  spinner.style.display = "block";
-  popup.style.display = "flex";
-  iframe.src = link + "?autoplay=1";
-
-  iframe.onload = () => {
-    spinner.style.display = "none";
-    iframe.style.display = "block";
-  };
-}
-
-function closePopup() {
-  const popup = document.getElementById('videoPopup');
-  const iframe = document.getElementById('videoPlayer');
-  popup.style.display = "none";
-  iframe.src = "";
-}
     </script>
 
 
@@ -688,55 +632,7 @@ function populateRows() {
 }
 
 /* ====== Global popup logic (one centralized popup) ====== */
-const popup = document.getElementById('globalVideoPopup');
-const spinner = document.getElementById('globalSpinner');
-const iframe = document.getElementById('globalVideoPlayer');
-const closeBtn = document.getElementById('globalCloseBtn');
 
-let iframeLoadTimeout = null;
-
-function openGlobalPopup(link) {
-  // reset
-  if (iframeLoadTimeout) { clearTimeout(iframeLoadTimeout); iframeLoadTimeout = null; }
-  spinner.style.display = 'flex';
-  iframe.style.display = 'none';
-  popup.style.display = 'flex';
-
-  // set onload BEFORE assigning src
-  iframe.onload = () => {
-    spinner.style.display = 'none';
-    iframe.style.display = 'block';
-    iframe.onload = null;
-    if (iframeLoadTimeout) { clearTimeout(iframeLoadTimeout); iframeLoadTimeout = null; }
-  };
-
-  // fallback: if onload doesn't fire, hide spinner after 8s to avoid stuck spinner
-  iframeLoadTimeout = setTimeout(() => {
-    spinner.style.display = 'none';
-    iframe.style.display = 'block';
-    iframe.onload = null;
-    iframeLoadTimeout = null;
-  }, 8000);
-
-  // assign src last
-  iframe.src = link + '?autoplay=1';
-}
-
-function closeGlobalPopup() {
-  popup.style.display = 'none';
-  spinner.style.display = 'none';
-  iframe.style.display = 'none';
-  iframe.src = ''; // stop video
-  if (iframeLoadTimeout) { clearTimeout(iframeLoadTimeout); iframeLoadTimeout = null; }
-  iframe.onload = null;
-}
-
-/* Close button + click outside to close (click on overlay) */
-closeBtn.addEventListener('click', closeGlobalPopup);
-popup.addEventListener('click', (ev) => {
-  // if clicked directly on overlay (not the iframe), close
-  if (ev.target === popup) closeGlobalPopup();
-});
 
 /* Initialize */
 populateRows();
@@ -846,11 +742,7 @@ populateRows();
   <div class="video-row" id="videoRow2"></div>
 </div>
 
-<div class="popup" id="videoPopup2">
-  <div class="spinner" id="spinner2"></div>
-  <iframe allowfullscreen="" id="videoPlayer2"></iframe>
-  <span class="closeBtn" onclick="closePopup2()">×</span>
-</div>
+
 
 <script>
 const videos2=[
@@ -865,19 +757,6 @@ videos2.forEach(v=>{
   card.onclick=()=>openPopup2(v.link);
   row2.appendChild(card);
 });
-function openPopup2(link){
-  const popup=document.getElementById('videoPopup2');
-  const iframe=document.getElementById('videoPlayer2');
-  const spinner=document.getElementById('spinner2');
-  iframe.style.display="none";spinner.style.display="block";
-  popup.style.display="flex";iframe.src=link+"?autoplay=1";
-  iframe.onload=()=>{spinner.style.display="none";iframe.style.display="block";}
-}
-function closePopup2(){
-  const popup=document.getElementById('videoPopup2');
-  const iframe=document.getElementById('videoPlayer2');
-  popup.style.display="none";iframe.src="";
-}
 </script>
   
   
@@ -916,11 +795,6 @@ function closeDoc10(){
   <div class="video-row" id="videoRowMaths"></div>
 </div>
 
-<div class="popup" id="videoPopupMaths">
-  <div class="spinner" id="spinnerMaths"></div>
-  <iframe allowfullscreen="" id="videoPlayerMaths"></iframe>
-  <span class="closeBtn" onclick="closePopupMaths()">×</span>
-</div>
 
 <script>
 const videosMaths = [
@@ -939,19 +813,7 @@ videosMaths.forEach(v=>{
   rowMaths.appendChild(card);
 });
 
-function openPopupMaths(link){
-  const popup=document.getElementById('videoPopupMaths');
-  const iframe=document.getElementById('videoPlayerMaths');
-  const spinner=document.getElementById('spinnerMaths');
-  iframe.style.display="none"; spinner.style.display="block";
-  popup.style.display="flex"; iframe.src=link+"?autoplay=1";
-  iframe.onload=()=>{spinner.style.display="none"; iframe.style.display="block";}
-}
-function closePopupMaths(){
-  const popup=document.getElementById('videoPopupMaths');
-  const iframe=document.getElementById('videoPlayerMaths');
-  popup.style.display="none"; iframe.src="";
-}
+
 </script>
   
   <div class="video-section">
@@ -959,11 +821,7 @@ function closePopupMaths(){
   <div class="video-row" id="grade11maths"></div>
 </div>
 
-<div class="popup" id="videoPopup_grade11maths">
-  <div class="spinner" id="spinner_grade11maths"></div>
-  <iframe allowfullscreen="" id="videoPlayer_grade11maths"></iframe>
-  <span class="closeBtn" onclick="closePopup_grade11maths()">×</span>
-</div>
+
 
 <script>
 const grade11MathVideos = [
@@ -981,21 +839,7 @@ grade11MathVideos.forEach(v=>{
   rowG11Math.appendChild(card);
 });
 
-function openPopup_grade11maths(link){
-  const popup=document.getElementById('videoPopup_grade11maths');
-  const iframe=document.getElementById('videoPlayer_grade11maths');
-  const spinner=document.getElementById('spinner_grade11maths');
-  iframe.style.display="none"; spinner.style.display="block";
-  popup.style.display="flex";
-  iframe.src=link+"?autoplay=1";
-  iframe.onload=()=>{spinner.style.display="none"; iframe.style.display="block";}
-}
 
-function closePopup_grade11maths(){
-  const popup=document.getElementById('videoPopup_grade11maths');
-  const iframe=document.getElementById('videoPlayer_grade11maths');
-  popup.style.display="none"; iframe.src="";
-}
 </script>
 
 <div class="video-section">
@@ -1003,11 +847,6 @@ function closePopup_grade11maths(){
   <div class="video-row" id="grade12maths"></div>
 </div>
 
-<div class="popup" id="videoPopup_grade12maths">
-  <div class="spinner" id="spinner_grade12maths"></div>
-  <iframe allowfullscreen="" id="videoPlayer_grade12maths"></iframe>
-  <span class="closeBtn" onclick="closePopup_grade12maths()">×</span>
-</div>
 
 <script>
 const grade12MathVideos = [
@@ -1025,21 +864,7 @@ grade12MathVideos.forEach(v=>{
   rowG12Math.appendChild(card);
 });
 
-function openPopup_grade12maths(link){
-  const popup=document.getElementById('videoPopup_grade12maths');
-  const iframe=document.getElementById('videoPlayer_grade12maths');
-  const spinner=document.getElementById('spinner_grade12maths');
-  iframe.style.display="none"; spinner.style.display="block";
-  popup.style.display="flex";
-  iframe.src=link+"?autoplay=1";
-  iframe.onload=()=>{spinner.style.display="none"; iframe.style.display="block";}
-}
 
-function closePopup_grade12maths(){
-  const popup=document.getElementById('videoPopup_grade12maths');
-  const iframe=document.getElementById('videoPlayer_grade12maths');
-  popup.style.display="none"; iframe.src="";
-}
 </script>
 
 
@@ -1283,11 +1108,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="video-row" id="videoRowBio"></div>
 </div>
 
-<div class="popup" id="videoPopupBio">
-  <div class="spinner" id="spinnerBio"></div>
-  <iframe allowfullscreen="" id="videoPlayerBio"></iframe>
-  <span class="closeBtn" onclick="closePopupBio()">×</span>
-</div>
+
 
 <script>
 const videosBio = [
@@ -1305,19 +1126,7 @@ videosBio.forEach(v=>{
   rowBio.appendChild(card);
 });
 
-function openPopupBio(link){
-  const popup=document.getElementById('videoPopupBio');
-  const iframe=document.getElementById('videoPlayerBio');
-  const spinner=document.getElementById('spinnerBio');
-  iframe.style.display="none"; spinner.style.display="block";
-  popup.style.display="flex"; iframe.src=link+"?autoplay=1";
-  iframe.onload=()=>{spinner.style.display="none"; iframe.style.display="block";}
-}
-function closePopupBio(){
-  const popup=document.getElementById('videoPopupBio');
-  const iframe=document.getElementById('videoPlayerBio');
-  popup.style.display="none"; iframe.src="";
-}
+
 </script>
   
   <div class="video-section">
@@ -1325,11 +1134,6 @@ function closePopupBio(){
   <div class="video-row" id="grade11biology"></div>
 </div>
 
-<div class="popup" id="videoPopup_grade11biology">
-  <div class="spinner" id="spinner_grade11biology"></div>
-  <iframe allowfullscreen="" id="videoPlayer_grade11biology"></iframe>
-  <span class="closeBtn" onclick="closePopup_grade11biology()">×</span>
-</div>
 
 <script>
 const grade11BioVideos = [
@@ -1347,21 +1151,7 @@ grade11BioVideos.forEach(v=>{
   rowG11Bio.appendChild(card);
 });
 
-function openPopup_grade11biology(link){
-  const popup=document.getElementById('videoPopup_grade11biology');
-  const iframe=document.getElementById('videoPlayer_grade11biology');
-  const spinner=document.getElementById('spinner_grade11biology');
-  iframe.style.display="none"; spinner.style.display="block";
-  popup.style.display="flex";
-  iframe.src=link+"?autoplay=1";
-  iframe.onload=()=>{spinner.style.display="none"; iframe.style.display="block";}
-}
 
-function closePopup_grade11biology(){
-  const popup=document.getElementById('videoPopup_grade11biology');
-  const iframe=document.getElementById('videoPlayer_grade11biology');
-  popup.style.display="none"; iframe.src="";
-}
 </script>
   
   <div class="video-section">
@@ -1369,11 +1159,7 @@ function closePopup_grade11biology(){
   <div class="video-row" id="grade12biology"></div>
 </div>
 
-<div class="popup" id="videoPopup_grade12biology">
-  <div class="spinner" id="spinner_grade12biology"></div>
-  <iframe allowfullscreen="" id="videoPlayer_grade12biology"></iframe>
-  <span class="closeBtn" onclick="closePopup_grade12biology()">×</span>
-</div>
+
 
 <script>
 const grade12BioVideos = [
@@ -1391,21 +1177,7 @@ grade12BioVideos.forEach(v=>{
   rowG12Bio.appendChild(card);
 });
 
-function openPopup_grade12biology(link){
-  const popup=document.getElementById('videoPopup_grade12biology');
-  const iframe=document.getElementById('videoPlayer_grade12biology');
-  const spinner=document.getElementById('spinner_grade12biology');
-  iframe.style.display="none"; spinner.style.display="block";
-  popup.style.display="flex";
-  iframe.src=link+"?autoplay=1";
-  iframe.onload=()=>{spinner.style.display="none"; iframe.style.display="block";}
-}
 
-function closePopup_grade12biology(){
-  const popup=document.getElementById('videoPopup_grade12biology');
-  const iframe=document.getElementById('videoPlayer_grade12biology');
-  popup.style.display="none"; iframe.src="";
-}
 </script>
   
   <div style="display: flex; gap: 15px; overflow-x: auto; padding: 10px;">
