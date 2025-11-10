@@ -596,7 +596,7 @@ createVideoCards('discoverRow', videoSections.discover);
 
 <!-- ====== TERTIARY: Electrical Engineering ====== -->
 <div class="video-section">
-  <h2>🧬 Electrical Engineering</h2>
+  <h2>🧬 Health and Medical Sciences</h2>
   <div class="video-row" id="tertiaryElectricalRow" aria-label="Electrical engineering videos"></div>
 </div>
 
@@ -684,9 +684,113 @@ populateRows();
     </a>
   </div>
    </div>
+    <div class="video-section">
+  <h2>⚖️ Law & Social Sciences</h2>
+  <div class="video-row" id="lawandsocialsciences"></div>
+</div>
 
-    
-  
+<script>
+const lawSocialVideos = [
+  {
+    title: "THE ZAMBIAN CONSTITUTION (Bill of Rights, Civil Society & Media)", 
+    thumb: "https://img.youtube.com/vi/1bCjuwAQw_E/hqdefault.jpg", 
+    link: "https://www.youtube.com/embed/1bCjuwAQw_E"
+  },
+  {
+    title: "The Process of Law Making in Zambia", 
+    thumb: "https://img.youtube.com/vi/MkLvxj5jKF8/hqdefault.jpg", 
+    link: "https://www.youtube.com/embed/MkLvxj5jKF8"
+  },
+  {
+    title: "The Place of Witness in the Criminal Justice System in Zambia", 
+    thumb: "https://img.youtube.com/vi/Y7_9X5dWSNk/hqdefault.jpg", 
+    link: "https://www.youtube.com/embed/Y7_9X5dWSNk"
+  }
+];
+
+const rowLaw = document.getElementById('lawandsocialsciences');
+lawSocialVideos.forEach(v => {
+  const card = document.createElement('div');
+  card.className = 'video-card';
+  card.innerHTML = `
+    <img src="${v.thumb}" alt="${v.title}">
+    <p>${v.title}</p>
+  `;
+  card.onclick = () => openGlobalPopup(v.link);
+  rowLaw.appendChild(card);
+});
+</script>
+
+   <div style="display: flex; gap: 15px; overflow-x: auto; padding: 10px;">
+  <!--Card 1-->
+  <div style="border-radius: 8px; border: 1px solid rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; height: 200px; overflow: hidden; text-align: center; width: 140px;">
+    <a href="https://drive.google.com/file/d/1lsEqaYs-_8eXLhULgH84wTKTcQPkf49s/view?usp=sharing" target="_blank">
+      <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=1lsEqaYs-_8eXLhULgH84wTKTcQPkf49s" style="height: 150px; object-fit: cover; width: 100%;" />
+      <div style="padding: 10px;">
+        <h4 style="color: white; font-size: 8px; margin: 0px;">Introduction To Nursing</h4>
+        <p style="color: #555555; font-size: 10px; margin: 5px 0px 0px;">By Jonh •<small> 19th October,2025</small></p>
+      </div>
+    </a>
+  </div>
+
+  <!--Card 2-->
+  <div style="border-radius: 8px; border: 1px solid rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; height: 200px; overflow: hidden; text-align: center; width: 140px;">
+    <a href="https://drive.google.com/file/d/1b0LqXFk1QOnQZPvRR2cS0II7gDcDdRWC/view?usp=drivesdk" target="_blank">
+      <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=1b0LqXFk1QOnQZPvRR2cS0II7gDcDdRWC" style="height: 150px; object-fit: cover; width: 100%;" />
+      <div style="padding: 10px;">
+        <h4 style="color: white; font-size: 8px; margin: 0px;">Chemistry Grade 10-12</h4>
+        <p style="color: #555555; font-size: 10px; margin: 5px 0px 0px;">By Kitwe Debs • <small> 20th September,2023</small></p>
+      </div>
+    </a>
+  </div>
+
+  <!--Card 3-->
+  <div style="border-radius: 8px; border: 1px solid rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; height: 200px; overflow: hidden; text-align: center; width: 140px;">
+    <a href="https://drive.google.com/file/d/FILE_ID_3/view?usp=sharing" target="_blank">
+      <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=FILE_ID_3" style="height: 150px; object-fit: cover; width: 100%;" />
+      <div style="padding: 10px;">
+        <h4 style="color: white; font-size: 8px; margin: 0px;">Document Title 3</h4>
+        <p style="color: #555555; font-size: 10px; margin: 5px 0px 0px;">Google Docs</p>
+      </div>
+    </a>
+  </div>
+   </div> 
+    <div class="video-section">
+  <h2>💼 Business & Financial Studies</h2>
+  <div class="video-row" id="businessfinancial"></div>
+</div>
+
+<script>
+const businessFinVideos = [
+  {
+    title: "Top 10 Profitable Businesses To Start In Zambia Now", 
+    thumb: "https://img.youtube.com/vi/kF-V4E2exwE/hqdefault.jpg", 
+    link: "https://www.youtube.com/embed/kF-V4E2exwE"
+  },
+  {
+    title: "Cost Accounting – Topic: Costing Part 2 (Zambia)”, 
+    thumb: "https://img.youtube.com/vi/VideoIDCostAcctZambia/hqdefault.jpg", 
+    link: "https://www.youtube.com/embed/VideoIDCostAcctZambia"
+  },
+  {
+    title: "Strategic Business Analysis (CA2 6)", 
+    thumb: "https://img.youtube.com/vi/2arC6-u40bU/hqdefault.jpg", 
+    link: "https://www.youtube.com/embed/2arC6-u40bU"
+  }
+];
+
+const rowBiz = document.getElementById('businessfinancial');
+businessFinVideos.forEach(v => {
+  const card = document.createElement('div');
+  card.className = 'video-card';
+  card.innerHTML = `
+    <img src="${v.thumb}" alt="${v.title}">
+    <p>${v.title}</p>
+  `;
+  card.onclick = () => openGlobalPopup(v.link);
+  rowBiz.appendChild(card);
+});
+</script>
     <div style="display: flex; gap: 15px; overflow-x: auto; padding: 10px;">
   <!--Card 1-->
   <div style="border-radius: 8px; border: 1px solid rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; height: 200px; overflow: hidden; text-align: center; width: 140px;">
@@ -721,6 +825,44 @@ populateRows();
     </a>
   </div>
     </div>
+    <div class="video-section">
+  <h2>🔬 Pure & Applied Science</h2>
+  <div class="video-row" id="pureappliedscience"></div>
+</div>
+
+<script>
+const pureAppliedVideos = [
+  {
+    title: "The Zambian Legal System (Science link placeholder)", 
+    thumb: "https://img.youtube.com/vi/V5wjrlZir8/hqdefault.jpg", 
+    link: "https://www.youtube.com/embed/V5wjrlZir8"
+  },
+  {
+    title: "Zambia Academy of Sciences – overview of science and technology", 
+    thumb: "https://img.youtube.com/vi/VideoIDZamSci1/hqdefault.jpg", 
+    link: "https://www.youtube.com/embed/VideoIDZamSci1"
+  },
+  {
+    title: "Exploring Science in Zambia – applied science case study", 
+    thumb: "https://img.youtube.com/vi/VideoIDAppliedSciZambia/hqdefault.jpg", 
+    link: "https://www.youtube.com/embed/VideoIDAppliedSciZambia"
+  }
+];
+
+const rowSci = document.getElementById('pureappliedscience');
+pureAppliedVideos.forEach(v => {
+  const card = document.createElement('div');
+  card.className = 'video-card';
+  card.innerHTML = `
+    <img src="${v.thumb}" alt="${v.title}">
+    <p>${v.title}</p>
+  `;
+  card.onclick = () => openGlobalPopup(v.link);
+  rowSci.appendChild(card);
+});
+</script>
+  
+    
   
  
   
