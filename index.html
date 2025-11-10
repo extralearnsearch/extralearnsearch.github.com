@@ -566,6 +566,8 @@ function createVideoCards(sectionId, videos) {
     `;
     card.onclick = () => openPopup(v.link);
     row.appendChild(card);
+    card.addEventListener('click', () => openGlobalPopup(v.link));
+  return card;
   });
 }
 
@@ -758,6 +760,8 @@ videos2.forEach(v=>{
   card.innerHTML=`<img src="${v.thumb}"><p>${v.title}</p>`;
   card.onclick=()=>openPopup2(v.link);
   row2.appendChild(card);
+  card.addEventListener('click', () => openGlobalPopup(v.link));
+  return card;
 });
 </script>
   
@@ -813,6 +817,8 @@ videosMaths.forEach(v=>{
   card.innerHTML=`<img src="${v.thumb}"><p>${v.title}</p>`;
   card.onclick=()=>openPopupMaths(v.link);
   rowMaths.appendChild(card);
+  card.addEventListener('click', () => openGlobalPopup(v.link));
+  return card;
 });
 
 
@@ -839,6 +845,8 @@ grade11MathVideos.forEach(v=>{
   card.innerHTML=`<img src="${v.thumb}" alt="${v.title}"><p>${v.title}</p>`;
   card.onclick=()=>openPopup_grade11maths(v.link);
   rowG11Math.appendChild(card);
+  card.addEventListener('click', () => openGlobalPopup(v.link));
+  return card;
 });
 
 
@@ -864,6 +872,8 @@ grade12MathVideos.forEach(v=>{
   card.innerHTML=`<img src="${v.thumb}" alt="${v.title}"><p>${v.title}</p>`;
   card.onclick=()=>openPopup_grade12maths(v.link);
   rowG12Math.appendChild(card);
+  card.addEventListener('click', () => openGlobalPopup(v.link));
+  return card;
 });
 
 
@@ -1126,6 +1136,8 @@ videosBio.forEach(v=>{
   card.innerHTML=`<img src="${v.thumb}"><p>${v.title}</p>`;
   card.onclick=()=>openPopupBio(v.link);
   rowBio.appendChild(card);
+  card.addEventListener('click', () => openGlobalPopup(v.link));
+  return card;
 });
 
 
@@ -1250,7 +1262,7 @@ grade12BioVideos.forEach(v=>{
 
   <section class="blue-section">
   <div class="typing" id="typing-text"></div>
-  <iframe src="https://iask.ai"></iframe>
+  <iframe src=""></iframe>
 </section>
 
 <style>
@@ -1259,6 +1271,7 @@ grade12BioVideos.forEach(v=>{
     color: white;
     padding: 50px 20px;
     text-align: center;
+    border-radius: 15px;
   }
 
   .typing {
@@ -1280,7 +1293,7 @@ grade12BioVideos.forEach(v=>{
 </style>
 
 <script>
-  const text = "Introduction Search AI";
+  const text = "Introducing Search AI";
   const typingElement = document.getElementById('typing-text');
   let index = 0;
 
