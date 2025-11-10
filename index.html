@@ -861,7 +861,180 @@ pureAppliedVideos.forEach(v => {
   rowSci.appendChild(card);
 });
 </script>
-  
+    <div style="display: flex; gap: 15px; overflow-x: auto; padding: 10px;">
+  <!--Card 1-->
+  <div style="border-radius: 8px; border: 1px solid rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; height: 200px; overflow: hidden; text-align: center; width: 140px;">
+    <a href="https://drive.google.com/file/d/1lsEqaYs-_8eXLhULgH84wTKTcQPkf49s/view?usp=sharing" target="_blank">
+      <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=1lsEqaYs-_8eXLhULgH84wTKTcQPkf49s" style="height: 150px; object-fit: cover; width: 100%;" />
+      <div style="padding: 10px;">
+        <h4 style="color: white; font-size: 8px; margin: 0px;">Introduction To Nursing</h4>
+        <p style="color: #555555; font-size: 10px; margin: 5px 0px 0px;">By Jonh •<small> 19th October,2025</small></p>
+      </div>
+    </a>
+  </div>
+
+  <!--Card 2-->
+  <div style="border-radius: 8px; border: 1px solid rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; height: 200px; overflow: hidden; text-align: center; width: 140px;">
+    <a href="https://drive.google.com/file/d/1b0LqXFk1QOnQZPvRR2cS0II7gDcDdRWC/view?usp=drivesdk" target="_blank">
+      <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=1b0LqXFk1QOnQZPvRR2cS0II7gDcDdRWC" style="height: 150px; object-fit: cover; width: 100%;" />
+      <div style="padding: 10px;">
+        <h4 style="color: white; font-size: 8px; margin: 0px;">Chemistry Grade 10-12</h4>
+        <p style="color: #555555; font-size: 10px; margin: 5px 0px 0px;">By Kitwe Debs • <small> 20th September,2023</small></p>
+      </div>
+    </a>
+  </div>
+
+  <!--Card 3-->
+  <div style="border-radius: 8px; border: 1px solid rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; height: 200px; overflow: hidden; text-align: center; width: 140px;">
+    <a href="https://drive.google.com/file/d/FILE_ID_3/view?usp=sharing" target="_blank">
+      <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=FILE_ID_3" style="height: 150px; object-fit: cover; width: 100%;" />
+      <div style="padding: 10px;">
+        <h4 style="color: white; font-size: 8px; margin: 0px;">Document Title 3</h4>
+        <p style="color: #555555; font-size: 10px; margin: 5px 0px 0px;">Google Docs</p>
+      </div>
+    </a>
+  </div>
+    </div>
+    <div class="video-section">
+  <h2>📘 Education & Training</h2>
+  <div class="video-row" id="educationtraining"></div>
+</div>
+
+<script>
+const eduTrainVideos = [
+  {
+    title: "Facing the Facts: Quality and relevance in African education (Zambia context)", 
+    thumb: "https://img.youtube.com/vi/LinkNotYoutubeButFromWB/hqdefault.jpg", 
+    link: "https://www.youtube.com/embed/LinkNotYoutubeButFromWB"
+  },
+  {
+    title: "Teacher deployment and presence in Zambia's schools", 
+    thumb: "https://img.youtube.com/vi/VideoIDEduTrainZambia1/hqdefault.jpg", 
+    link: "https://www.youtube.com/embed/VideoIDEduTrainZambia1"
+  },
+  {
+    title: "Education policy and teacher management in Zambia – overview", 
+    thumb: "https://img.youtube.com/vi/VideoIDEduTrainZambia2/hqdefault.jpg", 
+    link: "https://www.youtube.com/embed/VideoIDEduTrainZambia2"
+  }
+];
+
+const rowEdu = document.getElementById('educationtraining');
+eduTrainVideos.forEach(v => {
+  const card = document.createElement('div');
+  card.className = 'video-card';
+  card.innerHTML = `
+    <img src="${v.thumb}" alt="${v.title}">
+    <p>${v.title}</p>
+  `;
+  card.onclick = () => openGlobalPopup(v.link);
+  rowEdu.appendChild(card);
+});
+</script>
+  <div style="display: flex; gap: 15px; overflow-x: auto; padding: 10px;">
+  <!--Card 1-->
+  <div style="border-radius: 8px; border: 1px solid rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; height: 200px; overflow: hidden; text-align: center; width: 140px;">
+    <a href="https://drive.google.com/file/d/1lsEqaYs-_8eXLhULgH84wTKTcQPkf49s/view?usp=sharing" target="_blank">
+      <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=1lsEqaYs-_8eXLhULgH84wTKTcQPkf49s" style="height: 150px; object-fit: cover; width: 100%;" />
+      <div style="padding: 10px;">
+        <h4 style="color: white; font-size: 8px; margin: 0px;">Introduction To Nursing</h4>
+        <p style="color: #555555; font-size: 10px; margin: 5px 0px 0px;">By Jonh •<small> 19th October,2025</small></p>
+      </div>
+    </a>
+  </div>
+
+  <!--Card 2-->
+  <div style="border-radius: 8px; border: 1px solid rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; height: 200px; overflow: hidden; text-align: center; width: 140px;">
+    <a href="https://drive.google.com/file/d/1b0LqXFk1QOnQZPvRR2cS0II7gDcDdRWC/view?usp=drivesdk" target="_blank">
+      <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=1b0LqXFk1QOnQZPvRR2cS0II7gDcDdRWC" style="height: 150px; object-fit: cover; width: 100%;" />
+      <div style="padding: 10px;">
+        <h4 style="color: white; font-size: 8px; margin: 0px;">Chemistry Grade 10-12</h4>
+        <p style="color: #555555; font-size: 10px; margin: 5px 0px 0px;">By Kitwe Debs • <small> 20th September,2023</small></p>
+      </div>
+    </a>
+  </div>
+
+  <!--Card 3-->
+  <div style="border-radius: 8px; border: 1px solid rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; height: 200px; overflow: hidden; text-align: center; width: 140px;">
+    <a href="https://drive.google.com/file/d/FILE_ID_3/view?usp=sharing" target="_blank">
+      <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=FILE_ID_3" style="height: 150px; object-fit: cover; width: 100%;" />
+      <div style="padding: 10px;">
+        <h4 style="color: white; font-size: 8px; margin: 0px;">Document Title 3</h4>
+        <p style="color: #555555; font-size: 10px; margin: 5px 0px 0px;">Google Docs</p>
+      </div>
+    </a>
+  </div>
+  </div>
+    <div class="video-section">
+  <h2>🎨 Creative Media & Communication</h2>
+  <div class="video-row" id="creativemedia"></div>
+</div>
+
+<script>
+const creativeMediaVideos = [
+  {
+    title: "Zambia’s New Cyber Laws – Security or Censorship?", 
+    thumb: "https://img.youtube.com/vi/Vtq_aXu8yH0/hqdefault.jpg", 
+    link: "https://www.youtube.com/embed/Vtq_aXu8yH0"
+  },
+  {
+    title: "Media in Zambia – Civil Society and Media Governance", 
+    thumb: "https://img.youtube.com/vi/1bCjuwAQw_E/hqdefault.jpg", 
+    link: "https://www.youtube.com/embed/1bCjuwAQw_E"
+  },
+  {
+    title: "Zambian Law Development Commission – video intro to media law", 
+    thumb: "https://img.youtube.com/vi/VideoIDMediaLawZambia/hqdefault.jpg", 
+    link: "https://www.youtube.com/embed/VideoIDMediaLawZambia"
+  }
+];
+
+const rowCM = document.getElementById('creativemedia');
+creativeMediaVideos.forEach(v => {
+  const card = document.createElement('div');
+  card.className = 'video-card';
+  card.innerHTML = `
+    <img src="${v.thumb}" alt="${v.title}">
+    <p>${v.title}</p>
+  `;
+  card.onclick = () => openGlobalPopup(v.link);
+  rowCM.appendChild(card);
+});
+</script>
+    <div style="display: flex; gap: 15px; overflow-x: auto; padding: 10px;">
+  <!--Card 1-->
+  <div style="border-radius: 8px; border: 1px solid rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; height: 200px; overflow: hidden; text-align: center; width: 140px;">
+    <a href="https://drive.google.com/file/d/1lsEqaYs-_8eXLhULgH84wTKTcQPkf49s/view?usp=sharing" target="_blank">
+      <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=1lsEqaYs-_8eXLhULgH84wTKTcQPkf49s" style="height: 150px; object-fit: cover; width: 100%;" />
+      <div style="padding: 10px;">
+        <h4 style="color: white; font-size: 8px; margin: 0px;">Introduction To Nursing</h4>
+        <p style="color: #555555; font-size: 10px; margin: 5px 0px 0px;">By Jonh •<small> 19th October,2025</small></p>
+      </div>
+    </a>
+  </div>
+
+  <!--Card 2-->
+  <div style="border-radius: 8px; border: 1px solid rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; height: 200px; overflow: hidden; text-align: center; width: 140px;">
+    <a href="https://drive.google.com/file/d/1b0LqXFk1QOnQZPvRR2cS0II7gDcDdRWC/view?usp=drivesdk" target="_blank">
+      <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=1b0LqXFk1QOnQZPvRR2cS0II7gDcDdRWC" style="height: 150px; object-fit: cover; width: 100%;" />
+      <div style="padding: 10px;">
+        <h4 style="color: white; font-size: 8px; margin: 0px;">Chemistry Grade 10-12</h4>
+        <p style="color: #555555; font-size: 10px; margin: 5px 0px 0px;">By Kitwe Debs • <small> 20th September,2023</small></p>
+      </div>
+    </a>
+  </div>
+
+  <!--Card 3-->
+  <div style="border-radius: 8px; border: 1px solid rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px; flex-shrink: 0; height: 200px; overflow: hidden; text-align: center; width: 140px;">
+    <a href="https://drive.google.com/file/d/FILE_ID_3/view?usp=sharing" target="_blank">
+      <img alt="Document Thumbnail" src="https://drive.google.com/thumbnail?id=FILE_ID_3" style="height: 150px; object-fit: cover; width: 100%;" />
+      <div style="padding: 10px;">
+        <h4 style="color: white; font-size: 8px; margin: 0px;">Document Title 3</h4>
+        <p style="color: #555555; font-size: 10px; margin: 5px 0px 0px;">Google Docs</p>
+      </div>
+    </a>
+  </div>
+    </div>
     
   
  
