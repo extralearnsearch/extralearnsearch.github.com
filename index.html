@@ -3156,7 +3156,24 @@ tertiaryLiveVideos.forEach(v=>{
     document.querySelectorAll('#homeTabs button').forEach(b => b.classList.remove('active'));
     event.target.classList.add('active');
   }
+// Add this function definition to fix subtab switching
+function showSubtab(tabId) {
+  // 1. Remove 'active' class from all subcontent divs (hides them)
+  document.querySelectorAll('.subcontent').forEach(c => c.classList.remove('active'));
 
+  // 2. Add 'active' class to the requested subcontent div (shows it)
+  document.getElementById(tabId).classList.add('active');
+
+  // 3. Update the active button style
+  document.querySelectorAll('.subtabs button').forEach(b => b.classList.remove('active'));
+  
+  // This line finds the button that was clicked and sets it as active
+  const clickedButton = document.querySelector(`.subtabs button[onclick="showSubtab('${tabId}')"]`);
+  if (clickedButton) {
+    clickedButton.classList.add('active');
+  }
+}
+  
   // Explore Subtabs
   function showExplore(name) {
     document.querySelectorAll('#explore .subcontent').forEach(c => c.classList.remove('active'));
