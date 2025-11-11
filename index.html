@@ -3049,6 +3049,36 @@ geographyGrade5to7Videos.forEach(v=>{
   <div id="live" class="subcontent">
     <h2>Live Video</h2>
     <div class="card">Join live educational sessions happening now.</div>
+<!-- ====== Tertiary: Live Videos ====== -->
+<div class="video-section">
+  <h2>📡 Tertiary Live Videos</h2>
+  <div class="video-row" id="tertiaryLiveVideos"></div>
+</div>
+
+<script>
+const tertiaryLiveVideos = [
+  {title:"Engineering Webinar Live", thumb:"https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg", link:"https://www.youtube.com/embed/dQw4w9WgXcQ"},
+  {title:"Business Seminar Live", thumb:"https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg", link:"https://www.youtube.com/embed/dQw4w9WgXcQ"},
+  {title:"Science Lecture Live", thumb:"https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg", link:"https://www.youtube.com/embed/dQw4w9WgXcQ"},
+  {title:"Education & Training Live", thumb:"https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg", link:"https://www.youtube.com/embed/dQw4w9WgXcQ"},
+  {title:"Creative Media Live Session", thumb:"https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg", link:"https://www.youtube.com/embed/dQw4w9WgXcQ"}
+];
+
+const tertiaryLiveRow = document.getElementById('tertiaryLiveVideos');
+tertiaryLiveVideos.forEach(v=>{
+  const card=document.createElement('div');
+  card.className='video-card';
+  card.innerHTML=`
+    <div style="position:relative;">
+      <span style="position:absolute; top:5px; left:5px; background:red; color:white; padding:2px 5px; font-size:12px; border-radius:4px; z-index:5;">🔴 LIVE</span>
+      <img src="${v.thumb}" alt="${v.title}">
+    </div>
+    <p>${v.title}</p>
+  `;
+  card.onclick=()=>openGlobalPopup(v.link); // Uses global spinner
+  tertiaryLiveRow.appendChild(card);
+});
+   </script>
   </div>
 </div>
 
