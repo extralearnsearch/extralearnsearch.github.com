@@ -334,7 +334,7 @@ body {
 /* --- Loading Spinner --- */
 .spinner {
   border: 6px solid rgba(255, 255, 255, 0.2);
-  border-top: 6px solid light blue;
+  border-top: 6px solid lightblue;
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -1253,7 +1253,7 @@ grade12MathVideos.forEach(v=>{
 </div>
 
 <!-- PREMIUM MODAL -->
-<div id="premiumModal" style="display:none; position:fixed; inset:0; background: rgba(0,0,0,0); backdrop-filter: blur(10px); z-index:10000; display:flex; align-items:center; justify-content:center; height:90%; bottom:20px;">
+<div id="premiumModal" style="display:none; position:fixed; inset:0; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); z-index:10000; display:flex; align-items:center; justify-content:center; height:90%; bottom:20px;">
   <div style="background: rgba(30,30,30,0.95); border-radius:20px; padding:0; width:90%; max-width:450px; position:relative; text-align:center; overflow:hidden;">
     
     <!-- Close Button -->
@@ -1270,6 +1270,7 @@ grade12MathVideos.forEach(v=>{
         <table style="width:100%; border-collapse:collapse; color:#ddd; text-align:center; min-width:420px;">
           <thead>
             <tr style="background:#222; color:#00bfff;">
+              <th style="padding:8px;">Feature</th>
               <th style="padding:8px;">Free</th>
               <th style="padding:8px;">Basic</th>
               <th style="padding:8px;">Standard</th>
@@ -1282,27 +1283,32 @@ grade12MathVideos.forEach(v=>{
               <td>✅</td>
               <td>✅</td>
               <td>✅</td>
+              <td>✅</td>
             </tr>
             <tr style="background:#1a1a1a;">
-              <td style="padding:8px;">Downloadable Resources</td>
-              <td>❌</td>
+              <td style="padding:8px;">Free Downloadable Resources</td>
+              <td>✅</td>
+              <td>✅<td>
               <td>✅</td>
               <td>✅</td>
             </tr>
             <tr>
               <td style="padding:8px;">Live Tutoring Sessions</td>
               <td>❌</td>
-              <td>❌</td>
               <td>✅</td>
+              <td>✅</td>
+              <tb>✅</tb>
             </tr>
             <tr style="background:#1a1a1a;">
               <td style="padding:8px;">Priority Support</td>
               <td>❌</td>
+              <td>❌</td>
               <td>✅</td>
-              <td>✅</td>
+              <tr>✅</tr>
             </tr>
             <tr>
               <td style="padding:8px;">Certificates</td>
+              <td>❌</td>
               <td>❌</td>
               <td>❌</td>
               <td>✅</td>
@@ -2469,7 +2475,7 @@ re12Videos.forEach(v => {
   </div>
   <div id="form1" class="subcontent">
     <h2>Form 1-4</h2>
-    <div class="card">⚠️Please do not click explore tab here to avoid errors,click for you then explore ⚠️Explore content for Forms 1-4 students.</div>
+    <div class="card">⚠️Please do not click explore tab here to avoid errors,click for you then explore<br> ⚠️Explore content for Forms 1-4 students.</div>
 <div class="video-section">
   <h2>📚 Forms Trending (Form 1-4) </h2>
   <div class="video-row" id="formsTrending"></div>
@@ -2548,8 +2554,8 @@ formsTrendingVideos.forEach(v => {
 
 <script>
 const physicsForm1to4Videos = [
-  {title: "Physics Form 1 Lesson 1", thumb: "https://img.youtube.com/watch?v=In_Aybr0--Q/hqdefault.jpg", link:"https://www.youtube.com/embed/In_Aybr0--Q "},
-  {title: "Physics Form 2 Lesson 1", thumb: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg", link:"https://www.youtube.com/embed/dQw4w9WgXcQ"},
+  {title: "Physics Form 1 Lesson 1", thumb: "https://img.youtube.com/vi/In_Aybr0--Q/hqdefault.jpg", link:"https://www.youtube.com/embed/In_Aybr0--Q "},
+  {title: "Physics Form 2 Lesson 1", thumb: "https://img.youtube.com/vi/BnfCMV7NV60/hqdefault.jpg", link:"https://www.youtube.com/embed/BnfCMV7NV60"},
   {title: "Physics Form 3 Lesson 1", thumb: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg", link:"https://www.youtube.com/embed/dQw4w9WgXcQ"},
   {title: "Physics Form 4 Lesson 1", thumb: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg", link:"https://www.youtube.com/embed/dQw4w9WgXcQ"}
 ];
