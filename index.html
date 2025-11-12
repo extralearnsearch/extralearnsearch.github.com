@@ -308,7 +308,7 @@ body {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(50,50,90,0.7);
+  background: rgba(0,0,0,0.4);
   justify-content: center;
   align-items: center;
   z-index: 9999;
@@ -1254,28 +1254,87 @@ grade12MathVideos.forEach(v=>{
 
 <!-- PREMIUM MODAL -->
 <div id="premiumModal" style="display:none; position:fixed; inset:0; background: rgba(0,0,0,0.4); backdrop-filter: blur(10px); z-index:10000; display:flex; align-items:center; justify-content:center; height:90%; bottom:20px;">
-  <div style="background: rgba(30,30,30,0.9); border-radius:20px; padding:25px; width:90%; max-width:420px; position:relative; text-align:center;">
-    <span class="close-modal" style="position:absolute; top:10px; right:15px; font-size:24px; cursor:pointer; color:#aaa;">&times;</span>
-    <h3 style="color:#00bfff;">Upgrade to Premium</h3>
-    <form id="premiumForm" style="margin-top:15px;">
-      <input type="text" id="name" placeholder="Your Name" required style="width:90%; padding:10px; margin:8px 0; border-radius:8px; border:none; background:#2a2a2a; color:#fff;">
-      <input type="email" id="email" placeholder="Your Email" required style="width:90%; padding:10px; margin:8px 0; border-radius:8px; border:none; background:#000; color:#fff;">
-      <input type="tel" id="number" placeholder="Phone Number" required style="width:90%; padding:10px; margin:8px 0; border-radius:8px; border:none; background:#000; color:#fff;">
-      <select id="plan" required style="width:90%; height:90% ; padding:10px; margin:8px 0; border-radius:8px; border:none; background:#000; color:#fff;">
+  <div style="background: rgba(30,30,30,0.95); border-radius:20px; padding:0; width:90%; max-width:450px; position:relative; text-align:center; overflow:hidden;">
+    
+    <!-- Close Button -->
+    <span class="close-modal" style="position:absolute; top:10px; right:15px; font-size:24px; cursor:pointer; color:#fff;">&times;</span>
+    
+    <!-- Top Section with Background Image -->
+    <div style="background:url('https://images.unsplash.com/photo-1532619187608-e5375cab36a1?auto=format&fit=crop&w=800&q=80') center/cover; height:140px; border-top-left-radius:20px; border-top-right-radius:20px; display:flex; align-items:center; justify-content:center;">
+      <h3 style="color:white; font-size:22px; text-shadow:1px 1px 5px rgba(0,0,0,0.8);">Upgrade to Premium</h3>
+    </div>
+
+    <!-- Scrollable Comparison Table -->
+    <div style="max-height:180px; overflow:auto; margin:15px; border-radius:10px; background:#111; padding:10px;">
+      <div style="overflow-x:auto;">
+        <table style="width:100%; border-collapse:collapse; color:#ddd; text-align:center; min-width:420px;">
+          <thead>
+            <tr style="background:#222; color:#00bfff;">
+              <th style="padding:8px;">Free</th>
+              <th style="padding:8px;">Basic</th>
+              <th style="padding:8px;">Standard</th>
+              <th style="padding:8px;">Pro</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:8px;">Access to Learning Materials</td>
+              <td>✅</td>
+              <td>✅</td>
+              <td>✅</td>
+            </tr>
+            <tr style="background:#1a1a1a;">
+              <td style="padding:8px;">Downloadable Resources</td>
+              <td>❌</td>
+              <td>✅</td>
+              <td>✅</td>
+            </tr>
+            <tr>
+              <td style="padding:8px;">Live Tutoring Sessions</td>
+              <td>❌</td>
+              <td>❌</td>
+              <td>✅</td>
+            </tr>
+            <tr style="background:#1a1a1a;">
+              <td style="padding:8px;">Priority Support</td>
+              <td>❌</td>
+              <td>✅</td>
+              <td>✅</td>
+            </tr>
+            <tr>
+              <td style="padding:8px;">Certificates</td>
+              <td>❌</td>
+              <td>❌</td>
+              <td>✅</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Form Section -->
+    <form id="premiumForm" style="margin-top:5px; padding-bottom:15px;">
+      <input type="text" id="name" placeholder="Your Name" required style="width:90%; padding:10px; margin:6px 0; border-radius:8px; border:none; background:#2a2a2a; color:#fff;">
+      <input type="email" id="email" placeholder="Your Email" required style="width:90%; padding:10px; margin:6px 0; border-radius:8px; border:none; background:#000; color:#fff;">
+      <input type="tel" id="number" placeholder="Phone Number" required style="width:90%; padding:10px; margin:6px 0; border-radius:8px; border:none; background:#000; color:#fff;">
+      
+      <select id="plan" required style="width:90%; padding:10px; margin:6px 0; border-radius:8px; border:none; background:#000; color:#fff;">
         <option value="">Select a Plan</option>
         <option>Basic - K5</option>
         <option>Standard - K7</option>
         <option>Pro - K15</option>
       </select>
-      
-      <select id="payment" required style="width:90%; height:90% ; padding:10px; margin:8px 0; border-radius:8px; border:none; background:#000; color:#fff;">
-        <option value="">Select  Payment Method</option>
-        <option>Mobile<small style="color:gray;">Via 0767607057(member)</small></option>
-        <option>Bank(card)</option>
+
+      <select id="payment" required style="width:90%; padding:10px; margin:6px 0; border-radius:8px; border:none; background:#000; color:#fff;">
+        <option value="">Select Payment Method</option>
+        <option>Mobile (0767607057)</option>
+        <option>Bank (Card)</option>
       </select>
+
       <button type="submit" style="background: linear-gradient(135deg,#007bff,#00bfff); color:#fff; border:none; padding:10px 25px; border-radius:12px; cursor:pointer; margin-top:10px;">Send</button>
     </form>
-    <div id="msg" style="margin-top:12px; color:#00ff88;"></div>
+
+    <div id="msg" style="margin-top:10px; color:#00ff88;"></div>
   </div>
 </div>
 
@@ -1518,6 +1577,7 @@ grade11BioVideos.forEach(v=>{
   card.innerHTML=`<img src="${v.thumb}" alt="${v.title}"><p>${v.title}</p>`;
   card.onclick=()=>openPopup_grade11biology(v.link);
   rowG11Bio.appendChild(card);
+  card.onclick = () => openGlobalPopup(v.link);
 });
 
 
@@ -1544,6 +1604,7 @@ grade12BioVideos.forEach(v=>{
   card.innerHTML=`<img src="${v.thumb}" alt="${v.title}"><p>${v.title}</p>`;
   card.onclick=()=>openPopup_grade12biology(v.link);
   rowG12Bio.appendChild(card);
+  card.onclick = () => openGlobalPopup(v.link);
 });
 
 
